@@ -23,16 +23,12 @@ const HomeSection = () => {
       
       <div className="max-w-5xl mx-auto px-4 text-center">
         <div className="mb-12 animate-fade-in">
-          {/* Foodtruck Illustration (SVG) */}
-          <svg className="w-40 h-40 mx-auto mb-8" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M60,180 L60,100 L180,100 L200,130 L200,180 Z" fill="#6D8C60" stroke="#4B2E20" strokeWidth="3"/>
-            <path d="M60,100 L40,60 L20,60 L20,100 Z" fill="#DAB29C" stroke="#4B2E20" strokeWidth="3"/>
-            <circle cx="70" cy="180" r="15" fill="#4B2E20" stroke="#4B2E20" strokeWidth="2"/>
-            <circle cx="170" cy="180" r="15" fill="#4B2E20" stroke="#4B2E20" strokeWidth="2"/>
-            <rect x="140" y="120" width="40" height="30" rx="5" fill="#F5EFE6" stroke="#4B2E20" strokeWidth="2"/>
-            <path d="M120,130 Q140,115 160,130" stroke="#4B2E20" strokeWidth="2" fill="none"/>
-            <path d="M120,140 Q140,155 160,140" stroke="#4B2E20" strokeWidth="2" fill="none"/>
-          </svg>
+          {/* Foodtruck Hero Image */}
+          <img 
+            src="/lovable-uploads/40a04ff7-6485-45f6-b34e-1aa8eb905412.png" 
+            alt="Raíz y Grano Foodtruck" 
+            className="w-full max-w-2xl mx-auto mb-8"
+          />
           
           <h1 className="text-5xl md:text-6xl font-cormorant text-raiz-coffee mb-4">
             Raíz y Grano

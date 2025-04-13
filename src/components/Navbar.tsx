@@ -1,11 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,16 +24,47 @@ const Navbar = () => {
 
   const scrollToSection = (id: string) => {
     setMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      const navbarHeight = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-      
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+    
+    // If we're not on the home page, navigate to home first
+    if (window.location.pathname !== '/') {
+      navigate('/');
+      // We need to wait for the navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          const navbarHeight = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+          
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // We're already on the home page, just scroll
+      const element = document.getElementById(id);
+      if (element) {
+        const navbarHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  };
+
+  const handleMenuClick = (path: string, id?: string) => {
+    setMenuOpen(false);
+    
+    if (id) {
+      scrollToSection(id);
+    } else {
+      navigate(path);
     }
   };
 
@@ -44,26 +77,45 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <div className="z-50">
-          <h1 className="text-2xl md:text-3xl font-cormorant font-semibold text-raiz-coffee">
-            Raíz y Grano
-          </h1>
+          <Link to="/" className="inline-block">
+            <h1 className="text-2xl md:text-3xl font-cormorant font-semibold text-raiz-coffee">
+              Raíz y Grano
+            </h1>
+          </Link>
         </div>
 
         {/* Desktop menu */}
         <nav className="hidden md:flex space-x-8">
-          {['home', 'menu', 'about', 'gallery', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
-            >
-              {item === 'menu' ? 'Carta' : 
-               item === 'about' ? 'Nosotros' : 
-               item === 'gallery' ? 'Galería' : 
-               item === 'contact' ? 'Contacto' : 
-               'Inicio'}
-            </button>
-          ))}
+          <button
+            onClick={() => handleMenuClick('/', 'home')}
+            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+          >
+            Inicio
+          </button>
+          <button
+            onClick={() => handleMenuClick('/menu')}
+            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+          >
+            Carta
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'about')}
+            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+          >
+            Nosotros
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'gallery')}
+            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+          >
+            Galería
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'contact')}
+            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+          >
+            Contacto
+          </button>
         </nav>
 
         {/* Mobile menu button */}
@@ -81,19 +133,36 @@ const Navbar = () => {
           ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
           md:hidden
         `}>
-          {['home', 'menu', 'about', 'gallery', 'contact'].map((item) => (
-            <button
-              key={item}
-              onClick={() => scrollToSection(item)}
-              className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
-            >
-              {item === 'menu' ? 'Carta' : 
-               item === 'about' ? 'Nosotros' : 
-               item === 'gallery' ? 'Galería' : 
-               item === 'contact' ? 'Contacto' : 
-               'Inicio'}
-            </button>
-          ))}
+          <button
+            onClick={() => handleMenuClick('/', 'home')}
+            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+          >
+            Inicio
+          </button>
+          <button
+            onClick={() => handleMenuClick('/menu')}
+            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+          >
+            Carta
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'about')}
+            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+          >
+            Nosotros
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'gallery')}
+            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+          >
+            Galería
+          </button>
+          <button
+            onClick={() => handleMenuClick('/', 'contact')}
+            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+          >
+            Contacto
+          </button>
         </div>
       </div>
     </header>
