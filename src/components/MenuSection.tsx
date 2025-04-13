@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Menu data
 const menuItems = {
@@ -106,6 +107,18 @@ const MenuSection = () => {
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="text-center mt-8">
+        <Link 
+          to="/menu" 
+          className="btn-primary inline-flex items-center transition-transform hover:scale-105"
+        >
+          Ver carta completa
+          <svg xmlns="http://www.w3.org/2000/svg" className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
     </section>
   );
