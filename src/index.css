@@ -26,33 +26,17 @@
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
     
-    /* Enhanced colors for Raíz y Grano based on provided images */
-    --raiz-beige: 25 38% 87%;
-    --raiz-coffee: 27 35% 25%;
-    --raiz-olive: 82 20% 48%;
-    --raiz-terracotta: 18 56% 73%;
+    /* Enhanced colors for a more harmonious palette */
+    --raiz-beige: 34 38% 92%; /* Warmer, softer beige */
+    --raiz-coffee: 25 40% 20%; /* Rich, deep coffee color */
+    --raiz-olive: 80 25% 40%; /* More vibrant olive tone */
+    --raiz-terracotta: 20 60% 80%; /* Softer terracotta */
+    --raiz-cream: 40 30% 96%; /* Warm cream color */
+    --raiz-sand: 35 25% 88%; /* Sandy tone for backgrounds */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    /* ... keep existing code (dark mode variables) */
   }
 }
 
@@ -70,47 +54,88 @@
     @apply font-cormorant;
   }
   
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl tracking-tight font-medium;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl tracking-tight font-medium;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl tracking-tight;
+  }
+  
+  p {
+    @apply leading-relaxed text-base md:text-lg;
+  }
+  
   /* Font imports */
   @import url('https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 }
 
 @layer components {
   .section {
-    @apply py-12 px-4 md:px-6 max-w-6xl mx-auto;
+    @apply py-16 px-4 md:px-6 max-w-6xl mx-auto;
   }
   
   .card {
-    @apply p-6 rounded-lg;
+    @apply p-6 rounded-lg bg-white/40 backdrop-blur-sm border border-raiz-beige/20 shadow-elegant transition-all duration-300 hover:shadow-soft;
   }
   
   .btn-primary {
-    @apply bg-raiz-olive text-white rounded-full px-6 py-3 font-medium shadow-sm hover:shadow-md transition-all duration-300 hover:bg-opacity-90;
+    @apply bg-raiz-olive text-white rounded-full px-6 py-3 font-medium shadow-elegant hover:shadow-soft transition-all duration-300 hover:bg-opacity-90 relative overflow-hidden;
+  }
+  
+  .btn-primary::after {
+    @apply content-[''] absolute inset-0 bg-white opacity-0 transition-opacity duration-300;
+  }
+  
+  .btn-primary:hover::after {
+    @apply opacity-10;
   }
   
   .btn-secondary {
-    @apply bg-transparent border border-raiz-olive text-raiz-coffee rounded-full px-6 py-3 font-medium hover:bg-raiz-olive/5 transition-all duration-300;
+    @apply bg-transparent border border-raiz-olive text-raiz-coffee rounded-full px-6 py-3 font-medium hover:bg-raiz-olive/5 transition-all duration-300 shadow-sm hover:shadow-elegant;
   }
   
-  /* Section headers */
+  /* Section headers with enhanced styling */
   .section-title {
-    @apply text-4xl md:text-5xl font-cormorant text-raiz-coffee mb-4;
+    @apply text-4xl md:text-5xl font-cormorant text-raiz-coffee mb-6 relative inline-block;
+  }
+  
+  .section-title::after {
+    @apply content-[''] absolute w-1/3 h-px bg-raiz-terracotta/70 bottom-0 left-0 right-0 mx-auto;
   }
   
   .section-subtitle {
-    @apply max-w-3xl mx-auto text-raiz-coffee opacity-80 mb-12;
+    @apply max-w-3xl mx-auto text-raiz-coffee/80 mb-12 font-light;
   }
   
-  /* New styles based on provided images */
+  /* Card variations */
   .about-card {
-    @apply bg-raiz-beige/90 p-8 rounded-lg shadow-sm;
+    @apply bg-gradient-to-br from-raiz-beige/90 to-raiz-cream/90 p-8 rounded-lg shadow-elegant;
   }
   
   .contact-card {
-    @apply bg-raiz-olive/90 text-white p-8 rounded-lg shadow-sm;
+    @apply bg-gradient-to-br from-raiz-olive/90 to-raiz-olive/80 text-white p-8 rounded-lg shadow-elegant;
+  }
+  
+  .menu-card {
+    @apply bg-gradient-to-br from-white/90 to-raiz-cream/50 p-6 rounded-lg shadow-elegant hover:shadow-soft transition-all duration-300 backdrop-blur-sm border border-raiz-beige/20;
   }
   
   .location-icon {
-    @apply bg-raiz-beige/80 text-raiz-olive p-3 rounded-full;
+    @apply bg-raiz-beige/80 text-raiz-olive p-3 rounded-full shadow-sm;
+  }
+  
+  /* New highlight component */
+  .text-highlight {
+    @apply relative inline-block;
+  }
+  
+  .text-highlight::before {
+    @apply content-[''] absolute h-3 w-full bg-raiz-terracotta/20 bottom-0 left-0 -z-10;
   }
 }
 
@@ -177,14 +202,34 @@
     transform-origin: bottom left;
   }
   
-  /* New utilities for design consistency */
+  /* Professional design utilities */
   .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    text-shadow: 0 1px 2px rgba(0,0,0,0.07);
+  }
+  
+  .text-shimmer {
+    background: linear-gradient(90deg, currentColor, #a8a8a8, currentColor);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: text-shimmer 3s linear infinite;
   }
   
   .bg-pattern-dots {
     background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
     background-size: 20px 20px;
   }
+  
+  .bg-textured {
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23000000' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+  }
+  
+  .backdrop-blur-card {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-raiz-coffee to-raiz-olive bg-clip-text text-transparent;
+  }
 }
-

@@ -27,44 +27,51 @@ const HomeSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Background with subtle pattern */}
-      <div className="absolute inset-0 bg-raiz-beige -z-10 opacity-80">
-        <div className="absolute inset-0 opacity-5" style={{ 
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23594a42' fill-opacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }} />
+      {/* Background with subtle texture */}
+      <div className="absolute inset-0 bg-gradient-to-br from-raiz-cream to-raiz-beige -z-10">
+        <div className="absolute inset-0 bg-textured opacity-30" />
       </div>
       
-      {/* Hero Section with improved layout and animations */}
-      <div className="max-w-5xl mx-auto px-4 pt-28 md:pt-20 text-center">
-        <div className={`mb-12 transition-all duration-1000 ease-out transform ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Logo Hero Image with enhanced styling */}
-          <div className="relative mb-8 inline-block">
-            <img 
-              src="/lovable-uploads/32254397-2fb6-4685-b8e9-c14006e6dd1b.png" 
-              alt="Raíz y Grano Logo" 
-              className="w-full max-w-md mx-auto drop-shadow-xl animate-float"
-            />
-            <div className="absolute -z-10 inset-0 bg-raiz-olive opacity-10 blur-3xl rounded-full transform scale-150 translate-y-6"></div>
-          </div>
-          
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-cormorant text-raiz-coffee mb-4 tracking-wide">
+      {/* Decorative coffee beans illustration */}
+      <div className="absolute -bottom-20 -left-20 opacity-10 animate-float-slow">
+        <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
+          <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
+        </svg>
+      </div>
+      
+      <div className="absolute -top-20 -right-20 opacity-10 animate-float" style={{animationDelay: '1.5s'}}>
+        <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
+          <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
+        </svg>
+      </div>
+      
+      {/* Hero Section with elegant typography and animations */}
+      <div className="max-w-5xl mx-auto px-4 pt-20 md:pt-0 text-center relative z-10">
+        <div className={`mb-16 transition-all duration-1000 ease-out transform ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-cormorant text-raiz-coffee mb-6 tracking-tight font-medium">
             Raíz y Grano
           </h1>
           
-          <p className="text-xl md:text-2xl lg:text-3xl font-cormorant italic text-raiz-coffee mb-10 tracking-wide">
-            Sabor que enciende neuronas
+          <p className="text-xl md:text-2xl lg:text-3xl font-cormorant italic text-raiz-coffee mb-12 tracking-wide max-w-2xl mx-auto">
+            <span className="text-highlight">Sabor que enciende neuronas</span>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-16">
+          <div className="relative w-32 h-1 bg-raiz-terracotta/30 mx-auto mb-12">
+            <div className="absolute top-0 left-0 h-full w-1/2 bg-raiz-terracotta animate-pulse-subtle"></div>
+          </div>
+          
+          <div className="flex flex-col sm:flex-row gap-5 justify-center mb-20">
             <button 
-              className="btn-primary group flex items-center justify-center gap-2 px-6 py-3 text-lg transform transition-all hover:scale-105"
+              className="btn-primary group flex items-center justify-center gap-2 px-6 py-3 text-lg"
               onClick={() => scrollToSection('menu')}
             >
               Ver Carta
               <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
             </button>
             <button 
-              className="btn-secondary flex items-center justify-center gap-2 px-6 py-3 text-lg transform transition-all hover:scale-105"
+              className="btn-secondary flex items-center justify-center gap-2 px-6 py-3 text-lg"
               onClick={() => scrollToSection('contact')}
             >
               Cómo Llegar
@@ -97,16 +104,16 @@ const HomeSection = () => {
           ].map((feature, index) => (
             <div 
               key={index}
-              className={`card flex flex-col items-center p-6 backdrop-blur-sm bg-white/30 hover:bg-white/50 border border-raiz-terracotta/10 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 transform ${
+              className={`card flex flex-col items-center p-7 transition-all duration-500 transform ${
                 isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
               }`} 
               style={{transitionDelay: feature.delay}}
             >
-              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-raiz-terracotta bg-opacity-20 mb-4 transform transition-transform hover:scale-110">
+              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-gradient-to-br from-raiz-terracotta/20 to-raiz-beige/30 mb-5 transform transition-transform hover:scale-110">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-cormorant font-semibold mb-2">{feature.title}</h3>
-              <p className="text-center text-sm text-raiz-coffee opacity-80">
+              <h3 className="text-xl font-cormorant font-semibold mb-3">{feature.title}</h3>
+              <p className="text-center text-sm text-raiz-coffee/80">
                 {feature.description}
               </p>
             </div>
@@ -114,28 +121,13 @@ const HomeSection = () => {
         </div>
       </div>
 
-      {/* Enhanced decorative elements */}
-      <div className="absolute -bottom-20 -left-20 opacity-5 animate-float-slow">
-        <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
-          <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
-        </svg>
-      </div>
-      
-      <div className="absolute -top-20 -right-20 opacity-5 animate-float" style={{animationDelay: '1.5s'}}>
-        <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
-          <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
-        </svg>
-      </div>
-      
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center">
-          <div className="w-5 h-10 border-2 border-raiz-coffee/30 rounded-full flex justify-center">
-            <div className="w-1 h-2 bg-raiz-coffee/30 rounded-full mt-1 animate-scroll"></div>
+          <div className="w-5 h-10 border-2 border-raiz-coffee/20 rounded-full flex justify-center">
+            <div className="w-1 h-2 bg-raiz-coffee/20 rounded-full mt-1 animate-scroll"></div>
           </div>
-          <span className="text-xs text-raiz-coffee/50 mt-2">Explora</span>
+          <span className="text-xs text-raiz-coffee/40 mt-2 font-light tracking-wider">Explora</span>
         </div>
       </div>
     </section>
