@@ -1,5 +1,6 @@
 
-import React from 'react';
+import React, { useState } from 'react';
+import { X } from 'lucide-react';
 
 const images = [
   {
@@ -29,33 +30,54 @@ const images = [
 ];
 
 const GallerySection = () => {
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+
+  const openModal = (index: number) => {
+    setSelectedImage(index);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setSelectedImage(null);
+    document.body.style.overflow = 'auto';
+  };
+
   return (
-    <section id="gallery" className="section pt-24">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl md:text-5xl font-cormorant text-raiz-coffee mb-4">
+    <section id="gallery" className="section pt-24 bg-gradient-to-br from-raiz-cream/50 to-white relative">
+      {/* Elementos decorativos */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-raiz-olive/5 rounded-bl-full"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-raiz-terracotta/5 rounded-tr-full"></div>
+      
+      <div className="text-center mb-12 relative">
+        <h2 className="text-4xl md:text-5xl font-cormorant text-raiz-coffee mb-4 relative inline-block">
           Galería
+          <span className="absolute -z-10 left-0 right-0 bottom-0 h-3 bg-raiz-terracotta opacity-20 transform -rotate-1"></span>
         </h2>
         <p className="max-w-2xl mx-auto text-raiz-coffee opacity-80">
           Momentos para disfrutar, paladares que despertar y experiencias que compartir.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {images.map((image, index) => (
           <div 
             key={index} 
-            className="relative h-64 md:h-72 rounded-lg overflow-hidden group animate-fade-in"
+            className="relative h-64 md:h-80 rounded-lg overflow-hidden group animate-fade-in shadow-elegant"
             style={{ animationDelay: `${0.1 * index}s` }}
+            onClick={() => openModal(index)}
           >
             <img 
               src={image.url} 
               alt={image.alt} 
               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" 
             />
-            <div className="absolute inset-0 bg-raiz-coffee bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-end justify-start p-4">
-              <p className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-sm">
-                {image.alt}
-              </p>
+            <div className="absolute inset-0 bg-gradient-to-t from-raiz-coffee/70 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end justify-start p-6">
+              <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                <p className="text-white font-cormorant text-xl mb-1">
+                  {image.alt}
+                </p>
+                <div className="w-10 h-0.5 bg-raiz-terracotta"></div>
+              </div>
             </div>
           </div>
         ))}
@@ -66,7 +88,7 @@ const GallerySection = () => {
           href="https://www.instagram.com/raizygrano" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="inline-flex items-center text-raiz-coffee hover:text-raiz-olive transition-colors"
+          className="inline-flex items-center text-raiz-coffee px-6 py-3 border border-raiz-coffee/20 rounded-full hover:bg-raiz-olive/10 transition-all duration-300"
         >
           <span className="mr-2">Ver más en Instagram</span>
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -76,6 +98,28 @@ const GallerySection = () => {
           </svg>
         </a>
       </div>
+
+      {/* Lightbox modal */}
+      {selectedImage !== null && (
+        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={closeModal}>
+          <div className="relative max-w-4xl w-full max-h-[90vh]" onClick={e => e.stopPropagation()}>
+            <button 
+              className="absolute top-4 right-4 text-white bg-raiz-coffee/50 rounded-full p-2 hover:bg-raiz-coffee transition-colors z-10"
+              onClick={closeModal}
+            >
+              <X size={24} />
+            </button>
+            <img 
+              src={images[selectedImage].url} 
+              alt={images[selectedImage].alt} 
+              className="w-full h-full object-contain"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+              <p className="text-white font-cormorant text-xl">{images[selectedImage].alt}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
