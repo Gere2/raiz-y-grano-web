@@ -26,10 +26,10 @@
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
     
-    /* Custom colors for Raíz y Grano */
-    --raiz-beige: 39 38% 94%;
-    --raiz-coffee: 27 37% 22%;
-    --raiz-olive: 82 15% 46%;
+    /* Enhanced colors for Raíz y Grano based on provided images */
+    --raiz-beige: 25 38% 87%;
+    --raiz-coffee: 27 35% 25%;
+    --raiz-olive: 82 20% 48%;
     --raiz-terracotta: 18 56% 73%;
   }
 
@@ -99,6 +99,19 @@
   .section-subtitle {
     @apply max-w-3xl mx-auto text-raiz-coffee opacity-80 mb-12;
   }
+  
+  /* New styles based on provided images */
+  .about-card {
+    @apply bg-raiz-beige/90 p-8 rounded-lg shadow-sm;
+  }
+  
+  .contact-card {
+    @apply bg-raiz-olive/90 text-white p-8 rounded-lg shadow-sm;
+  }
+  
+  .location-icon {
+    @apply bg-raiz-beige/80 text-raiz-olive p-3 rounded-full;
+  }
 }
 
 @layer utilities {
@@ -163,4 +176,15 @@
     transform: scaleX(1);
     transform-origin: bottom left;
   }
+  
+  /* New utilities for design consistency */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  
+  .bg-pattern-dots {
+    background-image: radial-gradient(circle, currentColor 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
 }
+
