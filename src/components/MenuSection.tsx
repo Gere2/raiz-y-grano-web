@@ -30,10 +30,9 @@ const menuItems = {
 
 const MenuSection = () => {
   return (
-    <section id="menu" className="section pt-24 relative">
+    <section id="menu" className="section pt-24 relative bg-raiz-sand/50">
       {/* Background decoration - soft textured background without white stripes */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-raiz-sand/80 to-raiz-cream/60"></div>
         <div className="absolute inset-0 bg-textured opacity-30"></div>
       </div>
       

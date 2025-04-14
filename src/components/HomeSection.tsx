@@ -50,6 +50,15 @@ const HomeSection = () => {
       {/* Hero Section with elegant typography and animations */}
       <div className="max-w-5xl mx-auto px-4 pt-20 md:pt-0 text-center relative z-10">
         <div className={`mb-16 transition-all duration-1000 ease-out transform ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Logo */}
+          <div className="w-32 h-32 mx-auto mb-6">
+            <img 
+              src="/lovable-uploads/fd33af9d-0905-420c-aa56-e43e318cb3bb.png" 
+              alt="Raíz y Grano Logo" 
+              className="w-full h-full object-contain"
+            />
+          </div>
+          
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-cormorant text-raiz-coffee mb-6 tracking-tight font-medium">
             Raíz y Grano
           </h1>

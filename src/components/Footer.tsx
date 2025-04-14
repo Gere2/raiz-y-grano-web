@@ -6,18 +6,18 @@ import { Instagram, Coffee, MapPin, Clock, ExternalLink, Mail, Heart } from 'luc
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden">
-      {/* Natural brown gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#493c2b] via-[#3c3022] to-[#2b241a]"></div>
+      {/* Natural brown gradient background - lighter to match navbar */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#5a4a3f] via-[#4d3e33] to-[#3d3227]"></div>
       
       {/* Decorative coffee bean pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute -top-20 -left-20 animate-float" style={{animationDelay: '0.5s'}}>
+      <div className="absolute inset-0">
+        <div className="absolute -top-20 -left-20 animate-float opacity-5" style={{animationDelay: '0.5s'}}>
           <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
             <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
           </svg>
         </div>
-        <div className="absolute top-40 right-20 animate-float" style={{animationDelay: '1.2s'}}>
+        <div className="absolute top-40 right-20 animate-float opacity-5" style={{animationDelay: '1.2s'}}>
           <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
             <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
@@ -26,7 +26,7 @@ const Footer = () => {
       </div>
       
       {/* Wood grain texture overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii4wNSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAwIDEiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==')]" opacity="0.2"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii4wNSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAwIDEiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==')] opacity-20"></div>
       
       <div className="max-w-6xl mx-auto px-6 relative z-10 py-16 text-white">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">

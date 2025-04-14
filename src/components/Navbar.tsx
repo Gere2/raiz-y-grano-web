@@ -72,13 +72,13 @@ const Navbar = () => {
     <header 
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 px-4 py-2",
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        isScrolled ? "bg-[#5a4a3f] shadow-md" : "bg-transparent"
       )}
     >
       <div className="max-w-6xl mx-auto flex justify-between items-center">
         <div className="z-50">
           <Link to="/" className="inline-block">
-            <h1 className="text-2xl md:text-3xl font-cormorant font-semibold text-raiz-coffee">
+            <h1 className="text-2xl md:text-3xl font-cormorant font-semibold text-white">
               Raíz y Grano
             </h1>
           </Link>
@@ -88,31 +88,31 @@ const Navbar = () => {
         <nav className="hidden md:flex space-x-8">
           <button
             onClick={() => handleMenuClick('/', 'home')}
-            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Inicio
           </button>
           <button
             onClick={() => handleMenuClick('/menu')}
-            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Carta
           </button>
           <button
             onClick={() => handleMenuClick('/', 'about')}
-            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Nosotros
           </button>
           <button
             onClick={() => handleMenuClick('/', 'gallery')}
-            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Galería
           </button>
           <button
             onClick={() => handleMenuClick('/', 'contact')}
-            className="relative text-raiz-coffee hover:text-raiz-olive transition-colors capitalize font-opensans"
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Contacto
           </button>
@@ -121,45 +121,45 @@ const Navbar = () => {
         {/* Mobile menu button */}
         <button 
           onClick={() => setMenuOpen(!menuOpen)} 
-          className="md:hidden z-50 text-raiz-coffee p-2"
+          className="md:hidden z-50 text-white p-2"
         >
           {menuOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
 
         {/* Mobile menu */}
         <div className={`
-          fixed inset-0 bg-white flex flex-col items-center justify-center space-y-6
+          fixed inset-0 bg-[#5a4a3f] flex flex-col items-center justify-center space-y-6
           transition-transform duration-300 ease-in-out transform
           ${menuOpen ? 'translate-x-0' : 'translate-x-full'}
           md:hidden
         `}>
           <button
             onClick={() => handleMenuClick('/', 'home')}
-            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Inicio
           </button>
           <button
             onClick={() => handleMenuClick('/menu')}
-            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Carta
           </button>
           <button
             onClick={() => handleMenuClick('/', 'about')}
-            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Nosotros
           </button>
           <button
             onClick={() => handleMenuClick('/', 'gallery')}
-            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Galería
           </button>
           <button
             onClick={() => handleMenuClick('/', 'contact')}
-            className="text-xl text-raiz-coffee hover:text-raiz-olive transition-colors capitalize"
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Contacto
           </button>

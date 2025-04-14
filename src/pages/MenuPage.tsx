@@ -18,8 +18,8 @@ type MenuCategory = {
 };
 
 const MenuPage = () => {
-  // Estado para la categoría activa
-  const [activeCategory, setActiveCategory] = useState("cafes");
+  // Estado para la categoría activa - Inicializada como "cafes" por defecto
+  const [activeCategory, setActiveCategory] = useState("cafés");
   
   useEffect(() => {
     // Set title and description for SEO
@@ -109,12 +109,12 @@ const MenuPage = () => {
       <Navbar />
       
       {/* Hero section */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-raiz-beige to-white">
+      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-[#5a4a3f] to-raiz-beige">
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant text-raiz-coffee mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant text-white mb-6">
             Nuestra Carta Completa
           </h1>
-          <p className="max-w-2xl mx-auto text-raiz-coffee opacity-80 mb-8">
+          <p className="max-w-2xl mx-auto text-white opacity-80 mb-8">
             Cada elemento de nuestra carta cuenta una historia de origen, calidad y preparación cuidadosa. 
             En Raíz y Grano seleccionamos ingredientes frescos y de primera calidad, garantizando 
             sabores excepcionales en cada bocado y sorbo.
