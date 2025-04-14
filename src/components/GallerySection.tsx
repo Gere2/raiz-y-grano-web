@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const images = [
   {
@@ -42,6 +42,22 @@ const GallerySection = () => {
     document.body.style.overflow = 'auto';
   };
 
+  const navigateImage = (direction: 'prev' | 'next') => {
+    if (selectedImage === null) return;
+    
+    if (direction === 'prev') {
+      setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
+    } else {
+      setSelectedImage(selectedImage === images.length - 1 ? 0 : selectedImage + 1);
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') navigateImage('prev');
+    if (e.key === 'ArrowRight') navigateImage('next');
+    if (e.key === 'Escape') closeModal();
+  };
+
   return (
     <section id="gallery" className="section pt-24 bg-gradient-to-br from-raiz-cream/50 to-white relative">
       {/* Elementos decorativos */}
@@ -62,7 +78,7 @@ const GallerySection = () => {
         {images.map((image, index) => (
           <div 
             key={index} 
-            className="relative h-64 md:h-80 rounded-lg overflow-hidden group animate-fade-in shadow-elegant"
+            className="relative h-64 md:h-80 rounded-lg overflow-hidden group animate-fade-in shadow-elegant cursor-pointer"
             style={{ animationDelay: `${0.1 * index}s` }}
             onClick={() => openModal(index)}
           >
@@ -99,23 +115,58 @@ const GallerySection = () => {
         </a>
       </div>
 
-      {/* Lightbox modal */}
+      {/* Enhanced Lightbox modal with navigation controls */}
       {selectedImage !== null && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4" onClick={closeModal}>
-          <div className="relative max-w-4xl w-full max-h-[90vh]" onClick={e => e.stopPropagation()}>
+        <div 
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4" 
+          onClick={closeModal}
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        >
+          <div className="relative max-w-5xl w-full max-h-[90vh]" onClick={e => e.stopPropagation()}>
             <button 
               className="absolute top-4 right-4 text-white bg-raiz-coffee/50 rounded-full p-2 hover:bg-raiz-coffee transition-colors z-10"
               onClick={closeModal}
+              aria-label="Cerrar"
             >
               <X size={24} />
             </button>
+            
+            <div className="absolute left-4 top-1/2 transform -translate-y-1/2">
+              <button 
+                className="p-2 rounded-full bg-raiz-coffee/50 text-white hover:bg-raiz-coffee transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateImage('prev');
+                }}
+                aria-label="Imagen anterior"
+              >
+                <ChevronLeft size={24} />
+              </button>
+            </div>
+            
+            <div className="absolute right-4 top-1/2 transform -translate-y-1/2">
+              <button 
+                className="p-2 rounded-full bg-raiz-coffee/50 text-white hover:bg-raiz-coffee transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateImage('next');
+                }}
+                aria-label="Imagen siguiente"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
+            
             <img 
               src={images[selectedImage].url} 
               alt={images[selectedImage].alt} 
               className="w-full h-full object-contain"
             />
+            
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
               <p className="text-white font-cormorant text-xl">{images[selectedImage].alt}</p>
+              <p className="text-white/70 text-sm mt-1">Imagen {selectedImage + 1} de {images.length}</p>
             </div>
           </div>
         </div>

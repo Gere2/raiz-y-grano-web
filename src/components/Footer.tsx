@@ -5,16 +5,19 @@ import { Instagram, Coffee, MapPin, Clock, ExternalLink, Mail, Heart } from 'luc
 
 const Footer = () => {
   return (
-    <footer className="bg-raiz-coffee text-white py-16 relative overflow-hidden">
-      {/* Decorative background elements */}
+    <footer className="relative overflow-hidden">
+      {/* Natural brown gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#493c2b] via-[#3c3022] to-[#2b241a]"></div>
+      
+      {/* Decorative coffee bean pattern */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute -top-20 -left-20">
+        <div className="absolute -top-20 -left-20 animate-float" style={{animationDelay: '0.5s'}}>
           <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
             <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
           </svg>
         </div>
-        <div className="absolute top-40 right-20">
+        <div className="absolute top-40 right-20 animate-float" style={{animationDelay: '1.2s'}}>
           <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
             <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
@@ -22,7 +25,10 @@ const Footer = () => {
         </div>
       </div>
       
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+      {/* Wood grain texture overlay */}
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii4wNSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAwIDEiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==')]" opacity="0.2"></div>
+      
+      <div className="max-w-6xl mx-auto px-6 relative z-10 py-16 text-white">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
           {/* Logo and Tagline - 4 columns on md screens */}
           <div className="md:col-span-4 flex flex-col items-center md:items-start">
@@ -68,7 +74,7 @@ const Footer = () => {
           
           {/* Quick Links - 3 columns on md screens */}
           <div className="md:col-span-3 flex flex-col items-center md:items-start">
-            <h3 className="text-xl font-cormorant mb-6 border-b border-raiz-terracotta pb-2">Explora</h3>
+            <h3 className="text-xl font-cormorant mb-6 border-b border-[#b68e5b] pb-2">Explora</h3>
             <div className="flex flex-col space-y-3">
               <Link to="/" className="hover:text-raiz-terracotta transition-colors flex items-center gap-2 group">
                 <span className="w-0 h-0.5 bg-raiz-terracotta transition-all duration-300 group-hover:w-4"></span>
@@ -95,10 +101,10 @@ const Footer = () => {
           
           {/* Contact Info - 5 columns on md screens */}
           <div className="md:col-span-5 flex flex-col items-center md:items-start">
-            <h3 className="text-xl font-cormorant mb-6 border-b border-raiz-terracotta pb-2">Visítanos</h3>
+            <h3 className="text-xl font-cormorant mb-6 border-b border-[#b68e5b] pb-2">Visítanos</h3>
             <div className="flex flex-col space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin size={18} className="mt-1 flex-shrink-0 text-raiz-terracotta" />
+                <MapPin size={18} className="mt-1 flex-shrink-0 text-[#b68e5b]" />
                 <div>
                   <p className="font-medium mb-1">Universidad Francisco de Vitoria</p>
                   <p className="text-sm text-white/70">Entre el edificio H y CRAI - Universidad Francisco de Vitoria, Madrid</p>
@@ -106,7 +112,7 @@ const Footer = () => {
               </div>
               
               <div className="flex items-center gap-3">
-                <Clock size={18} className="flex-shrink-0 text-raiz-terracotta" />
+                <Clock size={18} className="flex-shrink-0 text-[#b68e5b]" />
                 <div>
                   <p className="font-medium">Horario</p>
                   <p className="text-sm text-white/70">Lunes a Viernes, de 9:00 a 17:00</p>
@@ -118,7 +124,7 @@ const Footer = () => {
                   href="https://maps.app.goo.gl/yourlocation" 
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-raiz-olive text-white px-4 py-2 rounded-full text-sm flex items-center gap-2 hover:bg-opacity-90 transition-all hover:translate-x-1"
+                  className="bg-[#b68e5b] text-[#2b241a] px-4 py-2 rounded-full text-sm flex items-center gap-2 hover:bg-opacity-90 transition-all hover:translate-x-1 shadow-md"
                 >
                   Cómo llegar
                   <ExternalLink size={14} />
@@ -128,7 +134,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-12 pt-6 text-center text-sm opacity-70 border-t border-white/20">
+        <div className="mt-12 pt-6 text-center text-sm opacity-70 border-t border-white/10">
           <p>&copy; {new Date().getFullYear()} Raíz y Grano. Todos los derechos reservados.</p>
         </div>
       </div>

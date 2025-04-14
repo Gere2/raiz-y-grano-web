@@ -31,14 +31,16 @@ const menuItems = {
 const MenuSection = () => {
   return (
     <section id="menu" className="section pt-24 relative">
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 bg-raiz-sand/50 overflow-hidden">
-        <div className="absolute inset-0 bg-textured opacity-50"></div>
+      {/* Background decoration - soft textured background without white stripes */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-raiz-sand/80 to-raiz-cream/60"></div>
+        <div className="absolute inset-0 bg-textured opacity-30"></div>
       </div>
       
       <div className="text-center mb-16 relative z-10">
-        <h2 className="section-title">
+        <h2 className="text-4xl md:text-5xl font-cormorant text-raiz-coffee mb-4 relative inline-block">
           Nuestra Carta
+          <span className="absolute -z-10 left-0 right-0 bottom-0 h-3 bg-raiz-terracotta opacity-20 transform -rotate-1"></span>
         </h2>
         <p className="section-subtitle max-w-2xl mx-auto">
           Cada taza cuenta una historia de origen, tostado artesanal y preparación cuidadosa. 
