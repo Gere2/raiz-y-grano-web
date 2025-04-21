@@ -6,25 +6,24 @@ import { Coffee, CupSoda, Cake } from 'lucide-react';
 // Menu data
 const menuItems = {
   cafeCaliente: [
-    { name: 'Espresso', price: '2.50€', description: 'Intenso y aromático' },
-    { name: 'Americano', price: '3.00€', description: 'Espresso con agua caliente' },
-    { name: 'Cortado', price: '2.80€', description: 'Espresso con un toque de leche' },
-    { name: 'Latte', price: '3.50€', description: 'Espresso con leche cremosa' },
-    { name: 'Capuccino', price: '3.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
+    { name: 'Espresso', price: '2.00€', description: 'Intenso y aromático' },
+    { name: 'Americano', price: '2.40€', description: 'Espresso con agua caliente' },
+    { name: 'Cortado', price: '2.30€', description: 'Espresso con un toque de leche' },
+    { name: 'Latte', price: '2.50€', description: 'Espresso con leche cremosa' },
+    { name: 'Capuccino', price: '2.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
   ],
   especialidades: [
-    { name: 'Flat White', price: '3.90€', description: 'Doble espresso con microespuma de leche' },
-    { name: 'Mocha', price: '4.20€', description: 'Espresso, chocolate y leche' },
-    { name: 'Affogato', price: '4.50€', description: 'Espresso sobre helado de vainilla' },
-    { name: 'Cold Brew', price: '3.90€', description: 'Café de extracción en frío (12h)' },
+    { name: 'Flat White', price: '3.40€', description: 'Doble espresso con microespuma de leche' },
+    { name: 'Mocha', price: '4.00€', description: 'Espresso, chocolate y leche' },
+    { name: 'Cold Brew', price: '3.50€', description: 'Café de extracción en frío (12h)' },
     { name: 'Café de Especialidad V60', price: '4.50€', description: 'Método de filtrado manual' },
   ],
   reposteria: [
     { name: 'Croissant', price: '2.50€', description: 'Clásico de mantequilla francesa' },
     { name: 'Pain au Chocolat', price: '2.80€', description: 'Hojaldre relleno de chocolate' },
-    { name: 'Tarta de Zanahoria', price: '4.50€', description: 'Con especias y frosting' },
-    { name: 'Cookies', price: '2.50€', description: 'Chocolate, avena o frutos rojos' },
-    { name: 'Banana Bread', price: '3.20€', description: 'Casero con nueces' },
+    { name: 'Tarta de Zanahoria', price: '3.50€', description: 'Con coco, nueces y ralladura de limón' },
+    { name: 'Tarta de Chocolate', price: '3.50€', description: 'Cholocate de primera calidad con crema de leche' },
+    { name: 'Tarta de Queso', price: '3.50€', description: 'Tarta cremosa elaborada con los mejores quesos' },
   ]
 };
 
