@@ -48,7 +48,7 @@ const HomeSection = () => {
       </div>
       
       {/* Hero Section with elegant typography and animations */}
-      <div className="max-w-5xl mx-auto px-4 pt-20 md:pt-0 text-center relative z-10">
+      <div className="max-w-5xl mx-auto px-4 pt-32 md:pt-36 text-center relative z-10">
         <div className={`mb-16 transition-all duration-1000 ease-out transform ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Logo */}
           <div className="w-32 h-32 mx-auto mb-6">
@@ -144,3 +144,4 @@ const HomeSection = () => {
 };
 
 export default HomeSection;
+
