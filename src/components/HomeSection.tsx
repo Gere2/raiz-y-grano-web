@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { MapPin, Coffee, Leaf, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -7,7 +6,6 @@ const HomeSection = () => {
   const [isAnimated, setIsAnimated] = useState(false);
   
   useEffect(() => {
-    // Trigger animations after component mounts
     setIsAnimated(true);
   }, []);
 
@@ -27,12 +25,10 @@ const HomeSection = () => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
-      {/* Background with subtle texture */}
       <div className="absolute inset-0 bg-gradient-to-br from-raiz-cream to-raiz-beige -z-10">
         <div className="absolute inset-0 bg-textured opacity-30" />
       </div>
       
-      {/* Decorative coffee beans illustration */}
       <div className="absolute -bottom-20 -left-20 opacity-10 animate-float-slow">
         <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="#4B2E20" strokeWidth="1"/>
@@ -47,10 +43,8 @@ const HomeSection = () => {
         </svg>
       </div>
       
-      {/* Hero Section with elegant typography and animations */}
-      <div className="max-w-5xl mx-auto px-4 pt-32 md:pt-36 text-center relative z-10">
+      <div className="max-w-5xl mx-auto px-4 pt-40 md:pt-48 text-center relative z-10">
         <div className={`mb-16 transition-all duration-1000 ease-out transform ${isAnimated ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Logo */}
           <div className="w-32 h-32 mx-auto mb-6">
             <img 
               src="/lovable-uploads/fd33af9d-0905-420c-aa56-e43e318cb3bb.png" 
@@ -89,7 +83,6 @@ const HomeSection = () => {
           </div>
         </div>
         
-        {/* Feature cards with improved styling and staggered animations */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           {[
             {
@@ -130,7 +123,6 @@ const HomeSection = () => {
         </div>
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
         <div className="flex flex-col items-center">
           <div className="w-5 h-10 border-2 border-raiz-coffee/20 rounded-full flex justify-center">
@@ -144,4 +136,3 @@ const HomeSection = () => {
 };
 
 export default HomeSection;
-
