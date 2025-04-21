@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -18,22 +17,17 @@ type MenuCategory = {
 };
 
 const MenuPage = () => {
-  // Estado para la categoría activa - Inicializada como "cafés" por defecto
   const [activeCategory, setActiveCategory] = useState("cafés");
-  
+
   useEffect(() => {
-    // Set title and description for SEO
     document.title = "Carta - Raíz y Grano";
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
       metaDescription.setAttribute('content', 'Descubre nuestra carta completa de café de especialidad, bollería artesanal, zumos y más en Raíz y Grano.');
     }
-    
-    // Scroll to top on page load
     window.scrollTo(0, 0);
   }, []);
 
-  // Datos del menú
   const menuCategories: MenuCategory[] = [
     {
       title: "CAFÉS",
@@ -101,36 +95,38 @@ const MenuPage = () => {
     },
   ];
 
-  // Convertir ID para usar en los enlaces
   const getCategoryId = (title: string) => title.toLowerCase().replace(/\s+/g, '-');
 
   return (
-    <div className="min-h-screen bg-raiz-beige">
+    <div className="min-h-screen bg-[#e7dbc7]">
       <Navbar />
       
-      {/* Hero section */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-[#8c7b6e] to-raiz-beige">
+      <section className="pt-24 pb-16 px-4" style={{ background: "linear-gradient(135deg,#f4ecd6 0%, #e7dbc7 100%)" }}>
         <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant text-white mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant text-raiz-coffee mb-6 drop-shadow-sm">
             Nuestra Carta Completa
           </h1>
-          <p className="max-w-2xl mx-auto text-white opacity-80 mb-8">
+          <p className="max-w-2xl mx-auto text-raiz-coffee/80 mb-8 font-light">
             Cada elemento de nuestra carta cuenta una historia de origen, calidad y preparación cuidadosa. 
             En Raíz y Grano seleccionamos ingredientes frescos y de primera calidad, garantizando 
             sabores excepcionales en cada bocado y sorbo.
           </p>
           
-          {/* Category navigation */}
           <div className="flex flex-wrap justify-center gap-3 mt-8">
             {menuCategories.map((category) => (
               <button
                 key={getCategoryId(category.title)}
                 onClick={() => setActiveCategory(getCategoryId(category.title))}
-                className={`flex items-center px-4 py-2 rounded-full border transition-all ${
-                  activeCategory === getCategoryId(category.title)
-                    ? 'bg-raiz-coffee text-white border-raiz-coffee' 
-                    : 'bg-white/80 text-raiz-coffee border-raiz-coffee/20 hover:border-raiz-coffee'
-                }`}
+                className={`flex items-center px-4 py-2 rounded-full border transition-all shadow-sm
+                  ${
+                    activeCategory === getCategoryId(category.title)
+                      ? 'bg-[#aa9a80] text-white border-[#aa9a80] font-semibold shadow-md'
+                      : 'bg-white/90 text-[#5a4e3a] border-[#e7dbc7] hover:border-[#aa9a80]'
+                  }`}
+                style={{
+                  minWidth: 160,
+                  letterSpacing: ".01em"
+                }}
               >
                 <span className="mr-2">{category.icon}</span>
                 {category.title}
@@ -140,7 +136,6 @@ const MenuPage = () => {
         </div>
       </section>
       
-      {/* Menu content */}
       <section className="py-12 px-4">
         <div className="max-w-4xl mx-auto">
           {menuCategories.map((category) => (
@@ -153,7 +148,7 @@ const MenuPage = () => {
             >
               <div className="flex items-center mb-8">
                 <span className="mr-3">{category.icon}</span>
-                <h2 className="text-3xl font-cormorant text-raiz-coffee border-b-2 border-raiz-terracotta pb-2">
+                <h2 className="text-3xl font-cormorant text-[#5a4e3a] border-b-2 border-[#baaf97] pb-2">
                   {category.title}
                 </h2>
               </div>
@@ -162,13 +157,13 @@ const MenuPage = () => {
                 {category.items.map((item, index) => (
                   <div 
                     key={index} 
-                    className="bg-white bg-opacity-80 p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                    className="bg-[#f7f3ec] border border-[#e7dbc7]/70 p-5 rounded-xl shadow-sm hover:shadow-lg transition-shadow"
                   >
                     <div className="flex justify-between items-start">
-                      <h3 className="font-medium text-raiz-coffee">{item.name}</h3>
-                      <span className="font-medium text-raiz-olive ml-4">{item.price}</span>
+                      <h3 className="font-medium text-[#5a4e3a]">{item.name}</h3>
+                      <span className="font-medium text-[#887658] ml-4">{item.price}</span>
                     </div>
-                    <p className="text-sm opacity-70 mt-1">{item.description}</p>
+                    <p className="text-sm opacity-80 mt-1 text-[#756646]">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -176,10 +171,10 @@ const MenuPage = () => {
           ))}
           
           <div className="mt-16 text-center">
-            <p className="italic text-raiz-coffee opacity-70 mb-4">¿Alguna alergia o preferencia alimentaria? Consúltanos.</p>
+            <p className="italic text-[#7d6a50] opacity-80 mb-4">¿Alguna alergia o preferencia alimentaria? Consúltanos.</p>
             <div className="flex items-center justify-center space-x-2 text-sm">
-              <Leaf size={16} className="text-raiz-olive" />
-              <span>Opciones vegetarianas y veganas disponibles</span>
+              <Leaf size={16} className="text-[#a5a135]" />
+              <span className="text-[#887658]">Opciones vegetarianas y veganas disponibles</span>
             </div>
           </div>
         </div>
