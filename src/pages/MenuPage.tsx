@@ -18,7 +18,7 @@ type MenuCategory = {
 };
 
 const MenuPage = () => {
-  // Estado para la categoría activa - Inicializada como "cafes" por defecto
+  // Estado para la categoría activa - Inicializada como "cafés" por defecto
   const [activeCategory, setActiveCategory] = useState("cafés");
   
   useEffect(() => {
@@ -109,7 +109,7 @@ const MenuPage = () => {
       <Navbar />
       
       {/* Hero section */}
-      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-[#5a4a3f] to-raiz-beige">
+      <section className="pt-24 pb-16 px-4 bg-gradient-to-b from-[#8c7b6e] to-raiz-beige">
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-cormorant text-white mb-6">
             Nuestra Carta Completa

@@ -6,8 +6,8 @@ import { Instagram, Coffee, MapPin, Clock, ExternalLink, Mail, Heart } from 'luc
 const Footer = () => {
   return (
     <footer className="relative overflow-hidden">
-      {/* Natural brown gradient background - lighter to match navbar */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#5a4a3f] via-[#4d3e33] to-[#3d3227]"></div>
+      {/* Natural beige gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#8c7b6e] via-[#a08a7c] to-[#8c7b6e]"></div>
       
       {/* Decorative coffee bean pattern */}
       <div className="absolute inset-0">
