@@ -50,7 +50,7 @@ const MenuPage = () => {
       icon: <Coffee size={22} className="text-[#75753c]" />,
       items: [
         { name: 'Flat White', price: '3.30€', description: 'Doble espresso con microespuma de leche' },
-        { name: 'Cold Brew', price: '3.90€', description: 'Café de extracción en frío (12h)' },
+        { name: 'Cold Brew', price: '3.50€', description: 'Café de extracción en frío (12h)' },
         { name: 'Café de Especialidad V60', price: '4.50€', description: 'Método de filtrado manual' },
       ]
     },
