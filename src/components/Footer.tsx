@@ -115,7 +115,7 @@ const Footer = () => {
                 <Clock size={18} className="flex-shrink-0 text-[#b68e5b]" />
                 <div>
                   <p className="font-medium">Horario</p>
-                  <p className="text-sm text-white/70">Lunes a Viernes, de 9:00 a 17:00</p>
+                  <p className="text-sm text-white/70">Lunes a Viernes, de 7:30 a 19:00</p>
                 </div>
               </div>
               

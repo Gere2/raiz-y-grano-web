@@ -36,12 +36,12 @@ const MenuPage = () => {
       title: "CAFÉS",
       icon: <Coffee size={22} className="text-[#a18968]" />,
       items: [
-        { name: 'Espresso', price: '2.50€', description: 'Intenso y aromático' },
-        { name: 'Americano', price: '3.00€', description: 'Espresso con agua caliente' },
-        { name: 'Cortado', price: '2.80€', description: 'Espresso con un toque de leche' },
-        { name: 'Latte', price: '3.50€', description: 'Espresso con leche cremosa' },
-        { name: 'Capuccino', price: '3.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
-        { name: 'Café con leche', price: '2.90€', description: 'El clásico de siempre' },
+        { name: 'Espresso', price: '2.00€', description: 'Intenso y aromático' },
+        { name: 'Americano', price: '2.00€', description: 'Espresso con agua caliente' },
+        { name: 'Cortado', price: '2.30€', description: 'Espresso con un toque de leche' },
+        { name: 'Latte', price: '2.50€', description: 'Espresso con leche cremosa' },
+        { name: 'Capuccino', price: '2.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
+        { name: 'Café con leche', price: '2.50€', description: 'El clásico de siempre' },
         { name: 'Café bombón', price: '3.20€', description: 'Espresso con leche condensada' }
       ]
     },
@@ -49,14 +49,9 @@ const MenuPage = () => {
       title: "ESPECIALIDADES",
       icon: <Coffee size={22} className="text-[#75753c]" />,
       items: [
-        { name: 'Flat White', price: '3.90€', description: 'Doble espresso con microespuma de leche' },
-        { name: 'Mocha', price: '4.20€', description: 'Espresso, chocolate y leche' },
-        { name: 'Affogato', price: '4.50€', description: 'Espresso sobre helado de vainilla' },
+        { name: 'Flat White', price: '3.30€', description: 'Doble espresso con microespuma de leche' },
         { name: 'Cold Brew', price: '3.90€', description: 'Café de extracción en frío (12h)' },
         { name: 'Café de Especialidad V60', price: '4.50€', description: 'Método de filtrado manual' },
-        { name: 'Café de Especialidad Chemex', price: '4.80€', description: 'Método de filtrado para resaltar notas florales' },
-        { name: 'Café de Especialidad Aeropress', price: '4.50€', description: 'Método de inmersión y presión' },
-        { name: 'Café Nitro', price: '4.90€', description: 'Cold brew infusionado con nitrógeno' }
       ]
     },
     {
@@ -65,35 +60,31 @@ const MenuPage = () => {
       items: [
         { name: 'Croissant', price: '2.50€', description: 'Clásico de mantequilla francesa' },
         { name: 'Pain au Chocolat', price: '2.80€', description: 'Hojaldre relleno de chocolate' },
-        { name: 'Tarta de Zanahoria', price: '4.50€', description: 'Con especias y frosting' },
-        { name: 'Cookies', price: '2.50€', description: 'Chocolate, avena o frutos rojos' },
-        { name: 'Banana Bread', price: '3.20€', description: 'Casero con nueces' },
-        { name: 'Muffin de Arándanos', price: '3.00€', description: 'Esponjoso con arándanos frescos' },
-        { name: 'Brownie', price: '3.50€', description: 'Chocolate intenso con nueces' },
-        { name: 'Napolitana', price: '2.60€', description: 'Hojaldre con crema pastelera' }
+        { name: 'Tarta de Zanahoria', price: '3.50€', description: 'Con coco, nueces y ralladura de limón' },
+        { name: 'Tarta de Chocolate', price: '3.50€', description: 'Cholocate de primera calidad con crema de leche' },
+        { name: 'Tarta de Queso', price: '3.50€', description: 'Tarta cremosa elaborada con los mejores quesos' },
       ]
     },
     {
       title: "ZUMOS",
       icon: <CupSoda size={22} className="text-[#75753c]" />,
       items: [
-        { name: 'Zumo de Naranja', price: '3.50€', description: 'Recién exprimido' },
-        { name: 'Verde Detox', price: '4.90€', description: 'Manzana, pepino, apio y limón' },
-        { name: 'Antioxidante', price: '4.90€', description: 'Remolacha, zanahoria, manzana y jengibre' },
+        { name: 'Zumo de Naranja', price: '3.00€', description: 'Recién exprimido' },
+        { name: 'Verde Detox', price: '4.50€', description: 'Manzana, pepino, apio y limón' },
+        { name: 'Antioxidante', price: '4.50€', description: 'Remolacha, zanahoria, manzana y jengibre' },
         { name: 'Tropical', price: '4.50€', description: 'Piña, mango, naranja y maracuyá' },
-        { name: 'Energizante', price: '4.90€', description: 'Naranja, zanahoria, manzana y jengibre' },
+        { name: 'Energizante', price: '4.50€', description: 'Naranja, zanahoria, manzana y jengibre' },
         { name: 'Zumo del Día', price: '4.50€', description: 'Pregunta por nuestra creación diaria' }
       ]
     },
     {
-      title: "SHOTS INMUNOLÓGICOS",
+      title: "SHOTS INMUNOLÓGICOS Y TÉS",
       icon: <Flower size={22} className="text-[#a18968]" />,
       items: [
         { name: 'Shot de Jengibre', price: '2.50€', description: 'Jengibre, limón y miel' },
-        { name: 'Shot Antiinflamatorio', price: '2.90€', description: 'Cúrcuma, pimienta negra, limón y miel' },
-        { name: 'Shot Defensas', price: '3.20€', description: 'Equinácea, propóleo y limón' },
-        { name: 'Shot Vitamina C', price: '2.90€', description: 'Naranja, acerola y bayas de goji' },
-        { name: 'Shot Detox', price: '3.50€', description: 'Aloe vera, limón y clorofila' }
+        { name: 'Té de Hibiscus', price: '2.00€', description: '' },
+        { name: 'Té verde con jengibre y ralladuras de limón', price: '2.00€', description: '' },
+        { name: 'Te Mezcla de la abuela', price: '2.00€', description: '' },
       ]
     }
   ];

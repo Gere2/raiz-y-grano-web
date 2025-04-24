@@ -7,13 +7,13 @@ import { Coffee, CupSoda, Cake } from 'lucide-react';
 const menuItems = {
   cafeCaliente: [
     { name: 'Espresso', price: '2.00€', description: 'Intenso y aromático' },
-    { name: 'Americano', price: '2.40€', description: 'Espresso con agua caliente' },
+    { name: 'Americano', price: '2.00€', description: 'Espresso con agua caliente' },
     { name: 'Cortado', price: '2.30€', description: 'Espresso con un toque de leche' },
     { name: 'Latte', price: '2.50€', description: 'Espresso con leche cremosa' },
     { name: 'Capuccino', price: '2.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
   ],
   especialidades: [
-    { name: 'Flat White', price: '3.40€', description: 'Doble espresso con microespuma de leche' },
+    { name: 'Flat White', price: '3.30€', description: 'Doble espresso con microespuma de leche' },
     { name: 'Mocha', price: '4.00€', description: 'Espresso, chocolate y leche' },
     { name: 'Cold Brew', price: '3.50€', description: 'Café de extracción en frío (12h)' },
     { name: 'Café de Especialidad V60', price: '4.50€', description: 'Método de filtrado manual' },

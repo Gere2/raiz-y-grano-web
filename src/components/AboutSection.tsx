@@ -66,7 +66,7 @@ const AboutSection = () => {
             <h3 className="text-2xl font-cormorant font-medium mb-3 text-raiz-coffee">Proceso</h3>
             <div className="h-px w-16 bg-raiz-terracotta/30 mb-4"></div>
             <p className="text-center px-6 pb-6 text-raiz-coffee/90">
-              Tostamos nuestros granos cuidadosamente para desarrollar su perfil aromático único.
+              Utilizamos las mejores máquinas y técnicas para poder ofrecer un cafe de calidad excepcional.
             </p>
           </div>
           
