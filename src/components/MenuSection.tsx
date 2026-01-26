@@ -1,30 +1,24 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Coffee, CupSoda, Cake } from 'lucide-react';
+import { Coffee, Cake } from 'lucide-react';
 
 // Menu data
 const menuItems = {
-  cafeCaliente: [
-    { name: 'Espresso', price: '2.00€', description: 'Intenso y aromático' },
-    { name: 'Americano', price: '2.00€', description: 'Espresso con agua caliente' },
-    { name: 'Cortado', price: '2.30€', description: 'Espresso con un toque de leche' },
-    { name: 'Latte', price: '2.50€', description: 'Espresso con leche cremosa' },
-    { name: 'Capuccino', price: '2.80€', description: 'Espresso, leche y espuma en perfecta armonía' },
+  espressoBar: [
+    { name: 'Espresso', price: '2,00 €', description: '' },
+    { name: 'Cortado', price: '2,30 €', description: '' },
   ],
-  especialidades: [
-    { name: 'Flat White', price: '3.30€', description: 'Doble espresso con microespuma de leche' },
-    { name: 'Mocha', price: '4.00€', description: 'Espresso, chocolate y leche' },
-    { name: 'Cold Brew', price: '3.50€', description: 'Café de extracción en frío (12h)' },
-    { name: 'Café de Especialidad V60', price: '4.50€', description: 'Método de filtrado manual' },
+  lecheClasicos: [
+    { name: 'Café con Leche', price: '2,50 €', description: '' },
+    { name: 'Flat White', price: '3,30 €', description: '' },
   ],
   reposteria: [
-    { name: 'Croissant', price: '2.50€', description: 'Clásico de mantequilla francesa' },
-    { name: 'Pain au Chocolat', price: '2.80€', description: 'Hojaldre relleno de chocolate' },
-    { name: 'Tarta de Zanahoria', price: '3.50€', description: 'Con coco, nueces y ralladura de limón' },
-    { name: 'Tarta de Chocolate', price: '3.50€', description: 'Cholocate de primera calidad con crema de leche' },
-    { name: 'Tarta de Queso', price: '3.50€', description: 'Tarta cremosa elaborada con los mejores quesos' },
-  ]
+    { name: 'Cheesecake clásico', price: '3,50 €', description: '' },
+    { name: 'Cheesecake de pistacho', price: '3,50 €', description: '' },
+    { name: 'Tarta de zanahoria con nueces', price: '2,50 €', description: '' },
+    { name: 'Muffin de arándanos', price: '1,50 €', description: '' },
+  ],
 };
 
 const MenuSection = () => {
@@ -55,16 +49,16 @@ const MenuSection = () => {
               <Coffee size={20} className="text-raiz-coffee" />
             </div>
             <h3 className="text-2xl font-cormorant text-raiz-coffee">
-              Café Caliente
+              Espresso Bar
             </h3>
           </div>
           <div className="h-px w-full bg-gradient-to-r from-raiz-terracotta/50 via-raiz-terracotta/20 to-transparent mb-6"></div>
           <ul className="space-y-5">
-            {menuItems.cafeCaliente.map((item, index) => (
+            {menuItems.espressoBar.map((item, index) => (
               <li key={index} className="flex justify-between items-start group">
                 <div>
                   <h4 className="font-medium text-raiz-coffee group-hover:text-raiz-olive transition-colors duration-300">{item.name}</h4>
-                  <p className="text-sm opacity-70">{item.description}</p>
+                  {item.description && <p className="text-sm opacity-70">{item.description}</p>}
                 </div>
                 <span className="font-medium text-raiz-olive ml-4 bg-raiz-olive/10 px-2 py-1 rounded-full text-sm">{item.price}</span>
               </li>
@@ -75,19 +69,19 @@ const MenuSection = () => {
         <div className="menu-card animate-elegant-entrance" style={{animationDelay: '0.4s'}}>
           <div className="flex items-center mb-5">
             <div className="w-10 h-10 rounded-full bg-raiz-terracotta/20 flex items-center justify-center mr-3">
-              <CupSoda size={20} className="text-raiz-coffee" />
+              <Coffee size={20} className="text-raiz-coffee" />
             </div>
             <h3 className="text-2xl font-cormorant text-raiz-coffee">
-              Especialidades
+              Leche y Clásicos
             </h3>
           </div>
           <div className="h-px w-full bg-gradient-to-r from-raiz-terracotta/50 via-raiz-terracotta/20 to-transparent mb-6"></div>
           <ul className="space-y-5">
-            {menuItems.especialidades.map((item, index) => (
+            {menuItems.lecheClasicos.map((item, index) => (
               <li key={index} className="flex justify-between items-start group">
                 <div>
                   <h4 className="font-medium text-raiz-coffee group-hover:text-raiz-olive transition-colors duration-300">{item.name}</h4>
-                  <p className="text-sm opacity-70">{item.description}</p>
+                  {item.description && <p className="text-sm opacity-70">{item.description}</p>}
                 </div>
                 <span className="font-medium text-raiz-olive ml-4 bg-raiz-olive/10 px-2 py-1 rounded-full text-sm">{item.price}</span>
               </li>
@@ -110,7 +104,7 @@ const MenuSection = () => {
               <li key={index} className="flex justify-between items-start group">
                 <div>
                   <h4 className="font-medium text-raiz-coffee group-hover:text-raiz-olive transition-colors duration-300">{item.name}</h4>
-                  <p className="text-sm opacity-70">{item.description}</p>
+                  {item.description && <p className="text-sm opacity-70">{item.description}</p>}
                 </div>
                 <span className="font-medium text-raiz-olive ml-4 bg-raiz-olive/10 px-2 py-1 rounded-full text-sm">{item.price}</span>
               </li>
