@@ -26,6 +26,14 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
       ],
     },
     {
+      title: 'Leche y Clásicos',
+      icon: <Coffee size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Café con Leche', price: '2,50 €', description: '' },
+        { name: 'Flat White', price: '3,30 €', description: '' },
+      ],
+    },
+    {
       title: 'Especialidades y Fríos',
       icon: <Coffee size={22} className="text-[#75753c]" />,
       items: [
@@ -43,14 +51,6 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
         { name: 'Té Verde', price: '2,00 €', description: '' },
         { name: 'Jengibre y Limón', price: '2,00 €', description: '' },
         { name: 'Té Rooibos (Hibiscús, Fresa y Ciruelas)', price: '2,00 €', description: '' },
-      ],
-    },
-    {
-      title: 'Leche y Clásicos',
-      icon: <Coffee size={22} className="text-[#a18968]" />,
-      items: [
-        { name: 'Café con Leche', price: '2,50 €', description: '' },
-        { name: 'Flat White', price: '3,30 €', description: '' },
       ],
     },
     {
@@ -85,6 +85,14 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
       ],
     },
     {
+      title: 'Leche y Clásicos',
+      icon: <Coffee size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Café con Leche', price: '2,50 €', description: '' },
+        { name: 'Flat White', price: '3,30 €', description: '' },
+      ],
+    },
+    {
       title: 'Especialidades y Fríos',
       icon: <Coffee size={22} className="text-[#75753c]" />,
       items: [
@@ -102,14 +110,6 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
         { name: 'Té Verde', price: '2,00 €', description: '' },
         { name: 'Jengibre y Limón', price: '2,00 €', description: '' },
         { name: 'Té Rooibos (Hibiscús, Fresa y Ciruelas)', price: '2,00 €', description: '' },
-      ],
-    },
-    {
-      title: 'Leche y Clásicos',
-      icon: <Coffee size={22} className="text-[#a18968]" />,
-      items: [
-        { name: 'Café con Leche', price: '2,50 €', description: '' },
-        { name: 'Flat White', price: '3,30 €', description: '' },
       ],
     },
     {
@@ -144,6 +144,14 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
       ],
     },
     {
+      title: 'Leche y Clásicos',
+      icon: <Coffee size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Café con Leche', price: '2,50 €', description: '' },
+        { name: 'Flat White', price: '3,30 €', description: '' },
+      ],
+    },
+    {
       title: 'Especialidades y Fríos',
       icon: <Coffee size={22} className="text-[#75753c]" />,
       items: [
@@ -161,14 +169,6 @@ const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
         { name: 'Té Verde', price: '2,00 €', description: '' },
         { name: 'Jengibre y Limón', price: '2,00 €', description: '' },
         { name: 'Té Rooibos (Hibiscús, Fresa y Ciruelas)', price: '2,00 €', description: '' },
-      ],
-    },
-    {
-      title: 'Leche y Clásicos',
-      icon: <Coffee size={22} className="text-[#a18968]" />,
-      items: [
-        { name: 'Café con Leche', price: '2,50 €', description: '' },
-        { name: 'Flat White', price: '3,30 €', description: '' },
       ],
     },
     {
