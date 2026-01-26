@@ -15,7 +15,7 @@ type MenuCategory = {
   icon: React.ReactNode;
 };
 
-const menuByLanguage: Record<'es' | 'en', MenuCategory[]> = {
+const menuByLanguage: Record<'es' | 'en' | 'fr', MenuCategory[]> = {
   es: [
     {
       title: 'CAFÉS',
@@ -166,6 +166,81 @@ const menuByLanguage: Record<'es' | 'en', MenuCategory[]> = {
       ],
     },
   ],
+  fr: [
+    {
+      title: 'CAFÉS',
+      icon: <Coffee size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Espresso', price: '2.00€', description: 'Intense et aromatique' },
+        { name: 'Americano', price: '2.00€', description: "Espresso avec de l'eau chaude" },
+        { name: 'Cortado', price: '2.30€', description: 'Espresso avec un nuage de lait' },
+        { name: 'Latte', price: '2.50€', description: 'Espresso avec lait crémeux' },
+        { name: 'Cappuccino', price: '2.80€', description: 'Espresso, lait et mousse' },
+        { name: 'Café au lait', price: '2.50€', description: 'Le classique de toujours' },
+        { name: 'Café bombón', price: '3.20€', description: 'Espresso avec lait concentré' },
+      ],
+    },
+    {
+      title: 'SPÉCIALITÉS',
+      icon: <Coffee size={22} className="text-[#75753c]" />,
+      items: [
+        { name: 'Flat White', price: '3.30€', description: 'Double espresso et micro-mousse de lait' },
+        { name: 'Cold Brew', price: '3.50€', description: 'Extraction à froid (12h)' },
+        { name: 'Café de spécialité V60', price: '4.50€', description: 'Méthode filtre manuelle' },
+        { name: 'Matcha', price: '3.00€', description: '' },
+        { name: 'Chai Latte', price: '2.50€', description: '' },
+      ],
+    },
+    {
+      title: 'PÂTISSERIE ARTISANALE',
+      icon: <Cake size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Croissant', price: '2.50€', description: 'Classique au beurre français' },
+        { name: 'Pain au chocolat', price: '2.80€', description: 'Feuilleté garni de chocolat' },
+        { name: 'Gâteau à la carotte', price: '3.50€', description: 'Avec coco, noix et zeste de citron' },
+        { name: 'Gâteau au chocolat', price: '3.50€', description: 'Chocolat premium avec crème' },
+        { name: 'Cheesecake', price: '3.50€', description: 'Gâteau crémeux aux meilleurs fromages' },
+      ],
+    },
+    {
+      title: 'JUS',
+      icon: <CupSoda size={22} className="text-[#75753c]" />,
+      items: [
+        { name: "Jus d'orange", price: '3.00€', description: 'Fraîchement pressé' },
+        { name: 'Détox vert', price: '4.50€', description: 'Pomme, concombre, céleri et citron' },
+        { name: 'Antioxydant', price: '4.50€', description: 'Betterave, carotte, pomme et gingembre' },
+        { name: 'Tropical', price: '4.50€', description: 'Ananas, mangue, orange et fruit de la passion' },
+        { name: 'Énergisant', price: '4.50€', description: 'Orange, carotte, pomme et gingembre' },
+        { name: 'Jus du jour', price: '4.50€', description: 'Demandez notre création du jour' },
+      ],
+    },
+    {
+      title: 'VINS',
+      icon: <Wine size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Marques de Vizhoja (Rioja blanc)', price: '2.50€', description: '' },
+        { name: 'Mara (Godello)', price: '2.50€', description: '' },
+      ],
+    },
+    {
+      title: 'PETITS DÉJEUNERS ET GOÛTERS',
+      icon: <Cake size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Café + Cheesecake', price: '5.50€', description: '' },
+        { name: 'Café + Gâteau à la carotte', price: '5.00€', description: '' },
+      ],
+    },
+    {
+      title: 'SHOTS IMMUNITAIRES ET THÉS',
+      icon: <Flower size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Shot de gingembre', price: '2.50€', description: 'Gingembre, citron et miel' },
+        { name: 'Thé à l’hibiscus', price: '2.00€', description: '' },
+        { name: 'Thé vert au gingembre et zeste de citron', price: '2.00€', description: '' },
+        { name: 'Mélange de grand-mère', price: '2.00€', description: '' },
+      ],
+    },
+  ],
 };
 
 const menuCopy = {
@@ -183,23 +258,38 @@ const menuCopy = {
     allergyNote: 'Allergies or preferences? Ask us anytime.',
     optionsNote: 'Vegetarian and vegan options available',
   },
+  fr: {
+    title: 'Carte Raíz y Grano',
+    subtitle: 'Artisanat, naturel et un café inoubliable.',
+    subtitleDetail: 'Découvrez notre carte, préparée avec soin et des ingrédients réels.',
+    allergyNote: 'Allergies ou préférences ? Demandez sans engagement.',
+    optionsNote: 'Options végétariennes et véganes disponibles',
+  },
 };
 
 const MenuPage = () => {
-  const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const [language, setLanguage] = useState<'es' | 'en' | 'fr'>('es');
   const [activeCategory, setActiveCategory] = useState(
     menuByLanguage.es[0] ? menuByLanguage.es[0].title.toLowerCase().replace(/\s+/g, '-') : 'cafés'
   );
 
   useEffect(() => {
-    document.title = language === 'es' ? 'Carta - Raíz y Grano' : 'Menu - Raíz y Grano';
+    const titleMap = {
+      es: 'Carta - Raíz y Grano',
+      en: 'Menu - Raíz y Grano',
+      fr: 'Carte - Raíz y Grano',
+    };
+    document.title = titleMap[language];
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
+      const descriptionMap = {
+        es: 'Descubre nuestra carta completa de café de especialidad, bollería artesanal, zumos, vinos, desayunos y meriendas en Raíz y Grano.',
+        en: 'Discover our full menu of specialty coffee, artisan pastries, juices, wines, breakfast and afternoon snacks at Raíz y Grano.',
+        fr: 'Découvrez notre carte complète de café de spécialité, pâtisserie artisanale, jus, vins, petits déjeuners et goûters chez Raíz y Grano.',
+      };
       metaDescription.setAttribute(
         'content',
-        language === 'es'
-          ? 'Descubre nuestra carta completa de café de especialidad, bollería artesanal, zumos, vinos, desayunos y meriendas en Raíz y Grano.'
-          : 'Discover our full menu of specialty coffee, artisan pastries, juices, wines, breakfast and afternoon snacks at Raíz y Grano.'
+        descriptionMap[language]
       );
     }
     window.scrollTo(0, 0);
@@ -242,7 +332,7 @@ const MenuPage = () => {
             {copy.subtitleDetail}
           </p>
           <div className="flex flex-wrap justify-center gap-3 mt-4 mb-8">
-            {(['es', 'en'] as const).map((lang) => (
+            {(['es', 'en', 'fr'] as const).map((lang) => (
               <button
                 key={lang}
                 onClick={() => setLanguage(lang)}
