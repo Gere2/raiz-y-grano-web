@@ -5,8 +5,7 @@ import path from "path";
 import { componentTagger } from "lovable-tagger";
 
 export default defineConfig(({ mode }) => ({
-  // En lugar de '/raiz-y-grano-web/' usa './'
-  base: mode === "production" ? "./" : "/",
+  base: mode === "production" ? "/raiz-y-grano-web/" : "/",
   server: {
     host: "::",
     port: 8080,
