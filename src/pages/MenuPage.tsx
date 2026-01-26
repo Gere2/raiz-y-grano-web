@@ -15,22 +15,8 @@ type MenuCategory = {
   icon: React.ReactNode;
 };
 
-const MenuPage = () => {
-  const [activeCategory, setActiveCategory] = useState('cafés');
-
-  useEffect(() => {
-    document.title = 'Carta - Raíz y Grano';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute(
-        'content',
-        'Descubre nuestra carta completa de café de especialidad, bollería artesanal, zumos, vinos, desayunos y meriendas en Raíz y Grano.'
-      );
-    }
-    window.scrollTo(0, 0);
-  }, []);
-
-  const menuCategories: MenuCategory[] = [
+const menuByLanguage: Record<'es' | 'en', MenuCategory[]> = {
+  es: [
     {
       title: 'CAFÉS',
       icon: <Coffee size={22} className="text-[#a18968]" />,
@@ -104,7 +90,130 @@ const MenuPage = () => {
         { name: 'Te Mezcla de la abuela', price: '2.00€', description: '' },
       ],
     },
-  ];
+  ],
+  en: [
+    {
+      title: 'COFFEE',
+      icon: <Coffee size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Espresso', price: '2.00€', description: 'Bold and aromatic' },
+        { name: 'Americano', price: '2.00€', description: 'Espresso with hot water' },
+        { name: 'Cortado', price: '2.30€', description: 'Espresso with a splash of milk' },
+        { name: 'Latte', price: '2.50€', description: 'Espresso with creamy milk' },
+        { name: 'Cappuccino', price: '2.80€', description: 'Espresso, milk, and foam' },
+        { name: 'Coffee with milk', price: '2.50€', description: 'A classic favorite' },
+        { name: 'Café bombón', price: '3.20€', description: 'Espresso with condensed milk' },
+      ],
+    },
+    {
+      title: 'SPECIALTIES',
+      icon: <Coffee size={22} className="text-[#75753c]" />,
+      items: [
+        { name: 'Flat White', price: '3.30€', description: 'Double espresso with micro-foamed milk' },
+        { name: 'Cold Brew', price: '3.50€', description: 'Cold extraction (12h)' },
+        { name: 'V60 Specialty Coffee', price: '4.50€', description: 'Manual pour-over method' },
+        { name: 'Matcha', price: '3.00€', description: '' },
+        { name: 'Chai Latte', price: '2.50€', description: '' },
+      ],
+    },
+    {
+      title: 'ARTISAN PASTRIES',
+      icon: <Cake size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Croissant', price: '2.50€', description: 'Classic French butter croissant' },
+        { name: 'Pain au Chocolat', price: '2.80€', description: 'Flaky pastry with chocolate' },
+        { name: 'Carrot Cake', price: '3.50€', description: 'With coconut, walnuts, and lemon zest' },
+        { name: 'Chocolate Cake', price: '3.50€', description: 'Premium chocolate with cream' },
+        { name: 'Cheesecake', price: '3.50€', description: 'Creamy cake made with selected cheeses' },
+      ],
+    },
+    {
+      title: 'JUICES',
+      icon: <CupSoda size={22} className="text-[#75753c]" />,
+      items: [
+        { name: 'Orange Juice', price: '3.00€', description: 'Freshly squeezed' },
+        { name: 'Green Detox', price: '4.50€', description: 'Apple, cucumber, celery, and lemon' },
+        { name: 'Antioxidant', price: '4.50€', description: 'Beet, carrot, apple, and ginger' },
+        { name: 'Tropical', price: '4.50€', description: 'Pineapple, mango, orange, and passion fruit' },
+        { name: 'Energizer', price: '4.50€', description: 'Orange, carrot, apple, and ginger' },
+        { name: 'Juice of the Day', price: '4.50€', description: 'Ask about today’s special' },
+      ],
+    },
+    {
+      title: 'WINES',
+      icon: <Wine size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Marques de Vizhoja (Rioja White)', price: '2.50€', description: '' },
+        { name: 'Mara (Godello)', price: '2.50€', description: '' },
+      ],
+    },
+    {
+      title: 'BREAKFAST & AFTERNOON SNACKS',
+      icon: <Cake size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Coffee + Cheesecake', price: '5.50€', description: '' },
+        { name: 'Coffee + Carrot Cake', price: '5.00€', description: '' },
+      ],
+    },
+    {
+      title: 'IMMUNITY SHOTS & TEAS',
+      icon: <Flower size={22} className="text-[#a18968]" />,
+      items: [
+        { name: 'Ginger Shot', price: '2.50€', description: 'Ginger, lemon, and honey' },
+        { name: 'Hibiscus Tea', price: '2.00€', description: '' },
+        { name: 'Green Tea with Ginger & Lemon Zest', price: '2.00€', description: '' },
+        { name: 'Grandma’s Blend', price: '2.00€', description: '' },
+      ],
+    },
+  ],
+};
+
+const menuCopy = {
+  es: {
+    title: 'Carta Raíz y Grano',
+    subtitle: 'Artesanía, naturalidad y un café inolvidable.',
+    subtitleDetail: 'Descubre nuestra carta, hecha con mimo y productos reales.',
+    allergyNote: '¿Alergias o preferencias? Consúltanos sin compromiso.',
+    optionsNote: 'Opciones vegetarianas y veganas disponibles',
+  },
+  en: {
+    title: 'Raíz y Grano Menu',
+    subtitle: 'Craft, natural flavors, and unforgettable coffee.',
+    subtitleDetail: 'Discover our menu, made with care and real ingredients.',
+    allergyNote: 'Allergies or preferences? Ask us anytime.',
+    optionsNote: 'Vegetarian and vegan options available',
+  },
+};
+
+const MenuPage = () => {
+  const [language, setLanguage] = useState<'es' | 'en'>('es');
+  const [activeCategory, setActiveCategory] = useState(
+    menuByLanguage.es[0] ? menuByLanguage.es[0].title.toLowerCase().replace(/\s+/g, '-') : 'cafés'
+  );
+
+  useEffect(() => {
+    document.title = language === 'es' ? 'Carta - Raíz y Grano' : 'Menu - Raíz y Grano';
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute(
+        'content',
+        language === 'es'
+          ? 'Descubre nuestra carta completa de café de especialidad, bollería artesanal, zumos, vinos, desayunos y meriendas en Raíz y Grano.'
+          : 'Discover our full menu of specialty coffee, artisan pastries, juices, wines, breakfast and afternoon snacks at Raíz y Grano.'
+      );
+    }
+    window.scrollTo(0, 0);
+  }, [language]);
+
+  useEffect(() => {
+    const firstCategory = menuByLanguage[language][0];
+    if (firstCategory) {
+      setActiveCategory(firstCategory.title.toLowerCase().replace(/\s+/g, '-'));
+    }
+  }, [language]);
+
+  const menuCategories = menuByLanguage[language];
+  const copy = menuCopy[language];
 
   const getCategoryId = (title: string) =>
     title.toLowerCase().replace(/\s+/g, '-');
@@ -125,13 +234,28 @@ const MenuPage = () => {
       >
         <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-cormorant text-[#795a32] mb-7 drop-shadow-sm tracking-tight">
-            Carta Raíz y Grano
+            {copy.title}
           </h1>
           <p className="max-w-2xl mx-auto text-[#7d6a50] mb-10 font-light italic">
-            Artesanía, naturalidad y un café inolvidable.
+            {copy.subtitle}
             <br />
-            Descubre nuestra carta, hecha con mimo y productos reales.
+            {copy.subtitleDetail}
           </p>
+          <div className="flex flex-wrap justify-center gap-3 mt-4 mb-8">
+            {(['es', 'en'] as const).map((lang) => (
+              <button
+                key={lang}
+                onClick={() => setLanguage(lang)}
+                className={`px-4 py-2 rounded-full border text-sm font-semibold tracking-wide transition-all ${
+                  language === lang
+                    ? 'bg-[#a18968] text-white border-[#a18968] shadow-sm'
+                    : 'bg-white/80 text-[#6d5435] border-[#e0d4bb] hover:border-[#d3be97]'
+                }`}
+              >
+                {lang.toUpperCase()}
+              </button>
+            ))}
+          </div>
           <div className="flex flex-wrap justify-center gap-3 mt-4">
             {menuCategories.map((category) => (
               <button
@@ -193,12 +317,10 @@ const MenuPage = () => {
           ))}
 
           <div className="mt-16 text-center">
-            <p className="italic text-[#8f795f] opacity-70 mb-4">
-              ¿Alergias o preferencias? Consúltanos sin compromiso.
-            </p>
+            <p className="italic text-[#8f795f] opacity-70 mb-4">{copy.allergyNote}</p>
             <div className="flex items-center justify-center space-x-2 text-sm">
               <Leaf size={16} className="text-[#93a75b]" />
-              <span className="text-[#9c8867]">Opciones vegetarianas y veganas disponibles</span>
+              <span className="text-[#9c8867]">{copy.optionsNote}</span>
             </div>
           </div>
         </div>
