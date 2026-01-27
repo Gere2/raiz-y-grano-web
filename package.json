@@ -1,7 +1,6 @@
 {
   "name": "vite_react_shadcn_ts",
   "homepage": "https://Gere2.github.io/raiz-y-grano-web",
-
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,7 +14,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "gh-pages": "^6.3.0",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-accordion": "^1.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.1",
@@ -50,6 +48,7 @@
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.3.0",
+    "gh-pages": "^6.3.0",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.462.0",
     "next-themes": "^0.3.0",
@@ -70,8 +69,8 @@
     "@eslint/js": "^9.9.0",
     "@tailwindcss/typography": "^0.5.15",
     "@types/node": "^22.5.5",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^18.3.27",
+    "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.5.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^9.9.0",
