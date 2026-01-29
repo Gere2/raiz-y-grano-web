@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
 
@@ -8,6 +8,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +27,7 @@ const Navbar = () => {
     setMenuOpen(false);
     
     // If we're not on the home page, navigate to home first
-    if (window.location.pathname !== '/') {
+    if (location.pathname !== '/') {
       navigate('/');
       // We need to wait for the navigation to complete before scrolling
       setTimeout(() => {
@@ -99,6 +100,12 @@ const Navbar = () => {
             Carta
           </button>
           <button
+            onClick={() => handleMenuClick('/origen')}
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
+          >
+            Nuestro Origen
+          </button>
+          <button
             onClick={() => handleMenuClick('/', 'about')}
             className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
@@ -144,6 +151,12 @@ const Navbar = () => {
             className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
             Carta
+          </button>
+          <button
+            onClick={() => handleMenuClick('/origen')}
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
+          >
+            Nuestro Origen
           </button>
           <button
             onClick={() => handleMenuClick('/', 'about')}
