@@ -5,6 +5,8 @@ import Footer from '@/components/Footer';
 
 const NotFound = () => {
   const location = useLocation();
+  const { language } = useLanguage();
+  const copy = COPY[language];
 
   useEffect(() => {
     document.title = 'Página no encontrada - Raíz y Grano';
