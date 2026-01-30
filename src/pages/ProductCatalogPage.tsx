@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import SectionCard from '@/components/SectionCard';
 import ProductCard from '@/components/ProductCard';
 import { PRODUCTS } from '@/content/products';
 import { Search } from 'lucide-react';
@@ -40,6 +41,11 @@ const ProductCatalogPage = () => {
       return bTop - aTop;
     });
   }, [categoryFilter, query, tagFilter]);
+
+  const clearFilters = () => {
+    setCategoryFilter('all');
+    setTagFilter(null);
+  };
 
   return (
     <div className="min-h-screen bg-[#f2ecdf] font-opensans">
@@ -100,6 +106,64 @@ const ProductCatalogPage = () => {
                 aria-label="Buscar producto"
               />
             </div>
+          </div>
+          <div className="mt-6 grid md:grid-cols-2 gap-4">
+            <SectionCard title="Decisión rápida">
+              <p className="text-[#6d5435] mb-4">
+                ¿Prefieres algo suave y dulce o un perfil más intenso con chocolate?
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setTagFilter('suave y dulce')}
+                  className="btn-primary inline-flex items-center"
+                >
+                  Suave y dulce
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setTagFilter('chocolate')}
+                  className="inline-flex items-center rounded-full border border-[#e0d4bb] px-4 py-2 text-sm font-semibold text-[#6d5435] hover:border-[#d3be97]"
+                >
+                  Intenso
+                </button>
+              </div>
+            </SectionCard>
+            <SectionCard title="Top ventas">
+              <p className="text-[#6d5435] mb-4">
+                Marca los favoritos del campus para decidir rápido en horas pico.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => setTagFilter('top campus')}
+                  className="btn-primary inline-flex items-center"
+                >
+                  Ver top ventas
+                </button>
+                <button
+                  type="button"
+                  onClick={clearFilters}
+                  className="inline-flex items-center rounded-full border border-[#e0d4bb] px-4 py-2 text-sm font-semibold text-[#6d5435] hover:border-[#d3be97]"
+                >
+                  Ver todo
+                </button>
+              </div>
+            </SectionCard>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a
+              href="/#/combos"
+              className="btn-primary inline-flex items-center"
+            >
+              Ver combos rápidos
+            </a>
+            <a
+              href="/#/recurrentes"
+              className="inline-flex items-center rounded-full border border-[#e0d4bb] px-4 py-2 text-sm font-semibold text-[#6d5435] hover:border-[#d3be97]"
+            >
+              Recurrentes UFV
+            </a>
           </div>
         </div>
       </section>

@@ -3,16 +3,17 @@ import { Link, useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import SectionHeading from '@/components/SectionHeading';
+import SectionCard from '@/components/SectionCard';
 import AllergenBadges from '@/components/AllergenBadges';
 import IngredientsList from '@/components/IngredientsList';
 import NutritionTable from '@/components/NutritionTable';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { PRODUCTS } from '@/content/products';
+import { PRODUCTS, getProductBySlug } from '@/content/products';
 import { Award, Calendar, ClipboardList, MapPin, PackageCheck, QrCode, ShieldCheck } from 'lucide-react';
 
 const ProductDetailPage = () => {
   const { slug } = useParams();
-  const product = useMemo(() => PRODUCTS.find((item) => item.slug === slug), [slug]);
+  const product = useMemo(() => (slug ? getProductBySlug(slug) : undefined), [slug]);
 
   useEffect(() => {
     if (!product) {
@@ -103,19 +104,13 @@ const ProductDetailPage = () => {
       <section className="py-12 px-4">
         <div className="max-w-6xl mx-auto space-y-8">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <ClipboardList size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Ingredientes</h3>
-              </div>
+            <SectionCard title="Ingredientes" icon={<ClipboardList size={24} className="text-[#a18968]" />}>
               <IngredientsList items={product.ingredients} />
-            </div>
+            </SectionCard>
 
-            <div id="allergens" className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <ShieldCheck size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Alérgenos</h3>
-              </div>
+            <SectionCard title="Alérgenos" icon={<ShieldCheck size={24} className="text-[#a18968]" />} >
+              <div id="allergens" />
+              <p className="text-xs text-[#7d6a50] mb-3">Contiene:</p>
               <AllergenBadges items={product.allergens.contains} />
               <p className="text-xs text-[#7d6a50] mt-3">
                 Consulta al personal si tienes alergias.
@@ -126,15 +121,11 @@ const ProductDetailPage = () => {
                   <AllergenBadges items={product.allergens.mayContain} />
                 </div>
               ) : null}
-            </div>
+            </SectionCard>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <MapPin size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Origen y trazabilidad</h3>
-              </div>
+            <SectionCard title="Origen y trazabilidad" icon={<MapPin size={24} className="text-[#a18968]" />}>
               <ul className="text-[#6d5435] space-y-2">
                 <li>{product.origin.madeIn}</li>
                 <li>{product.origin.production}</li>
@@ -145,51 +136,35 @@ const ProductDetailPage = () => {
               <p className="text-sm text-[#6d5435] mt-4">
                 Maridaje recomendado: <span className="font-semibold">{product.pairing}</span>
               </p>
-            </div>
+            </SectionCard>
 
-            <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <PackageCheck size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Conservación</h3>
-              </div>
+            <SectionCard title="Conservación" icon={<PackageCheck size={24} className="text-[#a18968]" />}>
               <p className="text-[#6d5435]">{product.storage}</p>
               <p className="text-xs text-[#7d6a50] italic mt-2">
                 Consulta al personal si necesitas información adicional de conservación.
               </p>
-            </div>
+            </SectionCard>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <Award size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Nutrición</h3>
-              </div>
+            <SectionCard title="Nutrición" icon={<Award size={24} className="text-[#a18968]" />}>
               <NutritionTable
                 disclaimer={product.nutrition.disclaimer}
                 per100g={product.nutrition.per100g}
                 perServing={product.nutrition.perServing}
               />
-            </div>
+            </SectionCard>
 
-            <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-              <div className="flex items-center gap-3 mb-4">
-                <Calendar size={24} className="text-[#a18968]" />
-                <h3 className="text-2xl font-cormorant text-[#795a32]">Lote y fecha</h3>
-              </div>
+            <SectionCard title="Lote y fecha" icon={<Calendar size={24} className="text-[#a18968]" />}>
               <p className="text-[#6d5435]">Lote: —</p>
               <p className="text-[#6d5435]">Fecha de producción: —</p>
               <p className="text-xs text-[#7d6a50] italic mt-3">
                 Información visible en vitrina y actualizada por lote.
               </p>
-            </div>
+            </SectionCard>
           </div>
 
-          <div className="bg-white rounded-2xl border border-[#efeadf] p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-4">
-              <QrCode size={24} className="text-[#a18968]" />
-              <h3 className="text-2xl font-cormorant text-[#795a32]">QR de esta ficha</h3>
-            </div>
+          <SectionCard title="QR de esta ficha" icon={<QrCode size={24} className="text-[#a18968]" />}>
             <div className="flex flex-col md:flex-row md:items-center gap-6">
               <div className="bg-[#f9f7f2] p-4 rounded-xl inline-flex">
                 <img
@@ -207,7 +182,7 @@ const ProductDetailPage = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </SectionCard>
         </div>
       </section>
 

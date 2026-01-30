@@ -38,3 +38,10 @@ export type Product = {
 };
 
 export const PRODUCTS: Product[] = [cz, czcn, cc, wcn, dcp] as Product[];
+
+export const getProductBySlug = (slug: string) => PRODUCTS.find((product) => product.slug === slug);
+
+export const getProductsByCategory = (category: Product['category']) =>
+  PRODUCTS.filter((product) => product.category === category);
+
+export const getProductsByTag = (tag: string) => PRODUCTS.filter((product) => product.tags.includes(tag));
