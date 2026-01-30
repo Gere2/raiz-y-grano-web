@@ -97,21 +97,21 @@ const originCopy: Record<Language, OriginCopy> = {
       less: 'Ver menos',
     },
     coffeeSection: {
-      title: 'Café de Especialidad (Colombia)',
-      subtitle: 'Seleccionado desde las montañas de Colombia',
+      title: 'Café Insignia (Amor Perfecto)',
+      subtitle: 'Colombia · Lavado · Dulce y balanceado',
       chips: [
         { label: 'País', value: 'Colombia' },
-        { label: 'Altitud', value: 'Según lote (1.400m+)' },
-        { label: 'Variedad', value: 'Arábica' },
-        { label: 'Tueste', value: 'Artesanal' },
-        { label: 'Perfil', value: 'Frutal / balanceado' },
+        { label: 'Proceso', value: 'Lavado' },
+        { label: 'Perfil', value: 'Dulce · cítrico · frutal' },
+        { label: 'Aroma', value: 'Frutos rojos · cítrico · chocolate' },
+        { label: 'Cuerpo', value: 'Medio cremoso' },
       ],
       origin: 'Origen',
       originText:
-        'Trabajamos con cafés colombianos seleccionados por perfil sensorial. Elegimos lotes con notas limpias, cuerpo medio y acidez equilibrada, priorizando consistencia en taza y claridad aromática.',
+        'Usamos Café Insignia de Amor Perfecto, un café colombiano de proceso lavado con dulzor natural, notas cítricas y frutales, y acidez media cítrica.',
       quality: 'Calidad',
       qualityText:
-        'Ajustamos la receta de tueste por lote y cuidamos el transporte y la conservación para proteger aromas. Cuando aplica, indicamos altitud y variedad en la ficha interna de cada lote.',
+        'En taza se perciben aromas de frutos rojos, cítrico y chocolate, con un cuerpo medio cremoso que mantiene el balance del perfil.',
       commitments: 'Compromisos / Estándares',
       commitmentsList: [
         'Selección por perfil sensorial y consistencia',
@@ -208,21 +208,21 @@ const originCopy: Record<Language, OriginCopy> = {
       less: 'Show less',
     },
     coffeeSection: {
-      title: 'Specialty Coffee (Colombia)',
-      subtitle: 'Selected from the mountains of Colombia',
+      title: 'Insignia Coffee (Amor Perfecto)',
+      subtitle: 'Colombia · Washed · Sweet & balanced',
       chips: [
         { label: 'Country', value: 'Colombia' },
-        { label: 'Altitude', value: 'By lot (1,400m+)' },
-        { label: 'Variety', value: 'Arabica' },
-        { label: 'Roast', value: 'Small batch' },
-        { label: 'Profile', value: 'Fruity / balanced' },
+        { label: 'Process', value: 'Washed' },
+        { label: 'Profile', value: 'Sweet · citrus · fruity' },
+        { label: 'Aroma', value: 'Red fruits · citrus · chocolate' },
+        { label: 'Body', value: 'Medium creamy' },
       ],
       origin: 'Origin',
       originText:
-        'We work with Colombian coffees selected by sensory profile. We choose lots with clean notes, medium body, and balanced acidity, prioritizing cup consistency and aromatic clarity.',
+        'We serve Amor Perfecto’s Insignia Coffee, a washed Colombian coffee with natural sweetness, citrus and fruity notes, and medium citric acidity.',
       quality: 'Quality',
       qualityText:
-        'We adjust roast recipes by lot and care for transport and storage to preserve aromas. When available, altitude and variety are indicated in each lot’s internal record.',
+        'In the cup you’ll find aromas of red fruits, citrus, and chocolate with a medium creamy body that keeps the profile balanced.',
       commitments: 'Commitments / Standards',
       commitmentsList: [
         'Selection by sensory profile and consistency',
@@ -319,21 +319,21 @@ const originCopy: Record<Language, OriginCopy> = {
       less: 'Voir moins',
     },
     coffeeSection: {
-      title: 'Café de spécialité (Colombie)',
-      subtitle: 'Sélectionné dans les montagnes de Colombie',
+      title: 'Café Insignia (Amor Perfecto)',
+      subtitle: 'Colombie · Lavé · Doux et équilibré',
       chips: [
         { label: 'Pays', value: 'Colombie' },
-        { label: 'Altitude', value: 'Selon lot (1 400m+)' },
-        { label: 'Variété', value: 'Arabica' },
-        { label: 'Torréfaction', value: 'Petits lots' },
-        { label: 'Profil', value: 'Fruité / équilibré' },
+        { label: 'Procédé', value: 'Lavé' },
+        { label: 'Profil', value: 'Doux · agrumes · fruité' },
+        { label: 'Arômes', value: 'Fruits rouges · agrumes · chocolat' },
+        { label: 'Corps', value: 'Moyen et crémeux' },
       ],
       origin: 'Origine',
       originText:
-        'Nous travaillons avec des cafés colombiens sélectionnés selon le profil sensoriel. Nous choisissons des lots aux notes nettes, corps moyen et acidité équilibrée, en privilégiant la constance en tasse.',
+        'Nous servons le Café Insignia de Amor Perfecto, un café colombien lavé au profil doux, avec des notes d’agrumes et de fruits, et une acidité moyenne citronnée.',
       quality: 'Qualité',
       qualityText:
-        'Nous ajustons la recette de torréfaction par lot et prenons soin du transport et de la conservation pour protéger les arômes. Lorsque c’est possible, l’altitude et la variété sont indiquées dans la fiche interne du lot.',
+        'En tasse, on retrouve des arômes de fruits rouges, d’agrumes et de chocolat avec un corps moyen et crémeux.',
       commitments: 'Engagements / Standards',
       commitmentsList: [
         'Sélection par profil sensoriel et constance',
