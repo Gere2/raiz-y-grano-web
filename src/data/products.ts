@@ -1,139 +1,91 @@
-export type Language = 'es' | 'en' | 'fr';
+import type { Language } from '@/context/LanguageContext';
 
-export type AllergenKey =
-  | 'gluten'
-  | 'eggs'
-  | 'milk'
-  | 'nuts'
-  | 'walnut'
-  | 'pistachio'
-  | 'may_contain_traces';
-
-type Localized<T> = Record<Language, T>;
+export type Nutrition = {
+  per100g?: Record<string, number | string>;
+  perServing?: Record<string, number | string>;
+  servingSizeG?: number;
+  isEstimated?: boolean;
+  disclaimer?: Record<Language, string>;
+};
 
 export type Product = {
   slug: string;
-  category: 'cake' | 'cookie';
-  name: Localized<string>;
-  shortDescription: Localized<string>;
-  ingredients: Localized<string[]>;
-  allergens: AllergenKey[];
-  mayContain?: Localized<string[]>;
-  nutritionNote: Localized<string>;
-  origin: {
-    place: Localized<string>;
-    producer: Localized<string>;
-    notes: Localized<string>;
+  category: 'bakery' | 'coffee';
+  name: Record<Language, string>;
+  description?: Record<Language, string>;
+  ingredients: Record<Language, string[]>;
+  allergens: string[];
+  mayContain?: string[];
+  nutrition?: Nutrition;
+  origin?: {
+    country?: string;
+    process?: string;
+    profile?: string[];
+    aroma?: string[];
+    acidity?: string;
+    body?: string;
+    notes?: string[];
+    supplierName?: string;
+    supplierUrl?: string;
   };
-  storage: Localized<string>;
-  image: string;
+  images?: {
+    main?: string;
+    gallery?: string[];
+  };
+  updatedAt?: string;
 };
+
+export const ALLERGEN_LABELS: Record<Language, Record<string, string>> = {
+  es: {
+    gluten: 'Gluten',
+    egg: 'Huevo',
+    milk: 'Leche',
+    nuts: 'Frutos de cáscara',
+    soy: 'Soja',
+  },
+  en: {
+    gluten: 'Gluten',
+    egg: 'Egg',
+    milk: 'Milk',
+    nuts: 'Tree nuts',
+    soy: 'Soy',
+  },
+  fr: {
+    gluten: 'Gluten',
+    egg: 'Œuf',
+    milk: 'Lait',
+    nuts: 'Fruits à coque',
+    soy: 'Soja',
+  },
+};
+
+export const ALLERGEN_OPTIONS = [
+  { key: 'gluten' },
+  { key: 'egg' },
+  { key: 'milk' },
+  { key: 'nuts' },
+  { key: 'soy' },
+];
 
 export const PRODUCTS: Product[] = [
   {
-    slug: 'cz',
-    category: 'cake',
+    slug: 'bizcocho-zanahoria-clasico',
+    category: 'bakery',
     name: {
       es: 'Bizcocho de zanahoria (clásico)',
       en: 'Carrot cake (classic)',
       fr: 'Gâteau à la carotte (classique)',
     },
-    shortDescription: {
-      es: 'Zanahoria, especias y ralladura de limón. Horneado por lotes en Madrid.',
-      en: 'Carrot, spices, and lemon zest. Small-batch baked in Madrid.',
-      fr: 'Carotte, épices et zeste de citron. Cuit en petits lots à Madrid.',
+    description: {
+      es: 'Bizcocho húmedo y especiado con nueces y coco rallado.',
+      en: 'Moist, spiced carrot cake with walnuts and shredded coconut.',
+      fr: 'Gâteau moelleux aux épices avec noix et coco râpée.',
     },
     ingredients: {
       es: [
         'Zanahoria',
         'Huevo',
-        'Harina (trigo)',
-        'Azúcar moreno',
-        'Levadura',
-        'Aceite',
-        'Nuez moscada',
-        'Canela',
-        'Sal',
-        'Ralladura de limón',
-      ],
-      en: [
-        'Carrot',
-        'Eggs',
-        'Flour (wheat)',
-        'Brown sugar',
-        'Baking powder',
-        'Oil',
-        'Nutmeg',
-        'Cinnamon',
-        'Salt',
-        'Lemon zest',
-      ],
-      fr: [
-        'Carotte',
-        'Œufs',
-        'Farine (blé)',
-        'Sucre brun',
-        'Levure',
-        'Huile',
-        'Noix de muscade',
-        'Cannelle',
-        'Sel',
-        'Zeste de citron',
-      ],
-    },
-    allergens: ['gluten', 'eggs', 'may_contain_traces'],
-    mayContain: {
-      es: ['Trazas de frutos de cáscara (según manipulación en obrador).'],
-      en: ['Traces of tree nuts (depending on workshop handling).'],
-      fr: ['Traces de fruits à coque (selon la manipulation en atelier).'],
-    },
-    nutritionNote: {
-      es: 'Valores nutricionales estimados; pueden variar por lote.',
-      en: 'Nutritional values are estimates and may vary by lot.',
-      fr: 'Valeurs nutritionnelles estimées ; elles peuvent varier selon le lot.',
-    },
-    origin: {
-      place: {
-        es: 'Madrid (obrador propio)',
-        en: 'Madrid (in-house bakery)',
-        fr: 'Madrid (atelier interne)',
-      },
-      producer: {
-        es: 'Equipo Raíz y Grano',
-        en: 'Raíz y Grano team',
-        fr: 'Équipe Raíz y Grano',
-      },
-      notes: {
-        es: 'Huevo pasteurizado y trazabilidad interna por lote.',
-        en: 'Pasteurized eggs and internal batch traceability.',
-        fr: 'Œufs pasteurisés et traçabilité interne par lot.',
-      },
-    },
-    storage: {
-      es: 'Conservar en lugar fresco y seco. Refrigerar si hay calor para mantener textura.',
-      en: 'Store in a cool, dry place. Refrigerate in warm weather to preserve texture.',
-      fr: 'Conserver dans un endroit frais et sec. Réfrigérer en cas de chaleur.',
-    },
-    image: '/assets/products/cz.jpg',
-  },
-  {
-    slug: 'cz-cn',
-    category: 'cake',
-    name: {
-      es: 'Bizcocho de zanahoria con nueces y coco',
-      en: 'Carrot cake with walnuts and coconut',
-      fr: 'Gâteau à la carotte avec noix et coco',
-    },
-    shortDescription: {
-      es: 'Versión con coco rallado y nueces. Más textura y aroma.',
-      en: 'With shredded coconut and walnuts for extra texture and aroma.',
-      fr: 'Avec coco râpé et noix pour plus de texture et d’arôme.',
-    },
-    ingredients: {
-      es: [
-        'Zanahoria',
-        'Huevo',
-        'Harina (trigo)',
+        'Harina de trigo',
         'Azúcar moreno',
         'Levadura',
         'Coco rallado',
@@ -146,8 +98,8 @@ export const PRODUCTS: Product[] = [
       ],
       en: [
         'Carrot',
-        'Eggs',
-        'Flour (wheat)',
+        'Egg',
+        'Wheat flour',
         'Brown sugar',
         'Baking powder',
         'Shredded coconut',
@@ -160,70 +112,81 @@ export const PRODUCTS: Product[] = [
       ],
       fr: [
         'Carotte',
-        'Œufs',
-        'Farine (blé)',
+        'Œuf',
+        'Farine de blé',
         'Sucre brun',
         'Levure',
         'Noix de coco râpée',
         'Huile',
-        'Noix de muscade',
+        'Muscade',
         'Cannelle',
         'Noix',
         'Sel',
         'Zeste de citron',
       ],
     },
-    allergens: ['gluten', 'eggs', 'nuts', 'walnut', 'may_contain_traces'],
-    mayContain: {
-      es: ['Trazas de otros frutos de cáscara.'],
-      en: ['Traces of other tree nuts.'],
-      fr: ['Traces d’autres fruits à coque.'],
-    },
-    nutritionNote: {
-      es: 'Valores nutricionales estimados; pueden variar por lote.',
-      en: 'Nutritional values are estimates and may vary by lot.',
-      fr: 'Valeurs nutritionnelles estimées ; elles peuvent varier selon le lot.',
+    allergens: ['gluten', 'egg', 'nuts'],
+    mayContain: ['milk', 'soy'],
+    nutrition: {
+      isEstimated: true,
+      disclaimer: {
+        es: 'Valores nutricionales estimados; pueden variar por lote.',
+        en: 'Estimated nutritional values; may vary by batch.',
+        fr: 'Valeurs nutritionnelles estimées ; peuvent varier selon le lot.',
+      },
     },
     origin: {
-      place: {
-        es: 'Madrid (obrador propio)',
-        en: 'Madrid (in-house bakery)',
-        fr: 'Madrid (atelier interne)',
-      },
-      producer: {
-        es: 'Equipo Raíz y Grano',
-        en: 'Raíz y Grano team',
-        fr: 'Équipe Raíz y Grano',
-      },
-      notes: {
-        es: 'Huevo pasteurizado y trazabilidad interna por lote.',
-        en: 'Pasteurized eggs and internal batch traceability.',
-        fr: 'Œufs pasteurisés et traçabilité interne par lot.',
-      },
+      notes: ['inhouse_bakery', 'pasteurized_eggs', 'small_batch'],
     },
-    storage: {
-      es: 'Conservar en lugar fresco. Refrigerar si hay temperatura alta.',
-      en: 'Store in a cool place. Refrigerate in warm weather.',
-      fr: 'Conserver au frais. Réfrigérer si la température est élevée.',
+    images: {
+      main: '/assets/products/bizcocho-zanahoria.jpg',
     },
-    image: '/assets/products/cz-cn.jpg',
+    updatedAt: '2024-11-01',
   },
   {
-    slug: 'cookie-chips',
-    category: 'cookie',
+    slug: 'bizcocho-zanahoria-nueces-coco',
+    category: 'bakery',
     name: {
-      es: 'Galleta chips de chocolate',
-      en: 'Chocolate chip cookie',
-      fr: 'Cookie aux pépites de chocolat',
+      es: 'Bizcocho zanahoria con nueces y coco',
+      en: 'Carrot cake with walnuts & coconut',
+      fr: 'Gâteau à la carotte avec noix et coco',
     },
-    shortDescription: {
-      es: 'Mantequilla, vainilla y chips de chocolate. Crujiente por fuera, tierna por dentro.',
-      en: 'Butter, vanilla, and chocolate chips. Crisp outside, soft inside.',
-      fr: 'Beurre, vanille et pépites de chocolat. Croquante et moelleuse.',
+    description: {
+      es: 'Variante con extra de nueces y coco (ingredientes por confirmar).',
+      en: 'Variant with extra walnuts and coconut (ingredients to confirm).',
+      fr: 'Variante avec plus de noix et coco (ingrédients à confirmer).',
+    },
+    ingredients: {
+      es: ['Ingredientes por confirmar'],
+      en: ['Ingredients to be confirmed'],
+      fr: ['Ingrédients à confirmer'],
+    },
+    allergens: ['gluten', 'egg', 'nuts', 'milk'],
+    mayContain: ['soy'],
+    origin: {
+      notes: ['inhouse_bakery', 'pasteurized_eggs', 'small_batch'],
+    },
+    images: {
+      main: '/assets/products/bizcocho-zanahoria-nueces.jpg',
+    },
+    updatedAt: '2024-11-01',
+  },
+  {
+    slug: 'galletas-chips-chocolate',
+    category: 'bakery',
+    name: {
+      es: 'Galletas chips de chocolate',
+      en: 'Chocolate chip cookies',
+      fr: 'Cookies aux pépites de chocolat',
+    },
+    description: {
+      es: 'Galletas clásicas con chips de chocolate y toque de canela.',
+      en: 'Classic cookies with chocolate chips and a hint of cinnamon.',
+      fr: 'Biscuits classiques aux pépites de chocolat et une touche de cannelle.',
     },
     ingredients: {
       es: [
-        'Harina (trigo)',
+        'Harina de trigo',
         'Mantequilla',
         'Azúcar moreno',
         'Azúcar blanca',
@@ -235,11 +198,11 @@ export const PRODUCTS: Product[] = [
         'Canela',
       ],
       en: [
-        'Flour (wheat)',
+        'Wheat flour',
         'Butter',
         'Brown sugar',
         'White sugar',
-        'Eggs',
+        'Egg',
         'Grated chocolate',
         'Vanilla extract',
         'Baking soda',
@@ -247,69 +210,52 @@ export const PRODUCTS: Product[] = [
         'Cinnamon',
       ],
       fr: [
-        'Farine (blé)',
+        'Farine de blé',
         'Beurre',
         'Sucre brun',
         'Sucre blanc',
-        'Œufs',
+        'Œuf',
         'Chocolat râpé',
         'Extrait de vanille',
-        'Bicarbonate de soude',
+        'Bicarbonate de sodium',
         'Pépites de chocolat',
         'Cannelle',
       ],
     },
-    allergens: ['gluten', 'eggs', 'milk', 'may_contain_traces'],
-    mayContain: {
-      es: ['Trazas de frutos de cáscara.'],
-      en: ['Traces of tree nuts.'],
-      fr: ['Traces de fruits à coque.'],
-    },
-    nutritionNote: {
-      es: 'Valores nutricionales estimados; pueden variar por lote.',
-      en: 'Nutritional values are estimates and may vary by lot.',
-      fr: 'Valeurs nutritionnelles estimées ; elles peuvent varier selon le lot.',
+    allergens: ['gluten', 'egg', 'milk'],
+    mayContain: ['nuts', 'soy'],
+    nutrition: {
+      isEstimated: true,
+      disclaimer: {
+        es: 'Valores nutricionales estimados; pueden variar por lote.',
+        en: 'Estimated nutritional values; may vary by batch.',
+        fr: 'Valeurs nutritionnelles estimées ; peuvent varier selon le lot.',
+      },
     },
     origin: {
-      place: {
-        es: 'Madrid (obrador propio)',
-        en: 'Madrid (in-house bakery)',
-        fr: 'Madrid (atelier interne)',
-      },
-      producer: {
-        es: 'Equipo Raíz y Grano',
-        en: 'Raíz y Grano team',
-        fr: 'Équipe Raíz y Grano',
-      },
-      notes: {
-        es: 'Huevo pasteurizado y trazabilidad interna por lote.',
-        en: 'Pasteurized eggs and internal batch traceability.',
-        fr: 'Œufs pasteurisés et traçabilité interne par lot.',
-      },
+      notes: ['inhouse_bakery', 'pasteurized_eggs', 'small_batch'],
     },
-    storage: {
-      es: 'Guardar en recipiente hermético para mantener textura.',
-      en: 'Store in an airtight container to preserve texture.',
-      fr: 'Conserver dans un récipient hermétique.',
+    images: {
+      main: '/assets/products/galletas-chips.jpg',
     },
-    image: '/assets/products/cookie-chips.jpg',
+    updatedAt: '2024-11-01',
   },
   {
-    slug: 'cookie-white-walnut',
-    category: 'cookie',
+    slug: 'galletas-chocolate-blanco-nueces',
+    category: 'bakery',
     name: {
-      es: 'Galleta chocolate blanco con nueces',
-      en: 'White chocolate & walnut cookie',
-      fr: 'Cookie chocolat blanc et noix',
+      es: 'Galletas chocolate blanco con nueces',
+      en: 'White chocolate walnut cookies',
+      fr: 'Cookies chocolat blanc et noix',
     },
-    shortDescription: {
-      es: 'Chocolate blanco + nueces. Masa con maizena para una mordida más suave.',
-      en: 'White chocolate and walnuts with a softer bite.',
-      fr: 'Chocolat blanc et noix pour une texture plus douce.',
+    description: {
+      es: 'Galletas con chocolate blanco y nueces trituradas.',
+      en: 'Cookies with white chocolate and crushed walnuts.',
+      fr: 'Biscuits au chocolat blanc et noix concassées.',
     },
     ingredients: {
       es: [
-        'Harina (trigo)',
+        'Harina de trigo',
         'Azúcar morena',
         'Huevo',
         'Mantequilla sin sal',
@@ -321,9 +267,9 @@ export const PRODUCTS: Product[] = [
         'Vainilla',
       ],
       en: [
-        'Flour (wheat)',
+        'Wheat flour',
         'Brown sugar',
-        'Eggs',
+        'Egg',
         'Unsalted butter',
         'White chocolate',
         'Crushed walnuts',
@@ -333,134 +279,106 @@ export const PRODUCTS: Product[] = [
         'Vanilla',
       ],
       fr: [
-        'Farine (blé)',
+        'Farine de blé',
         'Sucre brun',
-        'Œufs',
+        'Œuf',
         'Beurre doux',
         'Chocolat blanc',
         'Noix concassées',
         'Fécule de maïs',
-        'Bicarbonate de soude',
+        'Bicarbonate de sodium',
         'Sel',
         'Vanille',
       ],
     },
-    allergens: ['gluten', 'eggs', 'milk', 'nuts', 'walnut', 'may_contain_traces'],
-    mayContain: {
-      es: ['Trazas de otros frutos de cáscara.'],
-      en: ['Traces of other tree nuts.'],
-      fr: ['Traces d’autres fruits à coque.'],
-    },
-    nutritionNote: {
-      es: 'Valores nutricionales estimados; pueden variar por lote.',
-      en: 'Nutritional values are estimates and may vary by lot.',
-      fr: 'Valeurs nutritionnelles estimées ; elles peuvent varier selon le lot.',
+    allergens: ['gluten', 'egg', 'milk', 'nuts'],
+    mayContain: ['soy'],
+    nutrition: {
+      isEstimated: true,
+      disclaimer: {
+        es: 'Valores nutricionales estimados; pueden variar por lote.',
+        en: 'Estimated nutritional values; may vary by batch.',
+        fr: 'Valeurs nutritionnelles estimées ; peuvent varier selon le lot.',
+      },
     },
     origin: {
-      place: {
-        es: 'Madrid (obrador propio)',
-        en: 'Madrid (in-house bakery)',
-        fr: 'Madrid (atelier interne)',
-      },
-      producer: {
-        es: 'Equipo Raíz y Grano',
-        en: 'Raíz y Grano team',
-        fr: 'Équipe Raíz y Grano',
-      },
-      notes: {
-        es: 'Huevo pasteurizado y trazabilidad interna por lote.',
-        en: 'Pasteurized eggs and internal batch traceability.',
-        fr: 'Œufs pasteurisés et traçabilité interne par lot.',
-      },
+      notes: ['inhouse_bakery', 'pasteurized_eggs', 'small_batch'],
     },
-    storage: {
-      es: 'Recipiente hermético. Evitar humedad.',
-      en: 'Airtight container. Avoid humidity.',
-      fr: 'Récipient hermétique. Éviter l’humidité.',
+    images: {
+      main: '/assets/products/galletas-chocolate-blanco.jpg',
     },
-    image: '/assets/products/cookie-white-walnut.jpg',
+    updatedAt: '2024-11-01',
   },
   {
-    slug: 'cookie-dark-pistachio',
-    category: 'cookie',
+    slug: 'galletas-chocolate-negro-pistacho',
+    category: 'bakery',
     name: {
-      es: 'Galleta chocolate negro con pistacho',
-      en: 'Dark chocolate & pistachio cookie',
-      fr: 'Cookie chocolat noir et pistache',
+      es: 'Galletas chocolate negro con pistacho',
+      en: 'Dark chocolate pistachio cookies',
+      fr: 'Cookies chocolat noir et pistache',
     },
-    shortDescription: {
-      es: 'Chocolate negro + pistacho. Intensa y equilibrada.',
-      en: 'Dark chocolate with pistachio. Intense yet balanced.',
-      fr: 'Chocolat noir et pistache. Intense et équilibrée.',
+    description: {
+      es: 'Galletas con chocolate negro y pistacho (ingredientes por confirmar).',
+      en: 'Cookies with dark chocolate and pistachio (ingredients to confirm).',
+      fr: 'Biscuits chocolat noir et pistache (ingrédients à confirmer).',
     },
     ingredients: {
-      es: [
-        'Harina (trigo)',
-        'Mantequilla',
-        'Azúcar',
-        'Huevo',
-        'Chocolate negro',
-        'Pistacho',
-        'Bicarbonato',
-        'Vainilla',
-        'Sal',
-      ],
-      en: [
-        'Flour (wheat)',
-        'Butter',
-        'Sugar',
-        'Eggs',
-        'Dark chocolate',
-        'Pistachio',
-        'Baking soda',
-        'Vanilla',
-        'Salt',
-      ],
-      fr: [
-        'Farine (blé)',
-        'Beurre',
-        'Sucre',
-        'Œufs',
-        'Chocolat noir',
-        'Pistache',
-        'Bicarbonate',
-        'Vanille',
-        'Sel',
-      ],
+      es: ['Ingredientes por confirmar'],
+      en: ['Ingredients to be confirmed'],
+      fr: ['Ingrédients à confirmer'],
     },
-    allergens: ['gluten', 'eggs', 'milk', 'nuts', 'pistachio', 'may_contain_traces'],
-    mayContain: {
-      es: ['Trazas de otros frutos de cáscara.'],
-      en: ['Traces of other tree nuts.'],
-      fr: ['Traces d’autres fruits à coque.'],
-    },
-    nutritionNote: {
-      es: 'Valores nutricionales estimados; pueden variar por lote.',
-      en: 'Nutritional values are estimates and may vary by lot.',
-      fr: 'Valeurs nutritionnelles estimées ; elles peuvent varier selon le lot.',
-    },
+    allergens: ['gluten', 'egg', 'milk', 'nuts'],
+    mayContain: ['soy'],
     origin: {
-      place: {
-        es: 'Madrid (obrador propio)',
-        en: 'Madrid (in-house bakery)',
-        fr: 'Madrid (atelier interne)',
-      },
-      producer: {
-        es: 'Equipo Raíz y Grano',
-        en: 'Raíz y Grano team',
-        fr: 'Équipe Raíz y Grano',
-      },
-      notes: {
-        es: 'Huevo pasteurizado y trazabilidad interna por lote.',
-        en: 'Pasteurized eggs and internal batch traceability.',
-        fr: 'Œufs pasteurisés et traçabilité interne par lot.',
-      },
+      notes: ['inhouse_bakery', 'pasteurized_eggs', 'small_batch'],
     },
-    storage: {
-      es: 'Recipiente hermético. Evitar humedad.',
-      en: 'Airtight container. Avoid humidity.',
-      fr: 'Récipient hermétique. Éviter l’humidité.',
+    images: {
+      main: '/assets/products/galletas-chocolate-negro.jpg',
     },
-    image: '/assets/products/cookie-dark-pistachio.jpg',
+    updatedAt: '2024-11-01',
+  },
+  {
+    slug: 'cafe-insignia-amor-perfecto',
+    category: 'coffee',
+    name: {
+      es: 'Café Insignia (Amor Perfecto)',
+      en: 'Insignia Coffee (Amor Perfecto)',
+      fr: 'Café Insignia (Amor Perfecto)',
+    },
+    description: {
+      es: 'Café colombiano lavado, dulce y balanceado con notas cítricas y frutales.',
+      en: 'Washed Colombian coffee with sweetness and citrus-fruity notes.',
+      fr: 'Café colombien lavé, doux et équilibré avec des notes d’agrumes et de fruits.',
+    },
+    ingredients: {
+      es: ['Café 100% arábica'],
+      en: ['100% Arabica coffee'],
+      fr: ['Café 100% arabica'],
+    },
+    allergens: [],
+    mayContain: [],
+    origin: {
+      country: 'Colombia',
+      process: 'Lavado',
+      profile: ['Dulce', 'Notas cítricas y frutales'],
+      aroma: ['Frutos rojos', 'Cítrico', 'Chocolate'],
+      acidity: 'Media - cítrica',
+      body: 'Medio - cremoso',
+      supplierName: 'Café Amor Perfecto',
+      supplierUrl: 'https://cafeamorperfecto.com/products/cafe-insignia-500-gr',
+    },
+    images: {
+      main: '/assets/products/cafe-insignia.jpg',
+    },
+    updatedAt: '2024-11-01',
   },
 ];
+
+const PRODUCT_ALIASES: Record<string, string> = {
+  cz: 'bizcocho-zanahoria-clasico',
+};
+
+export const getProductBySlug = (slug: string) => {
+  const resolved = PRODUCT_ALIASES[slug] ?? slug;
+  return PRODUCTS.find((product) => product.slug === resolved);
+};

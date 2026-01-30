@@ -60,6 +60,27 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Product catalog data
+
+The QR catalog is driven by `src/data/products.ts` as the single source of truth. Each product is a `Product` object with translations in `es`, `en`, and `fr`.
+
+### Add a new product
+1. Open `src/data/products.ts`.
+2. Add a new object to the `PRODUCTS` array:
+   - `slug` should be URL-friendly (used in `/p/:slug`).
+   - `category` is `bakery` or `coffee`.
+   - `name`, `description`, and `ingredients` must include `es`, `en`, and `fr`.
+   - `allergens` and `mayContain` use normalized keys (`gluten`, `egg`, `milk`, `nuts`, `soy`).
+   - `images.main` can point to `/public/assets/products/...`.
+3. Save and run the dev server to preview the catalog.
+
+### Add nutrition information
+1. In the product entry, add a `nutrition` object with:
+   - `per100g` and/or `perServing` key/value pairs.
+   - `servingSizeG` if you want to display the portion size.
+   - `isEstimated` and `disclaimer` (translated in `es`, `en`, `fr`) for estimated values.
+2. Products without nutrition show a “pending” state (admin-only note appears with `?admin=1`).
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/be8d8a9e-9e78-4e2b-a77c-65c42cf566a0) and click on Share -> Publish.

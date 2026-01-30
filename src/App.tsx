@@ -13,6 +13,10 @@ import QrCatalogPage from "./pages/QrCatalogPage";
 import CombosPage from "./pages/CombosPage";
 import RecurrentesPage from "./pages/RecurrentesPage";
 import NotFound from "./pages/NotFound";
+import LegalPrivacyPage from "./pages/LegalPrivacyPage";
+import LegalAllergensPage from "./pages/LegalAllergensPage";
+import { LanguageProvider } from "./context/LanguageContext";
+import AnalyticsListener from "./components/AnalyticsListener";
 
 const queryClient = new QueryClient();
 
@@ -22,18 +26,23 @@ const App = () => (
       <Toaster />
       <Sonner />
       <HashRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/menu" element={<MenuPage />} />
-          <Route path="/origen" element={<OriginPage />} />
-          <Route path="/p" element={<ProductCatalogPage />} />
-          <Route path="/p/:slug" element={<ProductDetailPage />} />
-          <Route path="/qr" element={<QrCatalogPage />} />
-          <Route path="/combos" element={<CombosPage />} />
-          <Route path="/recurrentes" element={<RecurrentesPage />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <LanguageProvider>
+          <AnalyticsListener />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/origen" element={<OriginPage />} />
+            <Route path="/p" element={<ProductCatalogPage />} />
+            <Route path="/p/:slug" element={<ProductDetailPage />} />
+            <Route path="/qr" element={<QrCatalogPage />} />
+            <Route path="/combos" element={<CombosPage />} />
+            <Route path="/recurrentes" element={<RecurrentesPage />} />
+            <Route path="/legal/privacidad" element={<LegalPrivacyPage />} />
+            <Route path="/legal/alergenos" element={<LegalAllergensPage />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </LanguageProvider>
       </HashRouter>
     </TooltipProvider>
   </QueryClientProvider>

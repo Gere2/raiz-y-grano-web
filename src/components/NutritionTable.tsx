@@ -1,9 +1,15 @@
-import React from 'react';
+import type { Nutrition } from '@/data/products';
+import type { Language } from '@/context/LanguageContext';
 
 type NutritionTableProps = {
-  disclaimer: string;
-  per100g?: Record<string, number | string>;
-  perServing?: Record<string, number | string>;
+  nutrition: Nutrition;
+  language: Language;
+};
+
+const LABELS: Record<Language, { per100g: string; perServing: string; servingSize: string }> = {
+  es: { per100g: 'Por 100g', perServing: 'Por ración', servingSize: 'Ración' },
+  en: { per100g: 'Per 100g', perServing: 'Per serving', servingSize: 'Serving' },
+  fr: { per100g: 'Pour 100g', perServing: 'Par portion', servingSize: 'Portion' },
 };
 
 const renderRows = (data?: Record<string, number | string>) => {
@@ -18,21 +24,28 @@ const renderRows = (data?: Record<string, number | string>) => {
   ));
 };
 
-const NutritionTable = ({ disclaimer, per100g, perServing }: NutritionTableProps) => (
+const NutritionTable = ({ nutrition, language }: NutritionTableProps) => (
   <div className="space-y-3">
-    {per100g ? (
+    {nutrition.servingSizeG ? (
+      <p className="text-xs text-[#7d6a50] italic">
+        {LABELS[language].servingSize}: {nutrition.servingSizeG}g
+      </p>
+    ) : null}
+    {nutrition.per100g ? (
       <div className="space-y-2">
-        <p className="text-sm font-semibold text-[#795a32]">Por 100g</p>
-        {renderRows(per100g)}
+        <p className="text-sm font-semibold text-[#795a32]">{LABELS[language].per100g}</p>
+        {renderRows(nutrition.per100g)}
       </div>
     ) : null}
-    {perServing ? (
+    {nutrition.perServing ? (
       <div className="space-y-2">
-        <p className="text-sm font-semibold text-[#795a32]">Por ración</p>
-        {renderRows(perServing)}
+        <p className="text-sm font-semibold text-[#795a32]">{LABELS[language].perServing}</p>
+        {renderRows(nutrition.perServing)}
       </div>
     ) : null}
-    <p className="text-xs text-[#7d6a50] italic">{disclaimer}</p>
+    {nutrition.disclaimer?.[language] ? (
+      <p className="text-xs text-[#7d6a50] italic">{nutrition.disclaimer?.[language]}</p>
+    ) : null}
   </div>
 );
 
