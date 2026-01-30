@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import useLanguage from '@/hooks/useLanguage';
 import {
   Award,
   CheckCircle2,
@@ -476,7 +477,7 @@ const ReadMore = ({
 };
 
 const OriginPage = () => {
-  const [language, setLanguage] = useState<Language>('es');
+  const { language, setLanguage } = useLanguage();
 
   useEffect(() => {
     const titleMap = {
