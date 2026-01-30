@@ -1,0 +1,42 @@
+{
+  "id": "czcn",
+  "slug": "czcn",
+  "name": "Bizcocho de zanahoria con coco y nueces",
+  "category": "cake",
+  "price": null,
+  "tags": ["suave y dulce", "con frutos secos"],
+  "descriptionShort": "Versión con coco rallado y nueces. Más textura y aroma.",
+  "descriptionLong": "Bizcocho de zanahoria con coco y nueces, de miga jugosa y textura marcada.",
+  "ingredients": [
+    "Zanahoria",
+    "Huevo",
+    "Harina (trigo)",
+    "Azúcar moreno",
+    "Levadura",
+    "Coco rallado",
+    "Aceite",
+    "Nuez moscada",
+    "Canela",
+    "Nueces",
+    "Sal",
+    "Ralladura de limón"
+  ],
+  "allergens": {
+    "contains": ["gluten", "huevo", "frutos de cáscara (nuez)"],
+    "mayContain": ["trazas de otros frutos de cáscara"]
+  },
+  "origin": {
+    "madeIn": "Madrid (obrador propio)",
+    "production": "Producción por lotes",
+    "notes": ["Huevo pasteurizado", "Trazabilidad interna por lote"]
+  },
+  "nutrition": {
+    "disclaimer": "Valores nutricionales estimados; pueden variar por lote."
+  },
+  "storage": "Conservar en lugar fresco. Refrigerar si hay temperatura alta.",
+  "pairing": "Café filtro suave o latte.",
+  "images": {
+    "hero": "/assets/products/czcn.jpg"
+  },
+  "updatedAt": "2025-01-01"
+}

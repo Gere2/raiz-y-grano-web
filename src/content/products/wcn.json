@@ -1,0 +1,40 @@
+{
+  "id": "wcn",
+  "slug": "wcn",
+  "name": "Galletas chocolate blanco con nueces",
+  "category": "cookie",
+  "price": null,
+  "tags": ["chocolate", "con frutos secos"],
+  "descriptionShort": "Chocolate blanco + nueces. Masa con maizena para una mordida más suave.",
+  "descriptionLong": "Galleta con chocolate blanco y nueces, con textura suave gracias a la maizena.",
+  "ingredients": [
+    "Harina (trigo)",
+    "Azúcar morena",
+    "Huevo",
+    "Mantequilla sin sal",
+    "Chocolate blanco",
+    "Nueces trituradas",
+    "Maizena",
+    "Bicarbonato de sodio",
+    "Sal",
+    "Vainilla"
+  ],
+  "allergens": {
+    "contains": ["gluten", "huevo", "leche", "frutos de cáscara (nuez)"],
+    "mayContain": ["trazas de otros frutos de cáscara"]
+  },
+  "origin": {
+    "madeIn": "Madrid (obrador propio)",
+    "production": "Producción por lotes",
+    "notes": ["Huevo pasteurizado", "Trazabilidad interna por lote"]
+  },
+  "nutrition": {
+    "disclaimer": "Valores nutricionales estimados; pueden variar por lote."
+  },
+  "storage": "Recipiente hermético. Evitar humedad.",
+  "pairing": "Café con leche o capuccino.",
+  "images": {
+    "hero": "/assets/products/wcn.jpg"
+  },
+  "updatedAt": "2025-01-01"
+}
