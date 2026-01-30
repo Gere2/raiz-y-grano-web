@@ -1,0 +1,40 @@
+{
+  "id": "cc",
+  "slug": "cc",
+  "name": "Galletas chips de chocolate",
+  "category": "cookie",
+  "price": null,
+  "tags": ["chocolate", "suave y dulce", "top campus"],
+  "descriptionShort": "Mantequilla, vainilla y chips de chocolate. Crujiente por fuera, tierna por dentro.",
+  "descriptionLong": "Galleta clásica con chips de chocolate, mantequilla y vainilla. Textura crujiente y centro suave.",
+  "ingredients": [
+    "Harina (trigo)",
+    "Mantequilla",
+    "Azúcar moreno",
+    "Azúcar blanca",
+    "Huevo",
+    "Chocolate rallado",
+    "Extracto de vainilla",
+    "Bicarbonato de sodio",
+    "Chips de chocolate",
+    "Canela"
+  ],
+  "allergens": {
+    "contains": ["gluten", "huevo", "leche"],
+    "mayContain": ["trazas de frutos de cáscara"]
+  },
+  "origin": {
+    "madeIn": "Madrid (obrador propio)",
+    "production": "Producción por lotes",
+    "notes": ["Huevo pasteurizado", "Trazabilidad interna por lote"]
+  },
+  "nutrition": {
+    "disclaimer": "Valores nutricionales estimados; pueden variar por lote."
+  },
+  "storage": "Guardar en recipiente hermético para mantener textura.",
+  "pairing": "Espresso o americano.",
+  "images": {
+    "hero": "/assets/products/cc.jpg"
+  },
+  "updatedAt": "2025-01-01"
+}
