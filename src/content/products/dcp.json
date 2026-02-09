@@ -1,0 +1,31 @@
+{
+  "id": "dcp",
+  "slug": "dcp",
+  "name": "Galletas chocolate negro con pistacho",
+  "category": "cookie",
+  "price": null,
+  "tags": ["chocolate", "con frutos secos"],
+  "descriptionShort": "Chocolate negro + pistacho. Intensa y equilibrada.",
+  "descriptionLong": "Galleta intensa de chocolate negro con pistacho. Datos de ingredientes en revisión.",
+  "ingredients": [
+    "Pendiente de confirmar (receta en revisión)"
+  ],
+  "allergens": {
+    "contains": ["gluten", "huevo", "leche", "frutos de cáscara (pistacho)"],
+    "mayContain": ["trazas de otros frutos de cáscara"]
+  },
+  "origin": {
+    "madeIn": "Madrid (obrador propio)",
+    "production": "Producción por lotes",
+    "notes": ["Huevo pasteurizado", "Trazabilidad interna por lote"]
+  },
+  "nutrition": {
+    "disclaimer": "Valores nutricionales estimados; pueden variar por lote."
+  },
+  "storage": "Recipiente hermético. Evitar humedad.",
+  "pairing": "Cold brew o espresso.",
+  "images": {
+    "hero": "/assets/products/dcp.jpg"
+  },
+  "updatedAt": "2025-01-01"
+}

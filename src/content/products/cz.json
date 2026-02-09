@@ -1,0 +1,40 @@
+{
+  "id": "cz",
+  "slug": "cz",
+  "name": "Bizcocho de zanahoria (clásico)",
+  "category": "cake",
+  "price": null,
+  "tags": ["suave y dulce", "top campus"],
+  "descriptionShort": "Zanahoria, especias y ralladura de limón. Horneado por lotes en Madrid.",
+  "descriptionLong": "Bizcocho esponjoso con zanahoria y especias suaves, horneado en pequeños lotes para mantener frescura y textura.",
+  "ingredients": [
+    "Zanahoria",
+    "Huevo",
+    "Harina (trigo)",
+    "Azúcar moreno",
+    "Levadura",
+    "Aceite",
+    "Nuez moscada",
+    "Canela",
+    "Sal",
+    "Ralladura de limón"
+  ],
+  "allergens": {
+    "contains": ["gluten", "huevo"],
+    "mayContain": ["trazas de frutos de cáscara"]
+  },
+  "origin": {
+    "madeIn": "Madrid (obrador propio)",
+    "production": "Producción por lotes",
+    "notes": ["Huevo pasteurizado", "Trazabilidad interna por lote"]
+  },
+  "nutrition": {
+    "disclaimer": "Valores nutricionales estimados; pueden variar por lote."
+  },
+  "storage": "Conservar en lugar fresco y seco. Refrigerar si hay calor para mantener textura.",
+  "pairing": "Café con leche o flat white.",
+  "images": {
+    "hero": "/assets/products/cz.jpg"
+  },
+  "updatedAt": "2025-01-01"
+}
