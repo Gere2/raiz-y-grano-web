@@ -1,13 +1,22 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { cn } from '@/lib/utils';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { language, setLanguage } = useLanguage();
+
+  const languageOptions = [
+    { value: 'es', label: 'ES' },
+    { value: 'en', label: 'EN' },
+    { value: 'fr', label: 'FR' },
+  ] as const;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,7 +35,7 @@ const Navbar = () => {
     setMenuOpen(false);
     
     // If we're not on the home page, navigate to home first
-    if (window.location.pathname !== '/') {
+    if (location.pathname !== '/') {
       navigate('/');
       // We need to wait for the navigation to complete before scrolling
       setTimeout(() => {
@@ -85,7 +94,7 @@ const Navbar = () => {
         </div>
 
         {/* Desktop menu */}
-        <nav className="hidden md:flex space-x-8">
+        <nav className="hidden md:flex space-x-8 items-center">
           <button
             onClick={() => handleMenuClick('/', 'home')}
             className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
@@ -97,6 +106,12 @@ const Navbar = () => {
             className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
           >
             Carta
+          </button>
+          <button
+            onClick={() => handleMenuClick('/origen')}
+            className="relative text-white hover:text-raiz-terracotta transition-colors capitalize font-opensans"
+          >
+            Nuestro Origen
           </button>
           <button
             onClick={() => handleMenuClick('/', 'about')}
@@ -116,6 +131,21 @@ const Navbar = () => {
           >
             Contacto
           </button>
+          <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-2 py-1">
+            {languageOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setLanguage(option.value)}
+                className={`rounded-full px-2 py-1 text-xs font-semibold transition-colors ${
+                  language === option.value ? 'bg-white text-[#6d5435]' : 'text-white hover:text-raiz-terracotta'
+                }`}
+                aria-label={`Cambiar idioma a ${option.label}`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </nav>
 
         {/* Mobile menu button */}
@@ -146,6 +176,12 @@ const Navbar = () => {
             Carta
           </button>
           <button
+            onClick={() => handleMenuClick('/origen')}
+            className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
+          >
+            Nuestro Origen
+          </button>
+          <button
             onClick={() => handleMenuClick('/', 'about')}
             className="text-xl text-white hover:text-raiz-terracotta transition-colors capitalize"
           >
@@ -163,6 +199,21 @@ const Navbar = () => {
           >
             Contacto
           </button>
+          <div className="flex items-center gap-2 rounded-full border border-white/30 bg-white/10 px-3 py-2">
+            {languageOptions.map((option) => (
+              <button
+                key={option.value}
+                type="button"
+                onClick={() => setLanguage(option.value)}
+                className={`rounded-full px-3 py-1 text-sm font-semibold transition-colors ${
+                  language === option.value ? 'bg-white text-[#6d5435]' : 'text-white hover:text-raiz-terracotta'
+                }`}
+                aria-label={`Cambiar idioma a ${option.label}`}
+              >
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </header>
