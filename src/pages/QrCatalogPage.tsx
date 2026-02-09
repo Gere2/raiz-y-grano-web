@@ -58,7 +58,7 @@ const QrCatalogPage = () => {
     () =>
       PRODUCTS.map((product) => ({
         ...product,
-        url: `https://raizygrano.com/#/p/${product.slug}?lang=${qrLanguage}`,
+        url: `https://raizygrano.com/#/p/${product.slug}?lang=${qrLanguage}&src=qr`,
       })),
     [qrLanguage],
   );

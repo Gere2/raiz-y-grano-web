@@ -16,41 +16,19 @@ import { Award, ClipboardList, MapPin, ShieldCheck } from 'lucide-react';
 const originValueTranslations: Record<string, { es: string; en: string; fr: string }> = {
   Lavado: { es: 'Lavado', en: 'Washed', fr: 'Lavé' },
   Dulce: { es: 'Dulce', en: 'Sweet', fr: 'Doux' },
-  'Notas cítricas y frutales': {
-    es: 'Notas cítricas y frutales',
-    en: 'Citrus and fruity notes',
-    fr: 'Notes d’agrumes et de fruits',
-  },
-  'Frutos rojos': { es: 'Frutos rojos', en: 'Red fruits', fr: 'Fruits rouges' },
   Cítrico: { es: 'Cítrico', en: 'Citrus', fr: 'Agrumes' },
+  Frutal: { es: 'Frutal', en: 'Fruity', fr: 'Fruité' },
+  'Frutos rojos': { es: 'Frutos rojos', en: 'Red fruits', fr: 'Fruits rouges' },
   Chocolate: { es: 'Chocolate', en: 'Chocolate', fr: 'Chocolat' },
-  'Media - cítrica': {
-    es: 'Media - cítrica',
-    en: 'Medium - citric',
-    fr: 'Moyenne - citronnée',
+  'Media (cítrica)': {
+    es: 'Media (cítrica)',
+    en: 'Medium (citric)',
+    fr: 'Moyenne (citronnée)',
   },
-  'Medio - cremoso': {
-    es: 'Medio - cremoso',
-    en: 'Medium - creamy',
-    fr: 'Moyen - crémeux',
-  },
-};
-
-const bakeryOriginNotes: Record<string, { es: string; en: string; fr: string }> = {
-  inhouse_bakery: {
-    es: 'Obrador propio en Madrid',
-    en: 'In-house bakery in Madrid',
-    fr: 'Atelier de pâtisserie à Madrid',
-  },
-  pasteurized_eggs: {
-    es: 'Huevo pasteurizado',
-    en: 'Pasteurized eggs',
-    fr: 'Œufs pasteurisés',
-  },
-  small_batch: {
-    es: 'Producción por lotes',
-    en: 'Small-batch production',
-    fr: 'Production en petits lots',
+  'Medio (cremoso)': {
+    es: 'Medio (cremoso)',
+    en: 'Medium (creamy)',
+    fr: 'Moyen (crémeux)',
   },
 };
 
@@ -77,7 +55,7 @@ const ProductDetailPage = () => {
     document.title = `${product.name[language]} - Raíz y Grano`;
     const metaDescription = document.querySelector('meta[name="description"]');
     if (metaDescription) {
-      metaDescription.setAttribute('content', product.description?.[language] ?? product.name[language]);
+      metaDescription.setAttribute('content', product.description[language]);
     }
 
     trackEvent('product_view', { slug: product.slug, category: product.category });
@@ -100,10 +78,12 @@ const ProductDetailPage = () => {
       nutritionPending: 'Pendiente de cálculo nutricional',
       nutritionAdmin: 'Añadir datos de nutrición en products.ts',
       origin: 'Origen y trazabilidad',
-      originBakery: 'Obrador propio en Madrid con producción diaria y control por lotes.',
+      originBakery: 'Obrador propio en Madrid · Huevo pasteurizado · Producción por lotes',
       supplier: 'Proveedor',
       notFoundTitle: 'Producto no encontrado',
       notFoundBody: 'No existe una ficha para este producto. Revisa el catálogo completo.',
+      toppingTitle: 'Topping incluido',
+      toppingBody: 'Topping crujiente incluido en la receta (almendra, azúcar moreno y nuez).',
     },
     en: {
       home: 'Home',
@@ -118,10 +98,12 @@ const ProductDetailPage = () => {
       nutritionPending: 'Nutrition calculation pending',
       nutritionAdmin: 'Add nutrition data in products.ts',
       origin: 'Origin & traceability',
-      originBakery: 'In-house bakery in Madrid with daily production and batch control.',
+      originBakery: 'In-house bakery in Madrid · Pasteurized eggs · Small-batch production',
       supplier: 'Supplier',
       notFoundTitle: 'Product not found',
       notFoundBody: 'No product sheet exists for this item. Check the catalog.',
+      toppingTitle: 'Topping included',
+      toppingBody: 'Crunchy topping included in the recipe (almond, brown sugar, walnut).',
     },
     fr: {
       home: 'Accueil',
@@ -136,10 +118,12 @@ const ProductDetailPage = () => {
       nutritionPending: 'Calcul nutritionnel en attente',
       nutritionAdmin: 'Ajouter la nutrition dans products.ts',
       origin: 'Origine & traçabilité',
-      originBakery: 'Atelier de pâtisserie à Madrid, production quotidienne et par lot.',
+      originBakery: 'Atelier de pâtisserie à Madrid · Œufs pasteurisés · Production par lots',
       supplier: 'Fournisseur',
       notFoundTitle: 'Produit introuvable',
       notFoundBody: 'Aucune fiche produit pour cet article. Consultez le catalogue.',
+      toppingTitle: 'Topping inclus',
+      toppingBody: 'Topping croustillant inclus (amande, sucre brun, noix).',
     },
   };
 
@@ -174,6 +158,8 @@ const ProductDetailPage = () => {
   const fallbackImage =
     'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=800&auto=format&fit=crop';
 
+  const showToppingBlock = product.slug === 'muffin-zanahoria';
+
   return (
     <div className="min-h-screen bg-[#f2ecdf] font-opensans">
       <Navbar />
@@ -201,7 +187,7 @@ const ProductDetailPage = () => {
             <div>
               <SectionHeading
                 title={product.name[language]}
-                subtitle={product.description?.[language] ?? ''}
+                subtitle={product.description[language]}
                 align="left"
               />
               {product.allergens.length ? (
@@ -326,11 +312,6 @@ const ProductDetailPage = () => {
               ) : (
                 <div className="space-y-2 text-[#6d5435]">
                   <p>{labels[language].originBakery}</p>
-                  <ul className="list-disc list-inside text-sm">
-                    {product.origin?.notes?.map((note) => (
-                      <li key={note}>{bakeryOriginNotes[note]?.[language] ?? note}</li>
-                    ))}
-                  </ul>
                 </div>
               )}
             </SectionCard>
@@ -348,6 +329,12 @@ const ProductDetailPage = () => {
               )}
             </SectionCard>
           </div>
+
+          {showToppingBlock ? (
+            <SectionCard title={labels[language].toppingTitle}>
+              <p className="text-[#6d5435]">{labels[language].toppingBody}</p>
+            </SectionCard>
+          ) : null}
         </div>
       </section>
 

@@ -76,7 +76,7 @@ The QR catalog is driven by `src/data/products.ts` as the single source of truth
 
 ### Add nutrition information
 1. In the product entry, add a `nutrition` object with:
-   - `per100g` and/or `perServing` key/value pairs.
+   - `per100g` and/or `perServing` with `kcal`, `protein_g`, `carbs_g`, `sugars_g`, `fat_g`, and optional `fiber_g`, `salt_g`.
    - `servingSizeG` if you want to display the portion size.
    - `isEstimated` and `disclaimer` (translated in `es`, `en`, `fr`) for estimated values.
 2. Products without nutrition show a “pending” state (admin-only note appears with `?admin=1`).

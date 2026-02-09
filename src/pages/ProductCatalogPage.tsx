@@ -8,12 +8,15 @@ import { ALLERGEN_LABELS, ALLERGEN_OPTIONS, PRODUCTS } from '@/data/products';
 import { Search } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
+const TAG_OPTIONS = ['suave-y-dulce', 'con-frutos-secos'];
+
 const ProductCatalogPage = () => {
   const { language } = useLanguage();
   const [query, setQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<'all' | 'bakery' | 'coffee'>('all');
   const [selectedAllergens, setSelectedAllergens] = useState<string[]>([]);
   const [excludeAllergens, setExcludeAllergens] = useState(true);
+  const [tagFilter, setTagFilter] = useState<string | null>(null);
 
   useEffect(() => {
     const titles = {
@@ -40,22 +43,28 @@ const ProductCatalogPage = () => {
       const name = product.name[language].toLowerCase();
       const description = product.description?.[language]?.toLowerCase() ?? '';
       const matchesQuery = !normalizedQuery || name.includes(normalizedQuery) || description.includes(normalizedQuery);
+      const matchesTag = !tagFilter || product.tags?.includes(tagFilter);
 
       if (selectedAllergens.length === 0) {
-        return matchesCategory && matchesQuery;
+        return matchesCategory && matchesQuery && matchesTag;
       }
 
       const hasSelectedAllergen = selectedAllergens.some((allergen) => product.allergens.includes(allergen));
       const matchesAllergens = excludeAllergens ? !hasSelectedAllergen : hasSelectedAllergen;
 
-      return matchesCategory && matchesQuery && matchesAllergens;
+      return matchesCategory && matchesQuery && matchesAllergens && matchesTag;
     });
-  }, [categoryFilter, excludeAllergens, language, query, selectedAllergens]);
+  }, [categoryFilter, excludeAllergens, language, query, selectedAllergens, tagFilter]);
 
   const toggleAllergen = (allergen: string) => {
     setSelectedAllergens((prev) =>
       prev.includes(allergen) ? prev.filter((item) => item !== allergen) : [...prev, allergen],
     );
+  };
+
+  const tagLabels: Record<string, Record<'es' | 'en' | 'fr', string>> = {
+    'suave-y-dulce': { es: 'Suave y dulce', en: 'Soft & sweet', fr: 'Doux et sucré' },
+    'con-frutos-secos': { es: 'Con frutos secos', en: 'With nuts', fr: 'Avec fruits à coque' },
   };
 
   const labels = {
@@ -74,6 +83,7 @@ const ProductCatalogPage = () => {
       quickCopy: 'Selecciona un filtro para encontrar tu producto ideal.',
       exploreAll: 'Ver todo',
       note: '¿Tienes una alergia? Pregúntanos en barra.',
+      tagsTitle: 'Tags',
     },
     en: {
       title: 'Product catalog',
@@ -90,6 +100,7 @@ const ProductCatalogPage = () => {
       quickCopy: 'Pick a filter to find the right product faster.',
       exploreAll: 'View all',
       note: 'Have an allergy? Ask at the counter.',
+      tagsTitle: 'Tags',
     },
     fr: {
       title: 'Catalogue produits',
@@ -106,6 +117,7 @@ const ProductCatalogPage = () => {
       quickCopy: 'Choisissez un filtre pour trouver le bon produit plus vite.',
       exploreAll: 'Voir tout',
       note: 'Vous avez une allergie ? Demandez au comptoir.',
+      tagsTitle: 'Tags',
     },
   };
 
@@ -151,7 +163,7 @@ const ProductCatalogPage = () => {
               />
             </div>
           </div>
-          <div className="mt-6 grid md:grid-cols-2 gap-4">
+          <div className="mt-6 grid md:grid-cols-3 gap-4">
             <SectionCard title={content.quickDecision}>
               <p className="text-[#6d5435] mb-4">{content.quickCopy}</p>
               <div className="flex flex-wrap gap-3">
@@ -211,6 +223,31 @@ const ProductCatalogPage = () => {
                   setSelectedAllergens([]);
                   setExcludeAllergens(true);
                 }}
+                className="mt-3 text-xs font-semibold text-[#795a32] hover:underline"
+              >
+                {content.reset}
+              </button>
+            </SectionCard>
+            <SectionCard title={content.tagsTitle}>
+              <div className="flex flex-wrap gap-2">
+                {TAG_OPTIONS.map((tag) => (
+                  <button
+                    key={tag}
+                    type="button"
+                    onClick={() => setTagFilter(tag === tagFilter ? null : tag)}
+                    className={`rounded-full border px-3 py-2 text-xs font-semibold transition-colors ${
+                      tagFilter === tag
+                        ? 'bg-[#795a32] text-white border-[#795a32]'
+                        : 'bg-white/80 text-[#6d5435] border-[#e0d4bb] hover:border-[#d3be97]'
+                    }`}
+                  >
+                    {tagLabels[tag][language]}
+                  </button>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() => setTagFilter(null)}
                 className="mt-3 text-xs font-semibold text-[#795a32] hover:underline"
               >
                 {content.reset}
