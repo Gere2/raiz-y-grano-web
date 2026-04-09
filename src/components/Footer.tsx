@@ -137,8 +137,8 @@ const Footer = () => {
         <div className="mt-12 pt-6 text-center text-sm opacity-70 border-t border-white/10">
           <p>&copy; {new Date().getFullYear()} Raíz y Grano. Todos los derechos reservados.</p>
           <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-xs">
-            <Link to="/legal/privacidad" className="hover:text-raiz-terracotta transition-colors">
-              Privacidad
+            <Link to="/politica-de-privacidad" className="hover:text-raiz-terracotta transition-colors">
+              Política de privacidad
             </Link>
             <span className="opacity-40">•</span>
             <Link to="/legal/alergenos" className="hover:text-raiz-terracotta transition-colors">

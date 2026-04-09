@@ -38,6 +38,7 @@ const App = () => (
             <Route path="/combos" element={<CombosPage />} />
             <Route path="/recurrentes" element={<RecurrentesPage />} />
             <Route path="/legal/privacidad" element={<LegalPrivacyPage />} />
+            <Route path="/politica-de-privacidad" element={<LegalPrivacyPage />} />
             <Route path="/legal/alergenos" element={<LegalAllergensPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
