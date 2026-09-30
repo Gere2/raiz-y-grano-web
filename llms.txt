@@ -1,0 +1,20 @@
+# Raíz y Grano
+
+> Cafetería de café de especialidad en el campus de la Universidad Francisco de Vitoria (Pozuelo de Alarcón, Madrid), entre el Edificio H y el CRAI. Abre de lunes a viernes, de 8:00 a 13:30 y de 14:00 a 19:00; sábado y domingo, cerrado. Los pedidos se hacen en la app https://app.raizygrano.com/ y se recogen en barra.
+
+## Páginas
+
+- [La carta 2026/27](https://raizygrano.com/carta): Precios de la carta 2026/27: café de especialidad, café frío, matcha, chai, tés, açaí, repostería, CookieCup y combos. Leche vegetal sin suplemento.
+- [La app](https://raizygrano.com/la-app): Pide desde el móvil y recoge en barra sin hacer cola, acumula granos, supera retos y usa el Bono Curso 26/27.
+- [Profesorado y departamentos](https://raizygrano.com/profesorado): Próximamente: café y repostería para reuniones de departamento, entregados en tu aula o despacho del campus de la UFV. Apúntate a la lista de espera.
+- [Nuestra historia](https://raizygrano.com/historia): Cómo nació Raíz y Grano en el campus de la UFV: del montaje en 2025 al segundo curso completo, y las herramientas que construimos por el camino.
+- [El origen del café](https://raizygrano.com/origen): Café de especialidad de Amor Perfecto, tostado en Colombia cerca de donde se cultiva, y cómo preparamos cada taza.
+- [Alérgenos](https://raizygrano.com/alergenos): Qué alérgenos se manipulan en nuestra barra y cómo informarte antes de pedir.
+- [Aviso legal](https://raizygrano.com/aviso-legal): Datos identificativos del titular de raizygrano.com.
+- [Política de privacidad](https://raizygrano.com/privacidad): Qué datos trata esta web, para qué y cómo ejercer tus derechos.
+
+## Contacto
+
+- Correo: info@raizygrano.com
+- Instagram: https://www.instagram.com/raizygrano
+- App de pedidos: https://app.raizygrano.com/
