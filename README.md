@@ -1,94 +1,74 @@
-# Welcome to your Lovable project
+# raizygrano.com
 
-## Project info
+Web de Raíz y Grano: café de especialidad en el campus de la Universidad Francisco de Vitoria.
+Es una web informativa; los pedidos, los pagos y el Bono Curso viven en la app,
+[app.raizygrano.com](https://app.raizygrano.com).
 
-**URL**: https://lovable.dev/projects/be8d8a9e-9e78-4e2b-a77c-65c42cf566a0
+## Cómo se ve
 
-## How can I edit this code?
+La misma estética que la app (paleta «Grabado Raíz»): papel `#F5EEE2`, tinta `#27332E`,
+bosque `#1F513F`, salvia `#4B6A53` y arcilla `#B5653A`; Playfair Display para titulares y
+Archivo para el texto (servidas desde la propia web, sin Google Fonts); los grabados de la
+carta impresa en `public/brand/`. El cristal queda para lo que flota (la cabecera y el menú
+del móvil) y el contenido va en papel. Los colores están en `tailwind.config.ts` y los
+materiales (papel, cristal, botones) en `src/styles.css`.
 
-There are several ways of editing your application.
+## Dónde se cambia cada cosa
 
-**Use Lovable**
+| Qué | Dónde |
+| --- | --- |
+| Horario, dirección, correo, enlaces a la app, datos legales | `src/content/site.ts` |
+| Productos y precios de la carta | `src/content/carta.ts` |
+| Páginas, títulos y descripciones para buscadores, redirecciones | `src/routes.ts` |
+| Textos de cada página (castellano, inglés y francés) | `src/pages/*.tsx`, en el objeto `COPY` de cada una |
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/be8d8a9e-9e78-4e2b-a77c-65c42cf566a0) and start prompting.
+### Cambiar un precio
 
-Changes made via Lovable will be committed automatically to this repo.
+1. Cambia el precio en el TPV (es la fuente de verdad).
+2. Cámbialo en `src/content/carta.ts` y actualiza `CARTA_UPDATED`.
+3. Cambia la misma línea en `TPV_V22` de `src/content/carta.test.ts`.
 
-**Use your preferred IDE**
+`npm test` compara nombre a nombre y precio a precio la carta de la web con la lista del TPV:
+si falta un producto, sobra uno o no cuadra un precio, falla. Un precio publicado en la web
+es una oferta, así que no conviene que se quede atrás.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Comandos
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+```bash
 npm install
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+npm run dev        # desarrollo en http://127.0.0.1:8080
+npm test           # carta contra el TPV, rutas antiguas y HTML prerenderizado
+npm run build      # dist/ con cada página prerenderizada
+npm run preview    # sirve dist/ en http://localhost:4173
 ```
 
-**Edit a file directly in GitHub**
+`npm run build` compila la web y después `scripts/prerender.mjs` genera el HTML de cada
+ruta (título, descripción, vista previa para redes y, en la portada, los datos del local
+para buscadores), el `404.html`, las redirecciones de las URL antiguas, `sitemap.xml` y
+`llms.txt`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Enlaces antiguos y códigos QR
 
-**Use GitHub Codespaces**
+La web anterior usaba rutas con almohadilla (`raizygrano.com/#/menu`,
+`raizygrano.com/#/p/<ficha>?src=qr`). Siguen funcionando: `legacyTarget` en
+`src/routes.ts` las traduce a las nuevas antes de pintar la página. Las fichas de repostería
+de 2024 (`/p/<ficha>`) se retiraron porque sus alérgenos podían no coincidir con la
+repostería actual; la URL sigue viva y remite a la barra y a `/alergenos`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Publicar
 
-## What technologies are used for this project?
+La web se sirve con GitHub Pages desde la rama `gh-pages` con el dominio `raizygrano.com`
+(el fichero `public/CNAME` va en cada publicación).
 
-This project is built with:
+```bash
+npm run deploy
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+`deploy` comprueba tipos, pasa los tests, construye y sube `dist/` a `gh-pages`.
 
-## Product catalog data
+## Privacidad
 
-The QR catalog is driven by `src/data/products.ts` as the single source of truth. Each product is a `Product` object with translations in `es`, `en`, and `fr`.
-
-### Add a new product
-1. Open `src/data/products.ts`.
-2. Add a new object to the `PRODUCTS` array:
-   - `slug` should be URL-friendly (used in `/p/:slug`).
-   - `category` is `bakery` or `coffee`.
-   - `name`, `description`, and `ingredients` must include `es`, `en`, and `fr`.
-   - `allergens` and `mayContain` use normalized keys (`gluten`, `egg`, `milk`, `nuts`, `soy`).
-   - `images.main` can point to `/public/assets/products/...`.
-3. Save and run the dev server to preview the catalog.
-
-### Add nutrition information
-1. In the product entry, add a `nutrition` object with:
-   - `per100g` and/or `perServing` with `kcal`, `protein_g`, `carbs_g`, `sugars_g`, `fat_g`, and optional `fiber_g`, `salt_g`.
-   - `servingSizeG` if you want to display the portion size.
-   - `isEstimated` and `disclaimer` (translated in `es`, `en`, `fr`) for estimated values.
-2. Products without nutrition show a “pending” state (admin-only note appears with `?admin=1`).
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/be8d8a9e-9e78-4e2b-a77c-65c42cf566a0) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+La web no usa cookies, analítica ni publicidad, y no carga nada de terceros (las fuentes
+están en la propia web y el mapa del campus es un dibujo, no un iframe). Solo guarda en el
+navegador el idioma elegido (`ryg_lang`). Si algún día se añade analítica o un formulario,
+hay que actualizar antes `src/pages/Legal.tsx` (política de privacidad).

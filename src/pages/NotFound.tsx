@@ -1,49 +1,50 @@
-import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { useCopy, type Copy } from "@/i18n";
+import { ButtonLink, Container, SectionHeader } from "@/components/ui";
 
-const NotFound = () => {
-  const location = useLocation();
-  const { language } = useLanguage();
-  const copy = COPY[language];
-
-  useEffect(() => {
-    document.title = 'Página no encontrada - Raíz y Grano';
-    const metaDescription = document.querySelector('meta[name="description"]');
-    if (metaDescription) {
-      metaDescription.setAttribute('content', 'Página no encontrada. Vuelve al inicio o al catálogo.');
-    }
-  }, []);
-
-  return (
-    <div className="min-h-screen bg-[#f2ecdf] font-opensans">
-      <Navbar />
-      <section className="pt-32 pb-20 px-4">
-        <div className="max-w-4xl mx-auto text-center bg-white rounded-2xl border border-[#efeadf] px-8 py-16 shadow-sm">
-          <p className="text-sm uppercase tracking-[0.2em] text-[#a18968]">404</p>
-          <h1 className="text-4xl md:text-5xl font-cormorant text-[#795a32] mt-4">
-            No encontramos esta página
-          </h1>
-          <p className="text-[#6d5435] mt-4">
-            La ruta <span className="font-semibold">{location.pathname}</span> no existe o ha cambiado.
-          </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/" className="btn-primary inline-flex items-center justify-center">
-              Volver al inicio
-            </Link>
-            <Link
-              to="/p"
-              className="inline-flex items-center justify-center rounded-full border border-[#e0d4bb] px-5 py-2 text-sm font-semibold text-[#6d5435] hover:border-[#d3be97]"
-            >
-              Abrir catálogo
-            </Link>
-          </div>
-        </div>
-      </section>
-      <Footer />
-    </div>
-  );
+const COPY: Copy<{ eyebrow: string; title: string; lead: string; home: string; menu: string }> = {
+  es: {
+    eyebrow: "Error 404",
+    title: "Esta página no ha brotado",
+    lead: "La dirección no existe o ha cambiado. La web se ha renovado: puede que lo que buscas esté en la carta o en el inicio.",
+    home: "Ir al inicio",
+    menu: "Ver la carta",
+  },
+  en: {
+    eyebrow: "Error 404",
+    title: "This page never sprouted",
+    lead: "The address doesn’t exist or has changed. We’ve renewed the website: what you’re looking for may be on the menu or the home page.",
+    home: "Go home",
+    menu: "See the menu",
+  },
+  fr: {
+    eyebrow: "Erreur 404",
+    title: "Cette page n’a pas germé",
+    lead: "L’adresse n’existe pas ou a changé. Le site a été renouvelé : ce que vous cherchez est peut-être sur la carte ou sur l’accueil.",
+    home: "Aller à l’accueil",
+    menu: "Voir la carte",
+  },
 };
 
-export default NotFound;
+export default function NotFound() {
+  const c = useCopy(COPY);
+  return (
+    <section aria-labelledby="titulo-404" className="pt-10 sm:pt-16">
+      <Container>
+        <div className="grid items-center gap-10 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <SectionHeader as="h1" id="titulo-404" eyebrow={c.eyebrow} title={c.title} intro={c.lead} />
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink to="/">{c.home}</ButtonLink>
+              <ButtonLink to="/carta" variant="glass" arrow>
+                {c.menu}
+              </ButtonLink>
+            </div>
+          </div>
+          <div className="md:col-span-5">
+            <img src="/brand/emblema-grande.webp" alt="" aria-hidden="true" width={520} height={773} className="mx-auto h-auto w-[180px] opacity-80" />
+          </div>
+        </div>
+      </Container>
+    </section>
+  );
+}

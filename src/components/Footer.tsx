@@ -1,154 +1,192 @@
+import { Link } from "react-router-dom";
+import { Instagram, Mail, MapPin } from "lucide-react";
+import { useCopy, useLang, type Copy } from "@/i18n";
+import { SITE, formatShift } from "@/content/site";
+import { NAV } from "@/components/Header";
+import { Container, Divider } from "@/components/ui";
 
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { Instagram, Coffee, MapPin, Clock, ExternalLink, Mail, Heart } from 'lucide-react';
-
-const Footer = () => {
-  return (
-    <footer className="relative overflow-hidden">
-      {/* Natural beige gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#8c7b6e] via-[#a08a7c] to-[#8c7b6e]"></div>
-      
-      {/* Decorative coffee bean pattern */}
-      <div className="absolute inset-0">
-        <div className="absolute -top-20 -left-20 animate-float opacity-5" style={{animationDelay: '0.5s'}}>
-          <svg width="300" height="300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
-            <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
-          </svg>
-        </div>
-        <div className="absolute top-40 right-20 animate-float opacity-5" style={{animationDelay: '1.2s'}}>
-          <svg width="200" height="200" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12,5 C7,5 3,10 3,16 C3,22 7,22 12,22 C17,22 21,22 21,16 C21,10 17,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
-            <path d="M12,5 C12,5 10,1 12,1 C14,1 12,5 12,5 Z" stroke="currentColor" strokeWidth="1"/>
-          </svg>
-        </div>
-      </div>
-      
-      {/* Wood grain texture overlay */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii4wNSIgbnVtT2N0YXZlcz0iMiIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdmFsdWVzPSIxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAxIDAgMCAwIDAgMCAwIDEiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9Ii4wNSIvPjwvc3ZnPg==')] opacity-20"></div>
-      
-      <div className="max-w-6xl mx-auto px-6 relative z-10 py-16 text-white">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-          {/* Logo and Tagline - 4 columns on md screens */}
-          <div className="md:col-span-4 flex flex-col items-center md:items-start">
-            <Link to="/" className="group">
-              <h2 className="text-3xl font-cormorant mb-2 group-hover:text-raiz-terracotta transition-colors">
-                Raíz y Grano
-              </h2>
-            </Link>
-            <p className="text-sm italic opacity-80 mb-6">Sabor que enciende neuronas</p>
-            <div className="flex space-x-4">
-              <a 
-                href="https://instagram.com/raizygrano" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 hover:bg-white/10 rounded-full transition-colors duration-300 hover:text-raiz-terracotta"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
-              </a>
-              <a 
-                href="https://tiktok.com/@raizygrano" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 hover:bg-white/10 rounded-full transition-colors duration-300 hover:text-raiz-terracotta"
-                aria-label="TikTok"
-              >
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fillRule="evenodd" clipRule="evenodd" d="M16.6 5C17 6.5 18.25 7.75 19.75 8.15V11.65C18.55 11.35 17.5 10.8 16.6 10V16.4C16.6 20.15 13.75 23 10 23C8.15 23 6.5 22.25 5.25 21C6.5 22.25 8.25 23 10.25 23C14 23 16.85 20.15 16.85 16.4V10C17.75 10.85 18.85 11.35 20 11.65V8.15C18.5 7.75 17.25 6.5 16.85 5H16.6Z" fill="currentColor"/>
-                  <path d="M15.6 16.4C15.6 19.15 13.35 21.35 10.65 21.35C9.4 21.35 8.25 20.85 7.4 20.05C8.3 21.1 9.7 21.75 11.25 21.75C13.95 21.75 16.2 19.5 16.2 16.8V10.4C16.2 10.25 16.15 10.15 16.15 10C16.15 10.15 16.1 10.25 16.1 10.4V16.4H15.6Z" fill="currentColor"/>
-                  <path d="M10.6 13.8C9.3 13.8 8.25 14.85 8.25 16.15C8.25 16.5 8.35 16.85 8.5 17.15C8.25 16.65 8.1 16.1 8.1 15.5C8.1 14.1 9.2 13 10.6 13C10.95 13 11.25 13.1 11.55 13.2C11.25 13.05 10.95 12.95 10.6 12.95V13.8Z" fill="currentColor"/>
-                  <path fillRule="evenodd" clipRule="evenodd" d="M10 1H14V1.5C14 3.75 15.75 5.5 18 5.5V9.5C16.6 9.5 15.35 9 14.35 8.2C14.35 8.2 14.35 8.2 14.35 8.25V16.5C14.35 19 12.35 21 9.85 21C7.35 21 5.35 19 5.35 16.5C5.35 14 7.35 12 9.85 12C10.2 12 10.5 12.05 10.85 12.15V16.2C10.6 16.05 10.3 15.95 10 15.95C8.9 15.95 8 16.85 8 17.95C8 19.05 8.9 19.95 10 19.95C11.1 19.95 12 19.05 12 17.95V1H10Z" fill="currentColor"/>
-                </svg>
-              </a>
-              <a 
-                href="mailto:info@raizygrano.com" 
-                className="p-2 hover:bg-white/10 rounded-full transition-colors duration-300 hover:text-raiz-terracotta"
-                aria-label="Email"
-              >
-                <Mail size={20} />
-              </a>
-            </div>
-          </div>
-          
-          {/* Quick Links - 3 columns on md screens */}
-          <div className="md:col-span-3 flex flex-col items-center md:items-start">
-            <h3 className="text-xl font-cormorant mb-6 border-b border-[#b68e5b] pb-2">Explora</h3>
-            <div className="flex flex-col space-y-3">
-              <Link to="/" className="hover:text-raiz-terracotta transition-colors flex items-center gap-2 group">
-                <span className="w-0 h-0.5 bg-raiz-terracotta transition-all duration-300 group-hover:w-4"></span>
-                <Coffee size={14} className="transition-transform group-hover:rotate-12" />
-                <span>Inicio</span>
-              </Link>
-              <Link to="/menu" className="hover:text-raiz-terracotta transition-colors flex items-center gap-2 group">
-                <span className="w-0 h-0.5 bg-raiz-terracotta transition-all duration-300 group-hover:w-4"></span>
-                <Coffee size={14} className="transition-transform group-hover:rotate-12" />
-                <span>Carta Completa</span>
-              </Link>
-              <a href="#about" className="hover:text-raiz-terracotta transition-colors flex items-center gap-2 group">
-                <span className="w-0 h-0.5 bg-raiz-terracotta transition-all duration-300 group-hover:w-4"></span>
-                <Heart size={14} className="transition-transform group-hover:scale-110" />
-                <span>Nosotros</span>
-              </a>
-              <a href="#gallery" className="hover:text-raiz-terracotta transition-colors flex items-center gap-2 group">
-                <span className="w-0 h-0.5 bg-raiz-terracotta transition-all duration-300 group-hover:w-4"></span>
-                <Heart size={14} className="transition-transform group-hover:scale-110" />
-                <span>Galería</span>
-              </a>
-            </div>
-          </div>
-          
-          {/* Contact Info - 5 columns on md screens */}
-          <div className="md:col-span-5 flex flex-col items-center md:items-start">
-            <h3 className="text-xl font-cormorant mb-6 border-b border-[#b68e5b] pb-2">Visítanos</h3>
-            <div className="flex flex-col space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin size={18} className="mt-1 flex-shrink-0 text-[#b68e5b]" />
-                <div>
-                  <p className="font-medium mb-1">Universidad Francisco de Vitoria</p>
-                  <p className="text-sm text-white/70">Entre el edificio H y CRAI - Universidad Francisco de Vitoria, Madrid</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3">
-                <Clock size={18} className="flex-shrink-0 text-[#b68e5b]" />
-                <div>
-                  <p className="font-medium">Horario</p>
-                  <p className="text-sm text-white/70">Lunes a Viernes, de 7:30 a 19:00</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center mt-2">
-                <a 
-                  href="https://maps.app.goo.gl/yourlocation" 
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-[#b68e5b] text-[#2b241a] px-4 py-2 rounded-full text-sm flex items-center gap-2 hover:bg-opacity-90 transition-all hover:translate-x-1 shadow-md"
-                >
-                  Cómo llegar
-                  <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="mt-12 pt-6 text-center text-sm opacity-70 border-t border-white/10">
-          <p>&copy; {new Date().getFullYear()} Raíz y Grano. Todos los derechos reservados.</p>
-          <div className="mt-3 flex flex-wrap items-center justify-center gap-4 text-xs">
-            <Link to="/politica-de-privacidad" className="hover:text-raiz-terracotta transition-colors">
-              Política de privacidad
-            </Link>
-            <span className="opacity-40">•</span>
-            <Link to="/legal/alergenos" className="hover:text-raiz-terracotta transition-colors">
-              Alérgenos
-            </Link>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
+const COPY: Copy<{
+  tagline: string;
+  about: string;
+  where: string;
+  whereText: string;
+  directions: string;
+  when: string;
+  weekdays: string;
+  weekend: string;
+  holidays: string;
+  site: string;
+  allergens: string;
+  contact: string;
+  legal: string;
+  privacy: string;
+  appPrivacy: string;
+}> = {
+  es: {
+    tagline: "Sabor que enciende neuronas.",
+    about: "Café de especialidad en el campus de la Universidad Francisco de Vitoria desde 2025.",
+    where: "Dónde",
+    whereText: "Entre el Edificio H y el CRAI",
+    directions: "Cómo llegar",
+    when: "Horario",
+    weekdays: "Lunes a viernes",
+    weekend: "Sábado y domingo, cerrado.",
+    holidays: "En las vacaciones del campus el horario cambia.",
+    site: "La web",
+    allergens: "Alérgenos",
+    contact: "Contacto",
+    legal: "Aviso legal",
+    privacy: "Privacidad",
+    appPrivacy: "Privacidad de la app",
+  },
+  en: {
+    tagline: "Flavour that sparks neurons.",
+    about: "Specialty coffee on the Universidad Francisco de Vitoria campus since 2025.",
+    where: "Where",
+    whereText: "Between Building H and the CRAI library",
+    directions: "Get directions",
+    when: "Opening hours",
+    weekdays: "Monday to Friday",
+    weekend: "Closed on Saturdays and Sundays.",
+    holidays: "Hours change during campus holidays.",
+    site: "Explore",
+    allergens: "Allergens",
+    contact: "Contact",
+    legal: "Legal notice",
+    privacy: "Privacy",
+    appPrivacy: "App privacy",
+  },
+  fr: {
+    tagline: "Une saveur qui éveille les neurones.",
+    about: "Café de spécialité sur le campus de l’Universidad Francisco de Vitoria depuis 2025.",
+    where: "Où",
+    whereText: "Entre le bâtiment H et le CRAI",
+    directions: "Itinéraire",
+    when: "Horaires",
+    weekdays: "Du lundi au vendredi",
+    weekend: "Fermé le samedi et le dimanche.",
+    holidays: "Les horaires changent pendant les vacances du campus.",
+    site: "Le site",
+    allergens: "Allergènes",
+    contact: "Contact",
+    legal: "Mentions légales",
+    privacy: "Confidentialité",
+    appPrivacy: "Confidentialité de l’app",
+  },
 };
 
-export default Footer;
+export function Footer() {
+  const c = useCopy(COPY);
+  const { lang } = useLang();
+  const year = 2026;
+
+  return (
+    <footer className="relative mt-24 border-t border-ink/10 bg-paper-deep/60">
+      <Divider wide className="mx-auto -mt-[46px] w-[min(560px,86vw)]" />
+      <Container className="pb-10 pt-8">
+        <div className="grid gap-10 md:grid-cols-12">
+          <div className="md:col-span-4">
+            <img src="/brand/logo-360.webp" alt="Raíz y Grano" width={360} height={451} loading="lazy" className="h-auto w-[104px]" />
+            <p className="display-italic mt-4 text-xl text-forest">{c.tagline}</p>
+            <p className="mt-2 max-w-xs text-[15px] leading-relaxed text-ink-soft">{c.about}</p>
+          </div>
+
+          <div className="md:col-span-3">
+            <h2 className="eyebrow">{c.where}</h2>
+            <address className="mt-3 text-[15px] not-italic leading-relaxed text-ink-soft">
+              {c.whereText}
+              <br />
+              {SITE.address.campus}
+              <br />
+              {SITE.address.street}
+              <br />
+              {SITE.address.postalCode} {SITE.address.locality} ({SITE.address.region})
+            </address>
+            <a href={SITE.maps} className="link mt-3 inline-flex items-center gap-1.5 text-[15px]">
+              <MapPin className="h-4 w-4" aria-hidden="true" />
+              {c.directions}
+            </a>
+          </div>
+
+          <div className="md:col-span-2">
+            <h2 className="eyebrow">{c.when}</h2>
+            <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+              <span className="font-semibold text-ink">{c.weekdays}</span>
+              <br />
+              {SITE.hours.shifts.map((shift) => (
+                <span key={shift.opens} className="tabular block">
+                  {formatShift(shift)}
+                </span>
+              ))}
+            </p>
+            <p className="mt-2 text-[13.5px] leading-relaxed text-ink-muted">
+              {c.weekend} {c.holidays}
+            </p>
+          </div>
+
+          <div className="md:col-span-3">
+            <h2 className="eyebrow">{c.site}</h2>
+            <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1.5 text-[15px]">
+              {NAV.map((item) => (
+                <li key={item.to}>
+                  <Link to={item.to} className="text-ink-soft hover:text-forest">
+                    {item.label[lang]}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link to="/alergenos" className="text-ink-soft hover:text-forest">
+                  {c.allergens}
+                </Link>
+              </li>
+            </ul>
+            <h2 className="eyebrow mt-6">{c.contact}</h2>
+            <ul className="mt-3 space-y-1.5 text-[15px]">
+              <li>
+                <a href={SITE.instagram.url} className="inline-flex items-center gap-2 text-ink-soft hover:text-forest">
+                  <Instagram className="h-4 w-4" aria-hidden="true" />
+                  {SITE.instagram.handle}
+                </a>
+              </li>
+              <li>
+                <a href={`mailto:${SITE.email}`} className="inline-flex items-center gap-2 text-ink-soft hover:text-forest">
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  {SITE.email}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="hairline mt-10" />
+        <div className="mt-5 flex flex-col gap-3 text-[13px] text-ink-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>
+            © {year} Raíz y Grano · {SITE.legal.name}
+          </p>
+          <ul className="flex flex-wrap gap-x-4 gap-y-1">
+            <li>
+              <Link to="/aviso-legal" className="hover:text-forest">
+                {c.legal}
+              </Link>
+            </li>
+            <li>
+              <Link to="/privacidad" className="hover:text-forest">
+                {c.privacy}
+              </Link>
+            </li>
+            <li>
+              <Link to="/alergenos" className="hover:text-forest">
+                {c.allergens}
+              </Link>
+            </li>
+            <li>
+              <a href={SITE.app.privacy} className="hover:text-forest">
+                {c.appPrivacy}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </Container>
+    </footer>
+  );
+}
