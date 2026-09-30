@@ -13,9 +13,10 @@ import {
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import { useCopy, type Copy } from "@/i18n";
+import { useCopy, useLang, type Copy } from "@/i18n";
 import { SITE, formatShift } from "@/content/site";
 import { FAMILIES } from "@/content/carta";
+import { waitlistMailto } from "@/content/waitlist";
 import { BonoCard } from "@/components/Bono";
 import { FamilyCard } from "@/components/Carta";
 import { CampusSketch } from "@/components/CampusSketch";
@@ -28,6 +29,7 @@ type Door = { eyebrow: string; title: string; text: string; link: string };
 
 type HomeCopy = {
   hero: { eyebrow: string; title: string; lead: string; order: string; menu: string; hours: string; milk: string; combo: string };
+  soon: string;
   doors: { eyebrow: string; title: string; intro: string; bar: Door; phone: Door; office: Door };
   app: { eyebrow: string; title: string; points: string[]; cta: string; install: string };
   carta: { eyebrow: string; title: string; intro: string; notes: string[]; cta: string };
@@ -63,10 +65,11 @@ const COPY: Copy<HomeCopy> = {
       milk: "Leche vegetal sin suplemento",
       combo: "Menú desayuno o merienda +2 €",
     },
+    soon: "Próximamente",
     doors: {
-      eyebrow: "Tres formas de pedir",
-      title: "En la barra, en el móvil o en tu despacho",
-      intro: "Tres puertas de entrada para tres públicos distintos, y detrás el mismo equipo preparando cada taza.",
+      eyebrow: "Cómo pedir",
+      title: "En la barra, en el móvil y, pronto, en tu despacho",
+      intro: "Hoy puedes pedir en la barra o desde la app. El servicio para reuniones de departamento está en camino.",
       bar: {
         eyebrow: "En la barra",
         title: "Pásate entre clases",
@@ -82,8 +85,8 @@ const COPY: Copy<HomeCopy> = {
       office: {
         eyebrow: "En tu despacho",
         title: "Café para tu reunión",
-        text: "Si eres profesor o profesora, pide combos o un pedido a medida desde la app y te lo llevamos al aula o al despacho.",
-        link: "Para profesorado",
+        text: "Estamos preparando combos de reunión con entrega en el aula o el despacho. Todavía no está disponible: apúntate a la lista de espera y te avisamos cuando empiece.",
+        link: "Lista de espera",
       },
     },
     app: {
@@ -107,11 +110,11 @@ const COPY: Copy<HomeCopy> = {
     },
     teachers: {
       eyebrow: "Profesorado y departamentos",
-      title: "¿Reunión de departamento? Te lo llevamos.",
-      text: "Combos de reunión con bebida, snack y repostería, elegidos hueco a hueco para que cada persona tenga lo suyo. Nos dices el aula o el despacho y la hora, y el pedido queda a nombre de tu departamento.",
-      steps: ["Crea tu cuenta en la app como profesor o profesora.", "Elige combos de reunión o arma tu pedido.", "Dinos dónde y a qué hora, y paga desde la app."],
-      how: "Cómo funciona",
-      order: "Pedir desde la app",
+      title: "¿Reunión de departamento? Pronto te lo llevaremos.",
+      text: "Estamos preparando combos de reunión con bebida, snack y repostería, elegidos hueco a hueco, con entrega en el aula o el despacho a la hora que digas. Todavía no está disponible: si te interesa, apúntate a la lista de espera y serás de los primeros en saberlo.",
+      steps: ["Te apuntas a la lista de espera con un correo.", "Te avisamos en cuanto el servicio arranque.", "Pides desde la app: aula o despacho, hora y departamento."],
+      how: "Cómo funcionará",
+      order: "Apuntarme a la lista de espera",
     },
     story: {
       eyebrow: "Nuestra historia",
@@ -159,10 +162,11 @@ const COPY: Copy<HomeCopy> = {
       milk: "Plant milk at no extra charge",
       combo: "Breakfast or afternoon menu +€2",
     },
+    soon: "Coming soon",
     doors: {
-      eyebrow: "Three ways to order",
-      title: "At the bar, on your phone or in your office",
-      intro: "Three ways in for three different audiences, and the same team behind every cup.",
+      eyebrow: "How to order",
+      title: "At the bar, on your phone and, soon, in your office",
+      intro: "Today you can order at the bar or in the app. The service for department meetings is on its way.",
       bar: {
         eyebrow: "At the bar",
         title: "Drop by between classes",
@@ -178,8 +182,8 @@ const COPY: Copy<HomeCopy> = {
       office: {
         eyebrow: "In your office",
         title: "Coffee for your meeting",
-        text: "If you teach at UFV, order meeting combos or a custom order in the app and we’ll bring it to your classroom or office.",
-        link: "For faculty",
+        text: "We’re preparing meeting combos delivered to your classroom or office. It isn’t available yet: join the waiting list and we’ll let you know when it starts.",
+        link: "Waiting list",
       },
     },
     app: {
@@ -203,11 +207,11 @@ const COPY: Copy<HomeCopy> = {
     },
     teachers: {
       eyebrow: "Faculty and departments",
-      title: "Department meeting? We’ll bring it over.",
-      text: "Meeting combos with a drink, a snack and something sweet, chosen slot by slot so everyone gets what they like. Tell us the room and the time, and the order goes under your department’s name.",
-      steps: ["Create your account in the app as a teacher.", "Pick meeting combos or build your own order.", "Tell us where and when, and pay in the app."],
-      how: "How it works",
-      order: "Order in the app",
+      title: "Department meeting? Soon we’ll bring it over.",
+      text: "We’re preparing meeting combos with a drink, a snack and something sweet, chosen slot by slot, delivered to your classroom or office at the time you choose. It isn’t available yet: if you’re interested, join the waiting list and you’ll be among the first to know.",
+      steps: ["Join the waiting list with an email.", "We’ll let you know as soon as the service starts.", "Order in the app: room, time and department."],
+      how: "How it will work",
+      order: "Join the waiting list",
     },
     story: {
       eyebrow: "Our story",
@@ -255,10 +259,11 @@ const COPY: Copy<HomeCopy> = {
       milk: "Lait végétal sans supplément",
       combo: "Formule petit-déjeuner ou goûter +2 €",
     },
+    soon: "Bientôt",
     doors: {
-      eyebrow: "Trois façons de commander",
-      title: "Au comptoir, sur votre téléphone ou dans votre bureau",
-      intro: "Trois portes d’entrée pour trois publics différents, et derrière, la même équipe qui prépare chaque tasse.",
+      eyebrow: "Comment commander",
+      title: "Au comptoir, sur votre téléphone et, bientôt, dans votre bureau",
+      intro: "Aujourd’hui, vous pouvez commander au comptoir ou sur l’app. Le service pour les réunions de département arrive bientôt.",
       bar: {
         eyebrow: "Au comptoir",
         title: "Passez entre deux cours",
@@ -274,8 +279,8 @@ const COPY: Copy<HomeCopy> = {
       office: {
         eyebrow: "Dans votre bureau",
         title: "Du café pour votre réunion",
-        text: "Si vous enseignez à l’UFV, commandez des formules de réunion ou une commande sur mesure dans l’app : nous l’apportons en salle ou au bureau.",
-        link: "Pour les enseignants",
+        text: "Nous préparons des formules de réunion livrées en salle ou au bureau. Ce n’est pas encore disponible : inscrivez-vous sur la liste d’attente et nous vous préviendrons au lancement.",
+        link: "Liste d’attente",
       },
     },
     app: {
@@ -299,11 +304,11 @@ const COPY: Copy<HomeCopy> = {
     },
     teachers: {
       eyebrow: "Enseignants et départements",
-      title: "Une réunion de département ? On vous l’apporte.",
-      text: "Des formules de réunion avec boisson, snack et pâtisserie, choisies créneau par créneau pour que chacun ait ce qu’il aime. Indiquez la salle et l’heure : la commande est au nom de votre département.",
-      steps: ["Créez votre compte enseignant dans l’app.", "Choisissez des formules de réunion ou composez votre commande.", "Indiquez le lieu et l’heure, et payez dans l’app."],
-      how: "Comment ça marche",
-      order: "Commander sur l’app",
+      title: "Une réunion de département ? Bientôt, on vous l’apporte.",
+      text: "Nous préparons des formules de réunion avec boisson, snack et pâtisserie, choisies créneau par créneau, livrées en salle ou au bureau à l’heure de votre choix. Pas encore disponible : si cela vous intéresse, inscrivez-vous sur la liste d’attente et vous serez parmi les premiers informés.",
+      steps: ["Inscrivez-vous sur la liste d’attente par e-mail.", "Nous vous prévenons dès le lancement du service.", "Commandez sur l’app : salle, heure et département."],
+      how: "Comment ça marchera",
+      order: "M’inscrire sur la liste d’attente",
     },
     story: {
       eyebrow: "Notre histoire",
@@ -410,12 +415,28 @@ function Hero({ c }: { c: HomeCopy["hero"] }) {
   );
 }
 
-function DoorCard({ door, to, icon, tone }: { door: Door; to: string; icon: ReactNode; tone?: "leaf" | "cream" }) {
+function DoorCard({
+  door,
+  to,
+  icon,
+  tone,
+  soon,
+}: {
+  door: Door;
+  to: string;
+  icon: ReactNode;
+  tone?: "leaf" | "cream";
+  /** Servicio que aún no está abierto: lleva la etiqueta «Próximamente». */
+  soon?: string;
+}) {
   return (
     <article className="card flex flex-col p-6 sm:p-7">
-      <IconTile tone={tone} size={52}>
-        {icon}
-      </IconTile>
+      <div className="flex items-start justify-between gap-3">
+        <IconTile tone={tone} size={52}>
+          {icon}
+        </IconTile>
+        {soon && <span className="pill pill-cream">{soon}</span>}
+      </div>
       <p className="eyebrow mt-5">{door.eyebrow}</p>
       <h3 className="display mt-1.5 text-[1.55rem] leading-tight text-forest">{door.title}</h3>
       <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{door.text}</p>
@@ -429,6 +450,7 @@ function DoorCard({ door, to, icon, tone }: { door: Door; to: string; icon: Reac
 
 export default function Home() {
   const c = useCopy(COPY);
+  const { lang } = useLang();
 
   return (
     <>
@@ -441,7 +463,12 @@ export default function Home() {
           <div className="mt-10 grid gap-5 md:grid-cols-3">
             <DoorCard door={c.doors.bar} to="/carta" tone="cream" icon={<Coffee className="h-6 w-6" strokeWidth={1.7} />} />
             <DoorCard door={c.doors.phone} to="/la-app" tone="leaf" icon={<Smartphone className="h-6 w-6" strokeWidth={1.7} />} />
-            <DoorCard door={c.doors.office} to="/profesorado" icon={<BriefcaseBusiness className="h-6 w-6" strokeWidth={1.7} />} />
+            <DoorCard
+              door={c.doors.office}
+              to="/profesorado#lista-espera"
+              soon={c.soon}
+              icon={<BriefcaseBusiness className="h-6 w-6" strokeWidth={1.7} />}
+            />
           </div>
         </Container>
       </section>
@@ -504,13 +531,21 @@ export default function Home() {
         <Container>
           <div className="grid items-center gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <SectionHeader id="titulo-profesorado" eyebrow={c.teachers.eyebrow} title={c.teachers.title} intro={c.teachers.text} />
+              <SectionHeader
+                id="titulo-profesorado"
+                eyebrow={
+                  <span className="inline-flex flex-wrap items-center gap-2">
+                    {c.teachers.eyebrow}
+                    <span className="pill pill-cream normal-case tracking-normal">{c.soon}</span>
+                  </span>
+                }
+                title={c.teachers.title}
+                intro={c.teachers.text}
+              />
               <div className="mt-7 flex flex-wrap gap-3">
-                <ButtonLink to="/profesorado" arrow>
+                <ButtonLink to={waitlistMailto(lang)}>{c.teachers.order}</ButtonLink>
+                <ButtonLink to="/profesorado" variant="glass" arrow>
                   {c.teachers.how}
-                </ButtonLink>
-                <ButtonLink to={SITE.app.teacher} variant="glass">
-                  {c.teachers.order}
                 </ButtonLink>
               </div>
             </div>

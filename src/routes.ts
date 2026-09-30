@@ -70,9 +70,9 @@ export const PAGES: PageMeta[] = [
       fr: `Enseignants et départements · ${BRAND}`,
     },
     description: {
-      es: "Combos para reuniones y pedidos del departamento, entregados en tu aula o despacho del campus de la UFV. Se piden desde la app.",
-      en: "Meeting combos and department orders, delivered to your classroom or office on the UFV campus. Ordered from the app.",
-      fr: "Formules pour les réunions et commandes du département, livrées dans votre salle ou votre bureau sur le campus de l’UFV.",
+      es: "Próximamente: café y repostería para reuniones de departamento, entregados en tu aula o despacho del campus de la UFV. Apúntate a la lista de espera.",
+      en: "Coming soon: coffee and pastries for department meetings, delivered to your classroom or office on the UFV campus. Join the waiting list.",
+      fr: "Bientôt : café et pâtisseries pour les réunions de département, livrés en salle ou au bureau sur le campus de l’UFV. Liste d’attente ouverte.",
     },
   },
   {

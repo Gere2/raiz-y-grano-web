@@ -21,7 +21,8 @@ export const SITE = {
     home: "https://app.raizygrano.com/",
     bono: "https://app.raizygrano.com/bono",
     rewards: "https://app.raizygrano.com/rewards",
-    teacher: "https://app.raizygrano.com/teacher-orders",
+    // Sin enlace al pedido de profesores: el reparto aún no está disponible
+    // (30-09-2026). La web ofrece lista de espera (src/content/waitlist.ts).
     privacy: "https://app.raizygrano.com/privacidad",
     terms: "https://app.raizygrano.com/condiciones",
   },

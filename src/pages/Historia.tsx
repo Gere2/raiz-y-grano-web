@@ -87,7 +87,7 @@ const COPY: Copy<{
     tools: [
       { where: "En la barra", name: "El TPV", text: "Cobra, emite el ticket, envía el recibo por email y mantiene la carta al día." },
       { where: "En el móvil", name: "La app", text: "Pedido anticipado para saltarse la cola, granos, retos, cuestionarios sobre el origen del café y el Bono Curso." },
-      { where: "En el despacho", name: "El pedido de profesores", text: "Combos de reunión entregados en un aula o un despacho a una hora concreta, a nombre de un departamento." },
+      { where: "En el despacho", name: "El pedido de profesores", text: "Combos de reunión con aula, hora y departamento. Ya está construido; el reparto se abrirá más adelante, y de momento hay lista de espera." },
       { where: "Detrás", name: "El panel", text: "La receta de cada producto, los proveedores y las facturas, leídas con ayuda de IA. Es la parte que no se ve y la que nos deja decidir con datos." },
     ],
     careEyebrow: "Este curso",
@@ -155,7 +155,7 @@ const COPY: Copy<{
     tools: [
       { where: "At the bar", name: "The till", text: "Takes payments, prints the ticket, emails the receipt and keeps the menu up to date." },
       { where: "On your phone", name: "The app", text: "Order ahead to skip the queue, beans, challenges, quizzes about coffee origins and the Term Pass." },
-      { where: "In the office", name: "Teacher orders", text: "Meeting combos delivered to a classroom or office at a set time, under a department’s name." },
+      { where: "In the office", name: "Teacher orders", text: "Meeting combos with room, time and department. It’s already built; deliveries will open later, and for now there’s a waiting list." },
       { where: "Behind it all", name: "The dashboard", text: "Each product’s recipe, suppliers and invoices, read with the help of AI. The part you don’t see, and the one that lets us decide with data." },
     ],
     careEyebrow: "This year",
@@ -223,7 +223,7 @@ const COPY: Copy<{
     tools: [
       { where: "Au comptoir", name: "La caisse", text: "Encaisse, édite le ticket, envoie le reçu par e-mail et tient la carte à jour." },
       { where: "Sur le téléphone", name: "L’app", text: "Commande anticipée, grains, défis, quiz sur l’origine du café et le Bono Curso." },
-      { where: "Au bureau", name: "La commande enseignants", text: "Des formules de réunion livrées en salle ou au bureau à une heure précise, au nom d’un département." },
+      { where: "Au bureau", name: "La commande enseignants", text: "Des formules de réunion avec salle, heure et département. C’est déjà construit ; les livraisons ouvriront plus tard, et en attendant il y a une liste d’attente." },
       { where: "En coulisses", name: "Le tableau de bord", text: "La recette de chaque produit, les fournisseurs et les factures, lues avec l’aide de l’IA. La partie invisible, qui nous permet de décider avec des données." },
     ],
     careEyebrow: "Cette année",

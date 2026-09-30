@@ -145,6 +145,7 @@ const PRIVACY_SUMMARY: Copy<{ heading: string; points: string[] } | null> = {
       "This website uses no cookies, no analytics and no advertising. It only stores the language you choose in your browser.",
       "It is hosted on GitHub Pages, which logs visitors’ IP addresses for security. We don’t receive those logs.",
       "If you email us, we use your message only to reply. You can exercise your data protection rights by writing to us.",
+      "If you join the faculty waiting list by email, we only use your details to tell you when the service starts.",
       "The app (app.raizygrano.com) has its own privacy policy.",
     ],
   },
@@ -155,6 +156,7 @@ const PRIVACY_SUMMARY: Copy<{ heading: string; points: string[] } | null> = {
       "Ce site n’utilise ni cookies, ni outil d’analyse, ni publicité. Il enregistre seulement dans votre navigateur la langue choisie.",
       "Il est hébergé sur GitHub Pages, qui enregistre l’adresse IP des visiteurs pour des raisons de sécurité. Nous ne recevons pas ces journaux.",
       "Si vous nous écrivez, nous utilisons votre message uniquement pour vous répondre. Vous pouvez exercer vos droits en nous écrivant.",
+      "Si vous vous inscrivez par e-mail sur la liste d’attente enseignants, nous utilisons vos données uniquement pour vous prévenir du lancement.",
       "L’app (app.raizygrano.com) a sa propre politique de confidentialité.",
     ],
   },
@@ -207,6 +209,12 @@ export function Privacidad() {
         contestar a quien nos escribe (art. 6.1.f RGPD). Conservamos esos mensajes mientras sea necesario para atenderte y,
         después, durante los plazos legales de prescripción. Si nos escribes por Instagram, Meta trata además esos datos según
         su propia política.
+      </p>
+      <p>
+        <strong>Lista de espera para profesorado.</strong> Si te apuntas por correo a la lista de espera del servicio para
+        reuniones de departamento, guardamos tu nombre, tu correo, tu departamento y lo que nos cuentes solo para avisarte
+        cuando el servicio empiece. La base jurídica es tu consentimiento (art. 6.1.a RGPD), que puedes retirar cuando quieras
+        escribiéndonos. Te borraremos de la lista cuando lo pidas o, como tarde, cuando te hayamos avisado del arranque.
       </p>
 
       <h2>A quién se comunican</h2>

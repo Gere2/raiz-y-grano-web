@@ -74,7 +74,8 @@ const VARIANT_CLASS = {
 export function ButtonLink({ to, children, variant = "primary", size = "md", className, external, arrow }: ButtonProps) {
   const classes = cx("btn", SIZE_CLASS[size], VARIANT_CLASS[variant], className);
   const isExternal = external ?? /^(https?:|mailto:|tel:)/.test(to);
-  const icon = isExternal ? (
+  // La flecha de salida solo para webs; un mailto: ya dice lo que hace.
+  const icon = /^https?:/.test(to) ? (
     <ArrowUpRight className="h-[17px] w-[17px]" strokeWidth={2} aria-hidden="true" />
   ) : arrow ? (
     <ArrowRight className="h-[17px] w-[17px]" strokeWidth={2} aria-hidden="true" />

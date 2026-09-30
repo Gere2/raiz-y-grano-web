@@ -36,6 +36,16 @@ describe("páginas prerenderizadas", () => {
     }
   });
 
+  it("no manda a nadie al pedido de profesores mientras el reparto no esté abierto", () => {
+    const all = PAGES.map((p) => render(p.path)).join("\n");
+    expect(all).not.toContain("teacher-orders");
+    const prof = render("/profesorado");
+    expect(prof).toContain("Próximamente");
+    expect(prof).toContain("lista de espera");
+    expect(prof).toContain("mailto:info@raizygrano.com?subject=Lista%20de%20espera");
+    expect(render("/")).toContain("/profesorado#lista-espera");
+  });
+
   it("enseña la carta con precios en formato de carta", () => {
     const carta = render("/carta");
     expect(carta).toContain("Café de especialidad V60");
