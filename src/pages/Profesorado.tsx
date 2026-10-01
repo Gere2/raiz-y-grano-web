@@ -183,7 +183,7 @@ export default function Profesorado() {
         </Container>
       </section>
 
-      <section id="lista-espera" aria-labelledby="titulo-lista" className="scroll-mt-28 pt-16">
+      <section id="lista-espera" aria-labelledby="titulo-lista" className="pt-16">
         <Container>
           <div className="card-cream flex flex-col gap-6 p-6 sm:p-8 md:flex-row md:items-center md:justify-between">
             <div className="flex items-start gap-4">
@@ -208,7 +208,7 @@ export default function Profesorado() {
         </Container>
       </section>
 
-      <section id="como-funcionara" aria-labelledby="titulo-pasos" className="scroll-mt-28 pt-20 sm:pt-24">
+      <section id="como-funcionara" aria-labelledby="titulo-pasos" className="pt-20 sm:pt-24">
         <Container>
           <SectionHeader id="titulo-pasos" eyebrow={c.stepsEyebrow} title={c.stepsTitle} />
           <ol className="mt-10 grid gap-4 md:grid-cols-2">

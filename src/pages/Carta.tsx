@@ -1,4 +1,4 @@
-import { Leaf, ShieldAlert, Wheat } from "lucide-react";
+import { Leaf, ShieldAlert, Sparkles, Wheat } from "lucide-react";
 import { formatDate, formatPrice, useCopy, useLang, type Copy } from "@/i18n";
 import { CARTA_UPDATED, EXTRAS, FAMILIES, WATER } from "@/content/carta";
 import { SITE } from "@/content/site";
@@ -12,6 +12,7 @@ const COPY: Copy<{
   meta: (date: string) => string;
   order: string;
   allergens: string;
+  picker: string;
   jump: string;
   menuTitle: string;
   menuText: (price: string) => string;
@@ -33,6 +34,7 @@ const COPY: Copy<{
     meta: (date) => `Precios con IVA incluido. Carta actualizada el ${date}; en la app ves siempre la del día y puedes pedir.`,
     order: "Pedir en la app",
     allergens: "Alérgenos",
+    picker: "¿No sabes qué elegir? Prueba el recomendador",
     jump: "Ir a una familia de la carta",
     menuTitle: "Menú desayuno o merienda",
     menuText: (price) => `Añade un bizcocho de zanahoria a cualquier bebida de la carta por ${price} más.`,
@@ -54,6 +56,7 @@ const COPY: Copy<{
     meta: (date) => `Prices include VAT. Menu updated on ${date}; the app always shows today’s menu and lets you order.`,
     order: "Order in the app",
     allergens: "Allergens",
+    picker: "Not sure what to pick? Try the recommender",
     jump: "Jump to a menu section",
     menuTitle: "Breakfast or afternoon menu",
     menuText: (price) => `Add a slice of carrot cake to any drink on the menu for ${price} more.`,
@@ -75,6 +78,7 @@ const COPY: Copy<{
     meta: (date) => `Prix TTC. Carte mise à jour le ${date} ; l’app affiche toujours celle du jour et permet de commander.`,
     order: "Commander sur l’app",
     allergens: "Allergènes",
+    picker: "Vous hésitez ? Laissez-vous guider",
     jump: "Aller à une famille de la carte",
     menuTitle: "Formule petit-déjeuner ou goûter",
     menuText: (price) => `Ajoutez un gâteau à la carotte à n’importe quelle boisson de la carte pour ${price} de plus.`,
@@ -109,6 +113,10 @@ export default function Carta() {
                   {c.allergens}
                 </ButtonLink>
               </div>
+              <TextLink to="/recomendador" className="mt-5 inline-flex items-center gap-1.5 text-[15.5px]">
+                <Sparkles className="h-4 w-4" aria-hidden="true" />
+                {c.picker}
+              </TextLink>
             </div>
             <div className="hidden lg:col-span-4 lg:block">
               <img src="/brand/semillas.webp" alt="" aria-hidden="true" width={700} height={695} className="ml-auto h-auto w-[250px] opacity-90" />
@@ -139,7 +147,7 @@ export default function Carta() {
               key={family.id}
               id={family.id}
               aria-labelledby={`familia-${family.id}`}
-              className="card break-inside-avoid scroll-mt-[150px] p-5 sm:p-6"
+              className="card break-inside-avoid scroll-mt-16 p-5 sm:p-6"
             >
               <header className="flex items-center gap-4">
                 <ArtTile art={family.art} size={72} />

@@ -12,6 +12,7 @@ import Origen from "@/pages/Origen";
 import Alergenos from "@/pages/Alergenos";
 import FichaRetirada from "@/pages/FichaRetirada";
 import NotFound from "@/pages/NotFound";
+import RecomendadorPage from "@/pages/RecomendadorPage";
 import { AvisoLegal, Privacidad } from "@/pages/Legal";
 
 /** Atajos que salen de la web (raizygrano.com/app → la app). */
@@ -35,6 +36,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/carta" element={<Carta />} />
+          <Route path="/recomendador" element={<RecomendadorPage />} />
           <Route path="/la-app" element={<LaApp />} />
           <Route path="/profesorado" element={<Profesorado />} />
           <Route path="/historia" element={<Historia />} />

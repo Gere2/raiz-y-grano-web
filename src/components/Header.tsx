@@ -9,6 +9,7 @@ type NavItem = { to: string; label: Copy<string> };
 
 export const NAV: NavItem[] = [
   { to: "/carta", label: { es: "Carta", en: "Menu", fr: "Carte" } },
+  { to: "/recomendador", label: { es: "¿Qué tomo?", en: "Pick for me", fr: "Que prendre ?" } },
   { to: "/la-app", label: { es: "La app", en: "The app", fr: "L’app" } },
   { to: "/profesorado", label: { es: "Profesorado", en: "Faculty", fr: "Enseignants" } },
   { to: "/historia", label: { es: "Historia", en: "Our story", fr: "Histoire" } },
@@ -88,17 +89,17 @@ export function Header() {
       <div className="glass mx-auto flex h-14 max-w-page items-center justify-between gap-2 rounded-full pl-2.5 pr-2 sm:h-[60px] sm:pl-3">
         <BrandLink label={c.home} />
 
-        <nav aria-label="Principal" className="hidden lg:block">
+        <nav aria-label="Principal" className="hidden xl:block">
           <ul className="flex items-center gap-0.5">
             {NAV.map((item) => (
               <li key={item.to}>
-                <NavLink to={item.to} className="nav-link">
+                <NavLink to={item.to} className="nav-link whitespace-nowrap">
                   {item.label[lang]}
                 </NavLink>
               </li>
             ))}
             <li>
-              <Link to="/#visitanos" className="nav-link">
+              <Link to="/#visitanos" className="nav-link whitespace-nowrap">
                 {c.visit}
               </Link>
             </li>
@@ -114,7 +115,7 @@ export function Header() {
           <button
             ref={buttonRef}
             type="button"
-            className="btn btn-glass btn-sm w-[38px] px-0 lg:hidden"
+            className="btn btn-glass btn-sm w-[38px] px-0 xl:hidden"
             aria-expanded={open}
             aria-controls="menu-movil"
             aria-label={open ? c.close : c.menu}
@@ -127,11 +128,11 @@ export function Header() {
 
       {open && (
         <>
-          <div className="glass-scrim animate-fade fixed inset-0 -z-10 lg:hidden" aria-hidden="true" onClick={() => setOpen(false)} />
+          <div className="glass-scrim animate-fade fixed inset-0 -z-10 xl:hidden" aria-hidden="true" onClick={() => setOpen(false)} />
           <div
             ref={sheetRef}
             id="menu-movil"
-            className="glass-sheet animate-sheet mx-auto mt-2 max-w-page p-3 lg:hidden"
+            className="glass-sheet animate-sheet mx-auto mt-2 max-w-page p-3 xl:hidden"
           >
             <nav aria-label="Principal">
               <ul className="grid gap-1">

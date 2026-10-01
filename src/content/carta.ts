@@ -454,6 +454,45 @@ export function fromPrice(family: Family): number {
   return Math.min(...prices);
 }
 
+/** Un producto del TPV con lo que hace falta para enseñarlo fuera de la carta. */
+export type ProductRef = {
+  pos: string;
+  name: Copy<string>;
+  price: number;
+  familyId: string;
+  familyArt: string;
+};
+
+/**
+ * Índice por nombre del TPV. Las variantes de CookieCup son productos
+ * distintos en el TPV y aquí también («Café en CookieCup · chocolate»).
+ */
+export function productIndex(): Map<string, ProductRef> {
+  const index = new Map<string, ProductRef>();
+  for (const family of FAMILIES) {
+    for (const item of family.items) {
+      if (item.variants) {
+        for (const v of item.variants) {
+          index.set(v.pos, {
+            pos: v.pos,
+            name: {
+              es: `${item.name.es} · ${v.label.es}`,
+              en: `${item.name.en} · ${v.label.en}`,
+              fr: `${item.name.fr} · ${v.label.fr}`,
+            },
+            price: v.price,
+            familyId: family.id,
+            familyArt: family.art,
+          });
+        }
+      } else if (item.pos && item.price !== undefined) {
+        index.set(item.pos, { pos: item.pos, name: item.name, price: item.price, familyId: family.id, familyArt: family.art });
+      }
+    }
+  }
+  return index;
+}
+
 /** Cada producto del TPV que aparece en la carta de la web, con su precio. */
 export function posProducts(): { pos: string; price: number }[] {
   const rows: { pos: string; price: number }[] = [];

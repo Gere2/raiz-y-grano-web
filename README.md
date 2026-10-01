@@ -19,6 +19,7 @@ materiales (papel, cristal, botones) en `src/styles.css`.
 | --- | --- |
 | Horario, dirección, correo, enlaces a la app, datos legales | `src/content/site.ts` |
 | Productos y precios de la carta | `src/content/carta.ts` |
+| Perfil de cada producto para el recomendador (frío o caliente, cafeína, dulzor, sabor) | `src/content/recomendador.ts` |
 | Páginas, títulos y descripciones para buscadores, redirecciones | `src/routes.ts` |
 | Textos de cada página (castellano, inglés y francés) | `src/pages/*.tsx`, en el objeto `COPY` de cada una |
 
@@ -27,6 +28,9 @@ materiales (papel, cristal, botones) en `src/styles.css`.
 1. Cambia el precio en el TPV (es la fuente de verdad).
 2. Cámbialo en `src/content/carta.ts` y actualiza `CARTA_UPDATED`.
 3. Cambia la misma línea en `TPV_V22` de `src/content/carta.test.ts`.
+
+Si entra un producto nuevo, además necesita su perfil en `src/content/recomendador.ts`: el test
+del recomendador falla mientras falte.
 
 `npm test` compara nombre a nombre y precio a precio la carta de la web con la lista del TPV:
 si falta un producto, sobra uno o no cuadra un precio, falla. Un precio publicado en la web

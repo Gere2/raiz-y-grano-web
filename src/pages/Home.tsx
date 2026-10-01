@@ -8,6 +8,7 @@ import {
   Mail,
   MapPin,
   Smartphone,
+  Sparkles,
   Sprout,
   Wheat,
 } from "lucide-react";
@@ -18,6 +19,8 @@ import { SITE, formatShift } from "@/content/site";
 import { FAMILIES } from "@/content/carta";
 import { waitlistMailto } from "@/content/waitlist";
 import { BonoCard } from "@/components/Bono";
+import { Recomendador } from "@/components/Recomendador";
+import { RECOMENDADOR_COPY } from "@/pages/RecomendadorPage";
 import { FamilyCard } from "@/components/Carta";
 import { CampusSketch } from "@/components/CampusSketch";
 import { ButtonLink, Container, Eyebrow, IconTile, SectionHeader, TextLink } from "@/components/ui";
@@ -28,7 +31,7 @@ const HIGH_PRIORITY = { fetchpriority: "high" } as Record<string, string>;
 type Door = { eyebrow: string; title: string; text: string; link: string };
 
 type HomeCopy = {
-  hero: { eyebrow: string; title: string; lead: string; order: string; menu: string; hours: string; milk: string; combo: string };
+  hero: { eyebrow: string; title: string; lead: string; order: string; menu: string; picker: string; hours: string; milk: string; combo: string };
   soon: string;
   doors: { eyebrow: string; title: string; intro: string; bar: Door; phone: Door; office: Door };
   app: { eyebrow: string; title: string; points: string[]; cta: string; install: string };
@@ -61,6 +64,7 @@ const COPY: Copy<HomeCopy> = {
       lead: "Estamos en el campus de la Universidad Francisco de Vitoria, entre el Edificio H y el CRAI. Pide desde la app, sáltate la cola y recógelo en barra.",
       order: "Pedir en la app",
       menu: "Ver la carta",
+      picker: "¿No sabes qué tomar? Te ayudamos a elegir",
       hours: "Lunes a viernes · 8:00 – 19:00",
       milk: "Leche vegetal sin suplemento",
       combo: "Menú desayuno o merienda +2 €",
@@ -158,6 +162,7 @@ const COPY: Copy<HomeCopy> = {
       lead: "We’re on the Universidad Francisco de Vitoria campus, between Building H and the CRAI library. Order in the app, skip the queue and pick it up at the bar.",
       order: "Order in the app",
       menu: "See the menu",
+      picker: "Not sure what to get? We’ll help you choose",
       hours: "Monday to Friday · 8:00 – 19:00",
       milk: "Plant milk at no extra charge",
       combo: "Breakfast or afternoon menu +€2",
@@ -255,6 +260,7 @@ const COPY: Copy<HomeCopy> = {
       lead: "Nous sommes sur le campus de l’Universidad Francisco de Vitoria, entre le bâtiment H et le CRAI. Commandez sur l’app, évitez la file et récupérez votre boisson au comptoir.",
       order: "Commander sur l’app",
       menu: "Voir la carte",
+      picker: "Vous hésitez ? On vous aide à choisir",
       hours: "Du lundi au vendredi · 8:00 – 19:00",
       milk: "Lait végétal sans supplément",
       combo: "Formule petit-déjeuner ou goûter +2 €",
@@ -371,6 +377,10 @@ function Hero({ c }: { c: HomeCopy["hero"] }) {
                 {c.menu}
               </ButtonLink>
             </div>
+            <a href="#recomendador" className="link animate-fade-up delay-3 mt-5 inline-flex items-center gap-1.5 text-[15.5px]">
+              <Sparkles className="h-4 w-4" aria-hidden="true" />
+              {c.picker}
+            </a>
             <ul className="animate-fade-up delay-4 mt-7 flex flex-wrap gap-2">
               <li className="pill pill-glass">
                 <Clock3 className="h-3.5 w-3.5 text-forest" aria-hidden="true" />
@@ -451,6 +461,7 @@ function DoorCard({
 export default function Home() {
   const c = useCopy(COPY);
   const { lang } = useLang();
+  const picker = useCopy(RECOMENDADOR_COPY);
 
   return (
     <>
@@ -523,6 +534,30 @@ export default function Home() {
               </li>
             ))}
           </ul>
+        </Container>
+      </section>
+
+      {/* Recomendador */}
+      <section id="recomendador" aria-labelledby="titulo-recomendador-inicio" className="pt-20 sm:pt-24">
+        <Container>
+          <div className="grid gap-8 lg:grid-cols-12 lg:gap-10">
+            <div className="lg:col-span-4">
+              <SectionHeader id="titulo-recomendador-inicio" eyebrow={picker.eyebrow} title={picker.title} intro={picker.lead} />
+              <p className="mt-5 hidden text-[14.5px] leading-relaxed text-ink-soft lg:block">{picker.how}</p>
+              <img
+                src="/brand/semillas.webp"
+                alt=""
+                aria-hidden="true"
+                width={700}
+                height={695}
+                loading="lazy"
+                className="mt-8 hidden h-auto w-[200px] opacity-90 lg:block"
+              />
+            </div>
+            <div className="lg:col-span-8">
+              <Recomendador />
+            </div>
+          </div>
         </Container>
       </section>
 

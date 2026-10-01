@@ -46,6 +46,16 @@ describe("páginas prerenderizadas", () => {
     expect(render("/")).toContain("/profesorado#lista-espera");
   });
 
+  it("tiene el recomendador en la portada y en su página, empezando por la primera pregunta", () => {
+    for (const path of ["/", "/recomendador"]) {
+      const html = render(path);
+      expect(html, path).toContain("¿No sabes qué tomar?");
+      expect(html, path).toContain("¿Qué te apetece?");
+      expect(html, path).toContain("Necesito despertarme");
+    }
+    expect(render("/carta")).toContain('href="/recomendador"');
+  });
+
   it("enseña la carta con precios en formato de carta", () => {
     const carta = render("/carta");
     expect(carta).toContain("Café de especialidad V60");

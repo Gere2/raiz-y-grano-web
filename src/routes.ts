@@ -50,6 +50,19 @@ export const PAGES: PageMeta[] = [
     },
   },
   {
+    path: "/recomendador",
+    title: {
+      es: `¿No sabes qué tomar? Recomendador · ${BRAND}`,
+      en: `Not sure what to get? · ${BRAND}`,
+      fr: `Vous hésitez ? · ${BRAND}`,
+    },
+    description: {
+      es: "Responde unas preguntas (frío o caliente, energía, sabor, dulzor y leche) y te recomendamos qué pedir de la carta 2026/27 de Raíz y Grano.",
+      en: "Answer a few questions (hot or cold, energy, flavour, sweetness and milk) and we’ll recommend what to order from our 2026/27 menu.",
+      fr: "Répondez à quelques questions (chaud ou froid, énergie, saveur, sucre et lait) et nous vous recommandons quoi commander sur la carte 2026/27.",
+    },
+  },
+  {
     path: "/la-app",
     title: {
       es: `La app · ${BRAND}`,
