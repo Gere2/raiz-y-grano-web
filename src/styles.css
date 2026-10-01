@@ -490,6 +490,22 @@
   .delay-4 { animation-delay: 320ms; }
 }
 
+/* Borde de desplazamiento: bajo la cabecera flotante el contenido se funde
+   con el papel en vez de asomar por encima de la cápsula (igual que en la app). */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 -14px 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(245, 238, 226, 0.96) 0%,
+    rgba(245, 238, 226, 0.78) 45%,
+    rgba(245, 238, 226, 0) 100%
+  );
+}
+
 /* Sin desenfoque disponible: el cristal se vuelve papel opaco. */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass { background: rgba(251, 248, 241, 0.97); }

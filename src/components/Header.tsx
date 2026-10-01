@@ -85,7 +85,7 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 px-3 pb-2 pt-3 sm:px-4">
+    <header className="site-header sticky top-0 z-50 px-3 pb-2 pt-3 sm:px-4">
       <div className="glass mx-auto flex h-14 max-w-page items-center justify-between gap-2 rounded-full pl-2.5 pr-2 sm:h-[60px] sm:pl-3">
         <BrandLink label={c.home} />
 
