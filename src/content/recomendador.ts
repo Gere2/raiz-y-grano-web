@@ -90,8 +90,9 @@ export const PROFILES: Profile[] = [
     pitch: c("Iced latte con pistacho: cremoso y dulce.", "Iced latte with pistachio: creamy and sweet.", "Iced latte à la pistache : crémeux et doux.") },
 
   // ── Matcha y de la casa ───────────────────────────────────────────
-  { pos: "Matcha Latte", kind: "bebida", temp: "caliente", caffeine: 2, sweet: 1, intensity: 1, milk: true, tastes: ["verde", "cremoso"],
-    pitch: c("Matcha con leche: energía tranquila y sabor vegetal.", "Matcha with milk: calm energy and a grassy flavour.", "Matcha au lait : énergie douce et saveur végétale.") },
+  // Sin azúcar (confirmado por el propietario el 01-10-2026).
+  { pos: "Matcha Latte", kind: "bebida", temp: "caliente", caffeine: 2, sweet: 0, intensity: 1, milk: true, tastes: ["verde", "cremoso"],
+    pitch: c("Matcha con leche, sin azúcar: energía tranquila y sabor vegetal.", "Matcha with milk, no sugar: calm energy and a grassy flavour.", "Matcha au lait, sans sucre : énergie douce et saveur végétale.") },
   { pos: "Iced Matcha", kind: "bebida", temp: "frio", caffeine: 2, sweet: 1, intensity: 1, milk: true, tastes: ["verde", "cremoso"],
     pitch: c("Matcha con leche fría y hielo.", "Matcha with cold milk over ice.", "Matcha, lait froid et glaçons.") },
   { pos: "Iced Matcha de vainilla", kind: "bebida", temp: "frio", caffeine: 2, sweet: 2, intensity: 1, milk: true, tastes: ["verde", "cremoso"],

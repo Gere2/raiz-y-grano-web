@@ -90,11 +90,20 @@ describe("recomendaciones", () => {
     expect(rankFoods({ want: "comer", food: "fruta", hunger: "hambre" })[0].profile.pos).toBe("Açaí Bowl");
   });
 
-  it("«pausa en la biblioteca»: matcha latte con bizcocho, al precio del combo", () => {
+  it("«pausa en la biblioteca»: bebida caliente y suave con bizcocho, al precio del combo o del menú", () => {
     const [best] = rankPairs(PRESETS.find((p) => p.id === "biblioteca")!.answers);
-    expect([best.drink.profile.pos, best.food.profile.pos]).toEqual(["Matcha Latte", "Tarta de zanahoria y nueces"]);
-    expect(best.price.deal?.kind).toBe("combo");
-    expect(best.price.total).toBe(5);
+    expect(best.drink.profile.temp).toBe("caliente");
+    expect([1, 2]).toContain(best.drink.profile.caffeine);
+    expect(best.food.profile.pos).toBe("Tarta de zanahoria y nueces");
+    expect(best.price.saving).toBeGreaterThan(0);
+  });
+
+  it("el matcha latte no lleva azúcar: sale para quien no quiere nada dulce", () => {
+    const firstThree = rankDrinks({ want: "beber", temp: "caliente", energy: "suave", taste: "verde", sweet: "nada", milk: "normal" })
+      .slice(0, 3)
+      .map((s) => s.profile.pos);
+    expect(firstThree).toContain("Matcha Latte");
+    expect(PROFILES.find((p) => p.pos === "Matcha Latte")!.sweet).toBe(0);
   });
 
   it("no ofrece el tamaño grande como otra opción: es la misma bebida", () => {

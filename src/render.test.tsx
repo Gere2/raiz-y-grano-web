@@ -1,3 +1,5 @@
+/// <reference types="node" />
+import { existsSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { render } from "./entry-server";
 import { PAGES } from "./routes";
@@ -54,6 +56,23 @@ describe("páginas prerenderizadas", () => {
       expect(html, path).toContain("Necesito despertarme");
     }
     expect(render("/carta")).toContain('href="/recomendador"');
+  });
+
+  it("cuenta la historia en cinco capítulos, del montaje a hoy", () => {
+    const html = render("/historia");
+    const at = ["Bajo tierra", "Los primeros cafés", "Abrimos con equipo", "El café sale de la barra", "Lo que está brotando"].map((t) =>
+      html.indexOf(t),
+    );
+    expect(at.every((i) => i > 0), JSON.stringify(at)).toBe(true);
+    expect([...at].sort((a, b) => a - b)).toEqual(at);
+  });
+
+  it("solo enlaza grabados e imágenes de marca que existen", () => {
+    const all = PAGES.map((p) => render(p.path)).join("\n");
+    // También las de srcset, que van varias en el mismo atributo.
+    const refs = new Set(all.match(/\/brand\/[^"\s,)]+/g));
+    expect(refs.size).toBeGreaterThan(5);
+    for (const ref of refs) expect(existsSync(new URL(`../public${ref}`, import.meta.url)), ref).toBe(true);
   });
 
   it("enseña la carta con precios en formato de carta", () => {

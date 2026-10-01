@@ -3,18 +3,31 @@ import { useCopy, type Copy } from "@/i18n";
 import { ButtonLink, Container, SectionHeader, cx } from "@/components/ui";
 import { SITE } from "@/content/site";
 
-type Milestone = { when: string; title: string; text: string; underground?: boolean; now?: boolean };
+type Mark = { when: string; text: string };
+type Chapter = { when: string; title: string; text: string; marks?: Mark[]; now?: boolean };
 type Tool = { where: string; name: string; text: string };
 type Pledge = { title: string; text: string };
+
+/**
+ * Un grabado por capítulo, en el mismo orden que `chapters`: el grano con sus
+ * raíces, la primera taza, la planta del logo, el café con galleta que sube a
+ * los despachos y el brote en el vaso.
+ */
+const ART = [
+  { src: "/brand/emblema-grande.webp", width: 520, height: 773 },
+  { src: "/brand/historia/piloto.webp", width: 360, height: 394 },
+  { src: "/brand/historia/tallo.webp", width: 420, height: 404 },
+  { src: "/brand/historia/hojas.webp", width: 360, height: 417 },
+  { src: "/brand/historia/brote.webp", width: 360, height: 434 },
+] as const;
 
 const COPY: Copy<{
   eyebrow: string;
   title: string;
   intro: string;
-  plantAlt: string;
-  timelineLabel: string;
-  soil: string;
-  milestones: Milestone[];
+  chaptersLabel: string;
+  now: string;
+  chapters: [Chapter, Chapter, Chapter, Chapter, Chapter];
   toolsEyebrow: string;
   toolsTitle: string;
   toolsIntro: string;
@@ -31,53 +44,50 @@ const COPY: Copy<{
     eyebrow: "Nuestra historia",
     title: "Todo empezó bajo tierra",
     intro:
-      "La cafetería se llama Raíz y Grano por el origen del café. Pero el nombre acabó describiendo también cómo creció: tres meses de raíz (comprar el grano, levantar el punto dentro del campus) antes de que asomara nada por encima de la tierra. Cada hoja de esta planta es un servicio que nació en el campus.",
-    plantAlt:
-      "El recorrido de la cafetería dibujado como una planta, sin escala: bajo tierra, el grano y sus raíces; el tallo asoma con el piloto, se detiene en verano y crece desde la apertura; tres hojas y, arriba, una yema.",
-    timelineLabel: "Hitos, del más reciente al primero",
-    soil: "Bajo tierra",
-    milestones: [
+      "La cafetería se llama Raíz y Grano por el origen del café. Con el tiempo, el nombre acabó contando también cómo creció: primero la raíz, bajo tierra, y después todo lo demás. Aquí va en cinco capítulos, del primer grano a hoy.",
+    chaptersLabel: "La historia en cinco capítulos",
+    now: "Ahora",
+    chapters: [
+      {
+        when: "Ene – mar 2025",
+        title: "Bajo tierra",
+        text: "Antes de servir un solo café hubo tres meses de raíz: elegir el grano y levantar el punto dentro del campus.",
+        marks: [{ when: "29 ene 2025", text: "La primera compra de café." }],
+      },
+      {
+        when: "Primavera y verano 2025",
+        title: "Los primeros cafés",
+        text: "El piloto demostró que el campus quería este café y nos dejó una lección: hace falta equipo.",
+        marks: [{ when: "Verano 2025", text: "Paramos hasta septiembre para volver con una segunda persona en la barra." }],
+      },
+      {
+        when: "Sep – dic 2025",
+        title: "Abrimos con equipo",
+        text: "El 16 de septiembre de 2025 abrimos ya con equipo y, con la cafetería abierta, construimos nuestras propias herramientas: el TPV, la app y el panel.",
+        marks: [
+          {
+            when: "Dic 2025",
+            text: "El bono de exámenes: cafés comprados por adelantado para la época de biblioteca. Acabó siendo lo más usado de la app y hoy es el Bono Curso.",
+          },
+        ],
+      },
+      {
+        when: "Feb – may 2026",
+        title: "El café sale de la barra",
+        text: "Con la cafetería en marcha, el café empezó a llegar más allá de la cola.",
+        marks: [
+          { when: "Feb 2026", text: "Pedidos desde la app: pides entre clase y clase y lo recoges en barra." },
+          {
+            when: "Abr – may 2026",
+            text: "Unas prácticas del programa UniUniversidad de la UFV nos llevaron con café y repostería a aulas y despachos. De ahí salió el pedido de profesores.",
+          },
+        ],
+      },
       {
         when: "Curso 2026/27",
         title: "Lo que está brotando",
-        text: "El segundo curso completo: la carta nueva, el bono válido todo el curso y el trabajo que no se ve, saber cada día qué servimos, qué desperdiciamos y por qué.",
+        text: "El segundo curso completo: la carta nueva, el bono válido todo el curso y el trabajo que no se ve (saber cada día qué servimos, qué desperdiciamos y por qué).",
         now: true,
-      },
-      {
-        when: "Abr – may 2026",
-        title: "El café sube a los despachos",
-        text: "Unas prácticas del programa UniUniversidad de la UFV nos permitieron llevar café y repostería a aulas y despachos. De ahí salió el pedido de profesores.",
-      },
-      {
-        when: "Feb 2026",
-        title: "Pedidos desde la app",
-        text: "Sin colas en la hora punta: pides entre clase y clase y lo recoges en barra.",
-      },
-      {
-        when: "Dic 2025",
-        title: "El bono de exámenes",
-        text: "Cafés comprados por adelantado para la época de biblioteca. Acabó siendo lo más usado de la app y hoy es el Bono Curso.",
-      },
-      {
-        when: "16 sep 2025",
-        title: "Apertura oficial",
-        text: "Abrimos ya con equipo y, a lo largo del curso, construimos el TPV, la app y el panel con la cafetería abierta.",
-      },
-      {
-        when: "Verano 2025",
-        title: "Una pausa",
-        text: "Paramos hasta septiembre para volver con una segunda persona en la barra.",
-      },
-      {
-        when: "Primavera 2025",
-        title: "El piloto",
-        text: "Los primeros cafés del campus, y una lección: hace falta equipo.",
-      },
-      {
-        when: "Ene – mar 2025",
-        title: "El montaje",
-        text: "Se compra el grano y se levanta el punto dentro del campus. La primera compra de café, el 29 de enero de 2025.",
-        underground: true,
       },
     ],
     toolsEyebrow: "Lo que hemos construido",
@@ -111,41 +121,50 @@ const COPY: Copy<{
     eyebrow: "Our story",
     title: "It all started underground",
     intro:
-      "The café is called Raíz y Grano (root and bean) after the origin of coffee. But the name ended up describing how it grew, too: three months of roots (buying the beans, setting up on campus) before anything showed above ground. Each leaf on this plant is a service that was born on campus.",
-    plantAlt:
-      "The café’s journey drawn as a plant, not to scale: underground, the bean and its roots; the stem appears with the pilot, pauses in summer and grows from the opening; three leaves and, at the top, a bud.",
-    timelineLabel: "Milestones, from the latest to the first",
-    soil: "Underground",
-    milestones: [
+      "The café is called Raíz y Grano (root and bean) after the origin of coffee. Over time, the name came to describe how it grew, too: roots first, underground, and then everything else. Here it is in five chapters, from the first bean to today.",
+    chaptersLabel: "Our story in five chapters",
+    now: "Now",
+    chapters: [
+      {
+        when: "Jan – Mar 2025",
+        title: "Underground",
+        text: "Before we served a single coffee, there were three months of roots: choosing the beans and setting up our spot on campus.",
+        marks: [{ when: "29 Jan 2025", text: "Our first coffee purchase." }],
+      },
+      {
+        when: "Spring and summer 2025",
+        title: "The first coffees",
+        text: "The pilot showed that the campus wanted this coffee, and taught us a lesson: you need a team.",
+        marks: [{ when: "Summer 2025", text: "We paused until September to come back with a second person behind the bar." }],
+      },
+      {
+        when: "Sep – Dec 2025",
+        title: "Opening with a team",
+        text: "On 16 September 2025 we opened, now with a team, and built our own tools while the café was open: the till, the app and the dashboard.",
+        marks: [
+          {
+            when: "Dec 2025",
+            text: "The exam pass: coffees bought in advance for library season. It became the most used feature of the app, and today it’s the Term Pass.",
+          },
+        ],
+      },
+      {
+        when: "Feb – May 2026",
+        title: "Coffee beyond the bar",
+        text: "With the café up and running, our coffee started reaching people beyond the queue.",
+        marks: [
+          { when: "Feb 2026", text: "Ordering from the app: order between classes and pick it up at the bar." },
+          {
+            when: "Apr – May 2026",
+            text: "An internship through UFV’s UniUniversidad programme took our coffee and pastries to classrooms and offices. That became the teacher orders.",
+          },
+        ],
+      },
       {
         when: "Year 2026/27",
         title: "What’s sprouting now",
-        text: "Our second full year: a new menu, a pass valid all year and the work nobody sees, knowing every day what we serve, what we waste and why.",
+        text: "Our second full year: a new menu, a pass valid all year and the work nobody sees (knowing every day what we serve, what we waste and why).",
         now: true,
-      },
-      {
-        when: "Apr – May 2026",
-        title: "Coffee goes up to the offices",
-        text: "An internship through UFV’s UniUniversidad programme let us take coffee and pastries to classrooms and offices. That became the teacher orders.",
-      },
-      { when: "Feb 2026", title: "Ordering from the app", text: "No queues at rush hour: order between classes and pick it up at the bar." },
-      {
-        when: "Dec 2025",
-        title: "The exam pass",
-        text: "Coffees bought in advance for library season. It became the most used feature of the app, and today it’s the Term Pass.",
-      },
-      {
-        when: "16 Sep 2025",
-        title: "Official opening",
-        text: "We opened with a team and, over the year, built the till, the app and the dashboard while the café was open.",
-      },
-      { when: "Summer 2025", title: "A pause", text: "We stopped until September to come back with a second person behind the bar." },
-      { when: "Spring 2025", title: "The pilot", text: "The first coffees on campus, and a lesson: you need a team." },
-      {
-        when: "Jan – Mar 2025",
-        title: "Setting up",
-        text: "Buying the beans and setting up our spot on campus. The first coffee purchase, on 29 January 2025.",
-        underground: true,
       },
     ],
     toolsEyebrow: "What we built",
@@ -179,41 +198,50 @@ const COPY: Copy<{
     eyebrow: "Notre histoire",
     title: "Tout a commencé sous terre",
     intro:
-      "Le café s’appelle Raíz y Grano (racine et grain) en référence à l’origine du café. Mais le nom a fini par décrire aussi sa croissance : trois mois de racines (acheter le grain, installer le point de vente sur le campus) avant que rien n’apparaisse à la surface. Chaque feuille de cette plante est un service né sur le campus.",
-    plantAlt:
-      "Le parcours du café dessiné comme une plante, sans échelle : sous terre, le grain et ses racines ; la tige sort avec le pilote, s’arrête en été et grandit depuis l’ouverture ; trois feuilles et, en haut, un bourgeon.",
-    timelineLabel: "Les étapes, de la plus récente à la première",
-    soil: "Sous terre",
-    milestones: [
+      "Le café s’appelle Raíz y Grano (racine et grain) en référence à l’origine du café. Avec le temps, le nom a fini par raconter aussi sa croissance : d’abord des racines, sous terre, puis tout le reste. Voici l’histoire en cinq chapitres, du premier grain à aujourd’hui.",
+    chaptersLabel: "L’histoire en cinq chapitres",
+    now: "Maintenant",
+    chapters: [
+      {
+        when: "Janv. – mars 2025",
+        title: "Sous terre",
+        text: "Avant de servir le moindre café, il y a eu trois mois de racines : choisir le grain et installer notre point de vente sur le campus.",
+        marks: [{ when: "29 janv. 2025", text: "Notre premier achat de café." }],
+      },
+      {
+        when: "Printemps et été 2025",
+        title: "Les premiers cafés",
+        text: "Le pilote a montré que le campus voulait ce café et nous a laissé une leçon : il faut une équipe.",
+        marks: [{ when: "Été 2025", text: "Une pause jusqu’en septembre, pour revenir avec une deuxième personne au comptoir." }],
+      },
+      {
+        when: "Sept. – déc. 2025",
+        title: "L’ouverture, en équipe",
+        text: "Le 16 septembre 2025, nous avons ouvert avec une équipe et, café ouvert, nous avons construit nos propres outils : la caisse, l’app et le tableau de bord.",
+        marks: [
+          {
+            when: "Déc. 2025",
+            text: "Le bono d’examens : des cafés achetés d’avance pour la saison de la bibliothèque. C’est devenu la fonction la plus utilisée de l’app ; aujourd’hui, c’est le Bono Curso.",
+          },
+        ],
+      },
+      {
+        when: "Févr. – mai 2026",
+        title: "Le café sort du comptoir",
+        text: "Une fois le café bien lancé, nos boissons ont commencé à aller plus loin que la file d’attente.",
+        marks: [
+          { when: "Févr. 2026", text: "Commander sur l’app : on commande entre deux cours et on récupère au comptoir." },
+          {
+            when: "Avr. – mai 2026",
+            text: "Un stage du programme UniUniversidad de l’UFV nous a permis de porter café et pâtisseries en salle et au bureau. C’est devenu la commande enseignants.",
+          },
+        ],
+      },
       {
         when: "Année 2026/27",
         title: "Ce qui est en train de pousser",
-        text: "La deuxième année complète : une nouvelle carte, un bono valable toute l’année et le travail invisible, savoir chaque jour ce que nous servons, ce que nous gaspillons et pourquoi.",
+        text: "La deuxième année complète : une nouvelle carte, un bono valable toute l’année et le travail invisible (savoir chaque jour ce que nous servons, ce que nous gaspillons et pourquoi).",
         now: true,
-      },
-      {
-        when: "Avr. – mai 2026",
-        title: "Le café monte dans les bureaux",
-        text: "Un stage du programme UniUniversidad de l’UFV nous a permis de porter café et pâtisseries en salle et au bureau. C’est devenu la commande enseignants.",
-      },
-      { when: "Févr. 2026", title: "Commander sur l’app", text: "Plus de file à l’heure de pointe : commandez entre deux cours et récupérez au comptoir." },
-      {
-        when: "Déc. 2025",
-        title: "Le bono d’examens",
-        text: "Des cafés achetés d’avance pour la saison de la bibliothèque. C’est devenu la fonction la plus utilisée de l’app ; aujourd’hui, c’est le Bono Curso.",
-      },
-      {
-        when: "16 sept. 2025",
-        title: "Ouverture officielle",
-        text: "Nous avons ouvert avec une équipe et, au fil de l’année, construit la caisse, l’app et le tableau de bord, café ouvert.",
-      },
-      { when: "Été 2025", title: "Une pause", text: "Nous nous sommes arrêtés jusqu’en septembre pour revenir avec une deuxième personne au comptoir." },
-      { when: "Printemps 2025", title: "Le pilote", text: "Les premiers cafés du campus, et une leçon : il faut une équipe." },
-      {
-        when: "Janv. – mars 2025",
-        title: "L’installation",
-        text: "On achète le grain et on installe le point de vente sur le campus. Premier achat de café le 29 janvier 2025.",
-        underground: true,
       },
     ],
     toolsEyebrow: "Ce que nous avons construit",
@@ -247,58 +275,79 @@ const COPY: Copy<{
 
 export default function Historia() {
   const c = useCopy(COPY);
-  const above = c.milestones.filter((m) => !m.underground);
-  const below = c.milestones.filter((m) => m.underground);
 
   return (
     <>
       <section aria-labelledby="titulo-historia" className="pt-8 sm:pt-12">
         <Container>
-          <SectionHeader as="h1" id="titulo-historia" eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+          <div className="mx-auto max-w-4xl">
+            <SectionHeader as="h1" id="titulo-historia" eyebrow={c.eyebrow} title={c.title} intro={c.intro} />
+          </div>
         </Container>
       </section>
 
-      <section aria-label={c.timelineLabel} className="pt-12">
+      {/* Del primer grano a hoy, en orden: cada capítulo con su grabado y un
+          tallo que los une (centrado en el móvil, bajo los grabados después). */}
+      <section aria-label={c.chaptersLabel} className="pt-10 sm:pt-14">
         <Container>
-          <div className="grid gap-8 lg:grid-cols-12">
-            <div className="lg:col-span-5">
-              <figure className="card sticky top-[96px] overflow-hidden p-0">
-                <img
-                  src="/brand/planta.svg"
-                  alt={c.plantAlt}
-                  width={432}
-                  height={702}
-                  className="mx-auto block h-auto max-h-[70vh] w-auto"
-                />
-              </figure>
-            </div>
-            <ol className="lg:col-span-7">
-              {above.map((m) => (
-                <li key={m.when} className="relative border-l-2 border-sage-light pb-8 pl-7 last:pb-4">
-                  <span
-                    className={cx(
-                      "absolute -left-[9px] top-1.5 h-4 w-4 rounded-full border-2",
-                      m.now ? "border-clay bg-clay-light" : "border-forest bg-paper-light",
-                    )}
-                    aria-hidden="true"
-                  />
-                  <p className="eyebrow">{m.when}</p>
-                  <h2 className="display mt-1 text-[1.45rem] leading-tight text-forest">{m.title}</h2>
-                  <p className="mt-2 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">{m.text}</p>
+          <ol className="mx-auto max-w-4xl">
+            {c.chapters.map((chapter, i) => {
+              const art = ART[i];
+              return (
+                <li key={chapter.title}>
+                  {i > 0 && (
+                    <span
+                      aria-hidden="true"
+                      className="mx-auto block h-9 w-0 border-l-2 border-dashed border-sage/35 sm:mx-0 sm:ml-[calc(6.5rem_-_1px)]"
+                    />
+                  )}
+                  <article className="card overflow-hidden sm:grid sm:grid-cols-[13rem_1fr]">
+                    <div
+                      className={cx(
+                        "relative grid place-items-center px-6 py-6 sm:pb-8 sm:pt-12",
+                        i === 0 ? "bg-kraft" : chapter.now ? "bg-clay-light/70" : "bg-[#f1e9db]",
+                      )}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="display absolute left-3.5 top-3.5 grid h-8 w-8 place-items-center rounded-full bg-paper-light/85 text-[15px] text-forest shadow-[inset_0_0_0_1px_rgba(39,51,46,0.08)]"
+                      >
+                        {i + 1}
+                      </span>
+                      <img
+                        src={art.src}
+                        alt=""
+                        aria-hidden="true"
+                        width={art.width}
+                        height={art.height}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        className="h-[128px] w-auto sm:h-[150px]"
+                      />
+                    </div>
+                    <div className="p-6 sm:p-7">
+                      <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                        <span className="eyebrow">{chapter.when}</span>
+                        {chapter.now && <span className="pill pill-cream min-h-0 py-0.5 text-[12px]">{c.now}</span>}
+                      </p>
+                      <h2 className="display mt-1.5 text-[1.5rem] leading-tight text-forest sm:text-[1.65rem]">{chapter.title}</h2>
+                      <p className="mt-2 text-[15.5px] leading-relaxed text-ink-soft">{chapter.text}</p>
+                      {chapter.marks && (
+                        <ul className="mt-4 space-y-3 border-l-2 border-sage-light pl-4">
+                          {chapter.marks.map((mark) => (
+                            <li key={mark.when}>
+                              <p className="text-[12px] font-semibold uppercase tracking-[0.12em] text-forest-light">{mark.when}</p>
+                              <p className="mt-0.5 text-[15px] leading-relaxed text-ink">{mark.text}</p>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </article>
                 </li>
-              ))}
-              <li className="relative -ml-px mt-2 rounded-3xl border border-kraft-dark bg-kraft/70 p-6 pl-7" aria-label={c.soil}>
-                <p className="eyebrow text-ink-muted">{c.soil}</p>
-                {below.map((m) => (
-                  <div key={m.when} className="mt-3">
-                    <p className="eyebrow">{m.when}</p>
-                    <h2 className="display mt-1 text-[1.45rem] leading-tight text-forest">{m.title}</h2>
-                    <p className="mt-2 max-w-xl text-[15.5px] leading-relaxed text-ink-soft">{m.text}</p>
-                  </div>
-                ))}
-              </li>
-            </ol>
-          </div>
+              );
+            })}
+          </ol>
         </Container>
       </section>
 
