@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { LANGS, useCopy, useLang, type Copy, type Lang } from "@/i18n";
 import { SITE } from "@/content/site";

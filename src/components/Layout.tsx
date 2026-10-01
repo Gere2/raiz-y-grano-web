@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router";
 import { useCopy, useLang, type Copy } from "@/i18n";
 import { NOT_FOUND, findPage } from "@/routes";
 import { Header } from "@/components/Header";

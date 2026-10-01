@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import { Navigate, Route, Routes, useParams } from "react-router";
 import { LanguageProvider } from "@/i18n";
 import { ARCHIVED_SHEETS, REDIRECTS } from "@/routes";
 import { Layout } from "@/components/Layout";

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export function cx(...parts: (string | false | null | undefined)[]) {

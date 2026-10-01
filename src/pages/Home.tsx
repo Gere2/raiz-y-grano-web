@@ -12,7 +12,7 @@ import {
   Wheat,
 } from "lucide-react";
 import type { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { useCopy, useLang, type Copy } from "@/i18n";
 import { SITE, formatShift } from "@/content/site";
 import { FAMILIES } from "@/content/carta";

@@ -42,6 +42,10 @@ npm run build      # dist/ con cada página prerenderizada
 npm run preview    # sirve dist/ en http://localhost:4173
 ```
 
+Para añadir o actualizar dependencias usa npm 11 (`npx npm@11 install …`): npm 10.9 falla con
+`Cannot read properties of null (reading 'edgesOut')` al resolver los peers opcionales de vitest 4.
+El `npm ci` de npm 10 (el del CI con Node 22) instala bien desde el lockfile.
+
 `npm run build` compila la web y después `scripts/prerender.mjs` genera el HTML de cada
 ruta (título, descripción, vista previa para redes y, en la portada, los datos del local
 para buscadores), el `404.html`, las redirecciones de las URL antiguas, `sitemap.xml` y

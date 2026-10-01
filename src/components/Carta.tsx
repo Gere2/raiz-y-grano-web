@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { formatPrice, useCopy, useLang, type Copy } from "@/i18n";
 import { fromPrice, type CartaItem, type Family } from "@/content/carta";
 import { ArtTile, cx } from "@/components/ui";

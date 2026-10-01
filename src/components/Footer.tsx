@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { Instagram, Mail, MapPin } from "lucide-react";
 import { useCopy, useLang, type Copy } from "@/i18n";
 import { SITE, formatShift } from "@/content/site";
