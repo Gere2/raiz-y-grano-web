@@ -120,7 +120,7 @@ export function llmsTxt(): string {
     .join("\n");
   return `# ${SITE.name}
 
-> Cafetería de café de especialidad en el campus de la ${SITE.address.campus} (${SITE.address.locality}, ${SITE.address.region}), entre el Edificio H y el CRAI. Abre de lunes a viernes, ${shifts}; sábado y domingo, cerrado. Los pedidos se hacen en la app ${SITE.app.home} y se recogen en barra.
+> Café de especialidad para llevar en el parking del campus de la ${SITE.address.campus} (${SITE.address.locality}, ${SITE.address.region}), entre el Edificio H y el CRAI. Abre de lunes a viernes, ${shifts}; sábado y domingo, cerrado. Se puede pedir en la barra del food truck o por adelantado en la app ${SITE.app.home} para recoger en barra.
 
 ## Páginas
 
