@@ -46,6 +46,7 @@ type HomeCopy = {
     where: string;
     whereText: string;
     campusTravel: string;
+    routeFrom: string;
     directions: string;
     review: string;
     when: string;
@@ -146,6 +147,7 @@ const COPY: Copy<HomeCopy> = {
       intro: "Nuestro punto está en el paseo entre el Edificio H (San Agustín de Hipona) y el CRAI.",
       where: "Dónde",
       whereText: "Entre el Edificio H y el CRAI",
+      routeFrom: "Ruta desde",
       campusTravel: "Desde Pozuelo o Majadahonda, los autobuses 650A y 650B pasan por la UFV. Si vienes desde Aravaca, consulta tu itinerario al campus.",
       directions: "Cómo llegar a Raíz y Grano",
       review: "¿Nos has visitado? Comparte tu experiencia en Google",
@@ -245,6 +247,7 @@ const COPY: Copy<HomeCopy> = {
       intro: "You’ll find us on the walkway between Building H (San Agustín de Hipona) and the CRAI library.",
       where: "Where",
       whereText: "Between Building H and the CRAI",
+      routeFrom: "Directions from",
       campusTravel: "The 650A and 650B buses serve the campus from Pozuelo and Majadahonda. From Aravaca, check your route to the campus.",
       directions: "Directions to Raíz y Grano",
       review: "Visited us? Share your experience on Google",
@@ -344,6 +347,7 @@ const COPY: Copy<HomeCopy> = {
       intro: "Nous sommes sur l’allée entre le bâtiment H (San Agustín de Hipona) et le CRAI.",
       where: "Où",
       whereText: "Entre le bâtiment H et le CRAI",
+      routeFrom: "Itinéraire depuis",
       campusTravel: "Les bus 650A et 650B desservent le campus depuis Pozuelo et Majadahonda. Depuis Aravaca, consultez votre itinéraire vers le campus.",
       directions: "Itinéraire vers Raíz y Grano",
       review: "Vous êtes déjà venu ? Partagez votre expérience sur Google",
@@ -694,6 +698,15 @@ export default function Home() {
                     {c.visit.campusTravel}{" "}
                     <a href="https://www.ufv.es/como-llegar/" className="underline"> UFV · {SITE.address.campus}</a>
                   </p>
+                  <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+                    {["Majadahonda", "Aravaca"].map((origin) => (
+                      <li key={origin}>
+                        <a className="underline" href={SITE.mapsDirections + "&origin=" + encodeURIComponent(origin + ", Madrid, España")}>
+                          {c.visit.routeFrom} {origin}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <ButtonLink to={SITE.mapsDirections} size="sm" variant="glass" className="self-start sm:self-auto">
                   {c.visit.directions}
