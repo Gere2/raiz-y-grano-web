@@ -34,6 +34,8 @@ export function localBusiness() {
     priceRange: "€",
     currenciesAccepted: "EUR",
     acceptsReservations: false,
+    hasMap: SITE.mapsPlace,
+    geo: { "@type": "GeoCoordinates", latitude: 40.441888, longitude: -3.8347866 },
     hasMenu: `${SITE.url}/carta`,
     email: SITE.email,
     address: {

@@ -27,7 +27,7 @@ const COPY: Copy<{
     about: "Café de especialidad en el campus de la Universidad Francisco de Vitoria desde 2025.",
     where: "Dónde",
     whereText: "Entre el Edificio H y el CRAI",
-    directions: "Cómo llegar al campus",
+    directions: "Cómo llegar a Raíz y Grano",
     when: "Horario",
     weekdays: "Lunes a viernes",
     weekend: "Sábado y domingo, cerrado.",
@@ -44,7 +44,7 @@ const COPY: Copy<{
     about: "Specialty coffee on the Universidad Francisco de Vitoria campus since 2025.",
     where: "Where",
     whereText: "Between Building H and the CRAI library",
-    directions: "Directions to campus",
+    directions: "Directions to Raíz y Grano",
     when: "Opening hours",
     weekdays: "Monday to Friday",
     weekend: "Closed on Saturdays and Sundays.",
@@ -61,7 +61,7 @@ const COPY: Copy<{
     about: "Café de spécialité sur le campus de l’Universidad Francisco de Vitoria depuis 2025.",
     where: "Où",
     whereText: "Entre le bâtiment H et le CRAI",
-    directions: "Itinéraire vers le campus",
+    directions: "Itinéraire vers Raíz y Grano",
     when: "Horaires",
     weekdays: "Du lundi au vendredi",
     weekend: "Fermé le samedi et le dimanche.",
@@ -102,7 +102,7 @@ export function Footer() {
               <br />
               {SITE.address.postalCode} {SITE.address.locality} ({SITE.address.region})
             </address>
-            <a href={SITE.campusMap} className="link mt-3 inline-flex items-center gap-1.5 text-[15px]">
+            <a href={SITE.mapsDirections} className="link mt-3 inline-flex items-center gap-1.5 text-[15px]">
               <MapPin className="h-4 w-4" aria-hidden="true" />
               {c.directions}
             </a>
