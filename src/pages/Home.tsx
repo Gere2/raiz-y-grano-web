@@ -52,7 +52,6 @@ type HomeCopy = {
     morning: string;
     afternoon: string;
     weekend: string;
-    appHours: string;
     write: string;
   };
 };
@@ -66,7 +65,7 @@ const COPY: Copy<HomeCopy> = {
       order: "Pedir en la app",
       menu: "Ver la carta",
       picker: "¿No sabes qué tomar? Te ayudamos a elegir",
-      hours: "Lunes a viernes · 8:00 – 19:00",
+      hours: "Lunes a viernes · 8:00 – 13:00 · 14:00 – 19:00",
       milk: "Leche vegetal sin suplemento",
       combo: "Menú desayuno o merienda +2 €",
     },
@@ -153,7 +152,6 @@ const COPY: Copy<HomeCopy> = {
       morning: "Mañana",
       afternoon: "Tarde",
       weekend: "Sábado y domingo, cerrado. En las vacaciones del campus el horario cambia.",
-      appHours: "Los pedidos por la app siguen el mismo horario.",
       write: "Escríbenos",
     },
   },
@@ -165,7 +163,7 @@ const COPY: Copy<HomeCopy> = {
       order: "Order in the app",
       menu: "See the menu",
       picker: "Not sure what to get? We’ll help you choose",
-      hours: "Monday to Friday · 8:00 – 19:00",
+      hours: "Monday to Friday · 8:00 – 13:00 · 14:00 – 19:00",
       milk: "Plant milk at no extra charge",
       combo: "Breakfast or afternoon menu +€2",
     },
@@ -252,7 +250,6 @@ const COPY: Copy<HomeCopy> = {
       morning: "Morning",
       afternoon: "Afternoon",
       weekend: "Closed on Saturdays and Sundays. Hours change during campus holidays.",
-      appHours: "App orders follow the same hours.",
       write: "Write to us",
     },
   },
@@ -264,7 +261,7 @@ const COPY: Copy<HomeCopy> = {
       order: "Commander sur l’app",
       menu: "Voir la carte",
       picker: "Vous hésitez ? On vous aide à choisir",
-      hours: "Du lundi au vendredi · 8:00 – 19:00",
+      hours: "Du lundi au vendredi · 8:00 – 13:00 · 14:00 – 19:00",
       milk: "Lait végétal sans supplément",
       combo: "Formule petit-déjeuner ou goûter +2 €",
     },
@@ -351,7 +348,6 @@ const COPY: Copy<HomeCopy> = {
       morning: "Matin",
       afternoon: "Après-midi",
       weekend: "Fermé le samedi et le dimanche. Les horaires changent pendant les vacances du campus.",
-      appHours: "Les commandes sur l’app suivent les mêmes horaires.",
       write: "Écrivez-nous",
     },
   },
@@ -717,7 +713,6 @@ export default function Home() {
                   ))}
                 </dl>
                 <p className="mt-3 text-[14px] leading-relaxed text-ink-muted">{c.visit.weekend}</p>
-                <p className="mt-1 text-[14px] leading-relaxed text-ink-muted">{c.visit.appHours}</p>
               </div>
               <div className="card p-6">
                 <p className="eyebrow">{c.visit.write}</p>

@@ -24,7 +24,7 @@ describe("páginas prerenderizadas", () => {
     expect(home).toContain("Bono Curso 26/27");
     expect(home).toContain("31 de julio de 2027");
     expect(home).toContain("Todo empezó bajo tierra");
-    expect(home).toContain("8:00 – 13:30");
+    expect(home).toContain("8:00 – 13:00");
     expect(home).toContain("14:00 – 19:00");
     for (const stale of ["Lovable", "9:00 - 17:00", "7:30", "unsplash", "Croissants", "Cero Desperdicio", "Matchá"]) {
       expect(home).not.toContain(stale);
@@ -108,7 +108,7 @@ describe("cabecera y datos para buscadores", () => {
     const data = localBusiness();
     expect(data["@type"]).toBe("CafeOrCoffeeShop");
     expect(data.openingHoursSpecification).toEqual([
-      expect.objectContaining({ opens: "08:00", closes: "13:30", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] }),
+      expect.objectContaining({ opens: "08:00", closes: "13:00", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"] }),
       expect.objectContaining({ opens: "14:00", closes: "19:00" }),
     ]);
     expect(headTags(PAGES[0])).toContain('"@type":"CafeOrCoffeeShop"');
@@ -122,7 +122,7 @@ describe("cabecera y datos para buscadores", () => {
 
   it("resume horario y dónde pedir en llms.txt", () => {
     const txt = llmsTxt();
-    expect(txt).toContain("de 8:00 a 13:30 y de 14:00 a 19:00");
+    expect(txt).toContain("de 8:00 a 13:00 y de 14:00 a 19:00");
     expect(txt).toContain("https://app.raizygrano.com/");
     expect(txt).not.toContain("/p/");
   });
