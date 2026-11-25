@@ -45,6 +45,7 @@ type HomeCopy = {
     intro: string;
     where: string;
     whereText: string;
+    campusTravel: string;
     directions: string;
     when: string;
     weekdays: string;
@@ -141,10 +142,11 @@ const COPY: Copy<HomeCopy> = {
     },
     visit: {
       eyebrow: "Visítanos",
-      title: "Te esperamos en el campus",
+      title: "Cafetería de especialidad en Pozuelo de Alarcón",
       intro: "Nuestro punto está en el paseo entre el Edificio H (San Agustín de Hipona) y el CRAI.",
       where: "Dónde",
       whereText: "Entre el Edificio H y el CRAI",
+      campusTravel: "Desde Pozuelo o Majadahonda, los autobuses 650A y 650B pasan por la UFV. Si vienes desde Aravaca, consulta tu itinerario al campus.",
       directions: "Cómo llegar",
       when: "Cuándo",
       weekdays: "Lunes a viernes",
@@ -243,6 +245,7 @@ const COPY: Copy<HomeCopy> = {
       intro: "You’ll find us on the walkway between Building H (San Agustín de Hipona) and the CRAI library.",
       where: "Where",
       whereText: "Between Building H and the CRAI",
+      campusTravel: "The 650A and 650B buses serve the campus from Pozuelo and Majadahonda. From Aravaca, check your route to the campus.",
       directions: "Get directions",
       when: "When",
       weekdays: "Monday to Friday",
@@ -341,6 +344,7 @@ const COPY: Copy<HomeCopy> = {
       intro: "Nous sommes sur l’allée entre le bâtiment H (San Agustín de Hipona) et le CRAI.",
       where: "Où",
       whereText: "Entre le bâtiment H et le CRAI",
+      campusTravel: "Les bus 650A et 650B desservent le campus depuis Pozuelo et Majadahonda. Depuis Aravaca, consultez votre itinéraire vers le campus.",
       directions: "Itinéraire",
       when: "Quand",
       weekdays: "Du lundi au vendredi",
@@ -686,6 +690,10 @@ export default function Home() {
                     <br />
                     {SITE.address.street}, {SITE.address.postalCode} {SITE.address.locality}
                   </address>
+                  <p className="mt-3 text-sm leading-relaxed text-ink-soft">
+                    {c.visit.campusTravel}{" "}
+                    <a href="https://www.ufv.es/como-llegar/" className="underline"> {c.visit.directions} · UFV</a>
+                  </p>
                 </div>
                 <ButtonLink to={SITE.maps} size="sm" variant="glass" className="self-start sm:self-auto">
                   {c.visit.directions}
