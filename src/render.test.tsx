@@ -92,7 +92,7 @@ describe("páginas prerenderizadas", () => {
 describe("cabecera y datos para buscadores", () => {
   it("pone título, descripción, canónica y Open Graph", () => {
     const head = headTags(PAGES.find((p) => p.path === "/carta")!);
-    expect(head).toContain("<title>La carta 2026/27 · Raíz y Grano</title>");
+    expect(head).toContain("<title>Carta y precios de la cafetería UFV 2026/27 · Raíz y Grano</title>");
     expect(head).toContain('<link rel="canonical" href="https://raizygrano.com/carta" />');
     expect(head).toContain('property="og:image" content="https://raizygrano.com/og.jpg"');
     expect(head).not.toContain("ld+json");
