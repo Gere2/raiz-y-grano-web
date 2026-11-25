@@ -147,7 +147,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Dónde",
       whereText: "Entre el Edificio H y el CRAI",
       campusTravel: "Desde Pozuelo o Majadahonda, los autobuses 650A y 650B pasan por la UFV. Si vienes desde Aravaca, consulta tu itinerario al campus.",
-      directions: "Cómo llegar al campus",
+      directions: "Cómo llegar a Raíz y Grano",
       when: "Cuándo",
       weekdays: "Lunes a viernes",
       morning: "Mañana",
@@ -246,7 +246,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Where",
       whereText: "Between Building H and the CRAI",
       campusTravel: "The 650A and 650B buses serve the campus from Pozuelo and Majadahonda. From Aravaca, check your route to the campus.",
-      directions: "Directions to campus",
+      directions: "Directions to Raíz y Grano",
       when: "When",
       weekdays: "Monday to Friday",
       morning: "Morning",
@@ -345,7 +345,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Où",
       whereText: "Entre le bâtiment H et le CRAI",
       campusTravel: "Les bus 650A et 650B desservent le campus depuis Pozuelo et Majadahonda. Depuis Aravaca, consultez votre itinéraire vers le campus.",
-      directions: "Itinéraire vers le campus",
+      directions: "Itinéraire vers Raíz y Grano",
       when: "Quand",
       weekdays: "Du lundi au vendredi",
       morning: "Matin",
@@ -692,10 +692,10 @@ export default function Home() {
                   </address>
                   <p className="mt-3 text-sm leading-relaxed text-ink-soft">
                     {c.visit.campusTravel}{" "}
-                    <a href="https://www.ufv.es/como-llegar/" className="underline"> {c.visit.directions} · UFV</a>
+                    <a href="https://www.ufv.es/como-llegar/" className="underline"> UFV · {SITE.address.campus}</a>
                   </p>
                 </div>
-                <ButtonLink to={SITE.campusMap} size="sm" variant="glass" className="self-start sm:self-auto">
+                <ButtonLink to={SITE.mapsDirections} size="sm" variant="glass" className="self-start sm:self-auto">
                   {c.visit.directions}
                 </ButtonLink>
               </div>
