@@ -47,6 +47,7 @@ type HomeCopy = {
     whereText: string;
     campusTravel: string;
     directions: string;
+    review: string;
     when: string;
     weekdays: string;
     morning: string;
@@ -147,6 +148,7 @@ const COPY: Copy<HomeCopy> = {
       whereText: "Entre el Edificio H y el CRAI",
       campusTravel: "Desde Pozuelo o Majadahonda, los autobuses 650A y 650B pasan por la UFV. Si vienes desde Aravaca, consulta tu itinerario al campus.",
       directions: "Cómo llegar a Raíz y Grano",
+      review: "¿Nos has visitado? Comparte tu experiencia en Google",
       when: "Cuándo",
       weekdays: "Lunes a viernes",
       morning: "Mañana",
@@ -245,6 +247,7 @@ const COPY: Copy<HomeCopy> = {
       whereText: "Between Building H and the CRAI",
       campusTravel: "The 650A and 650B buses serve the campus from Pozuelo and Majadahonda. From Aravaca, check your route to the campus.",
       directions: "Directions to Raíz y Grano",
+      review: "Visited us? Share your experience on Google",
       when: "When",
       weekdays: "Monday to Friday",
       morning: "Morning",
@@ -343,6 +346,7 @@ const COPY: Copy<HomeCopy> = {
       whereText: "Entre le bâtiment H et le CRAI",
       campusTravel: "Les bus 650A et 650B desservent le campus depuis Pozuelo et Majadahonda. Depuis Aravaca, consultez votre itinéraire vers le campus.",
       directions: "Itinéraire vers Raíz y Grano",
+      review: "Vous êtes déjà venu ? Partagez votre expérience sur Google",
       when: "Quand",
       weekdays: "Du lundi au vendredi",
       morning: "Matin",
@@ -694,6 +698,7 @@ export default function Home() {
                 <ButtonLink to={SITE.mapsDirections} size="sm" variant="glass" className="self-start sm:self-auto">
                   {c.visit.directions}
                 </ButtonLink>
+                <a className="text-sm underline" href={SITE.googleReview}>{c.visit.review}</a>
               </div>
             </div>
             <div className="grid content-start gap-5 lg:col-span-5">
