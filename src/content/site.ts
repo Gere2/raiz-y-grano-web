@@ -33,7 +33,7 @@ export const SITE = {
   },
   email: "info@raizygrano.com",
   phone: "696 766 943",
-  maps: "https://maps.app.goo.gl/tBJEeQn1JR6FbxsH9",
+  campusMap: "https://www.google.com/maps/dir/?api=1&destination=40.43879,-3.83662",
 
   address: {
     street: "Ctra. Pozuelo-Majadahonda km 1,800",

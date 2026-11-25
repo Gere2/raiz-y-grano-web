@@ -34,7 +34,6 @@ export function localBusiness() {
     priceRange: "€",
     currenciesAccepted: "EUR",
     acceptsReservations: false,
-    hasMap: SITE.maps,
     hasMenu: `${SITE.url}/carta`,
     email: SITE.email,
     address: {
@@ -48,6 +47,7 @@ export function localBusiness() {
     containedInPlace: {
       "@type": "CollegeOrUniversity",
       name: SITE.address.campus,
+      hasMap: SITE.campusMap,
       url: "https://www.ufv.es",
     },
     openingHoursSpecification: SITE.hours.shifts.map((shift) => ({
