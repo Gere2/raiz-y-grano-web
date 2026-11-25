@@ -63,7 +63,7 @@ const COPY: Copy<HomeCopy> = {
     hero: {
       eyebrow: "Café de especialidad · Campus UFV",
       title: "Café de especialidad, entre clase y clase",
-      lead: "Estamos en el campus de la Universidad Francisco de Vitoria, entre el Edificio H y el CRAI. Pide desde la app, sáltate la cola y recógelo en barra.",
+      lead: "Pide tu café para llevar en la app y recógelo en la barra del food truck. Estamos en el parking del campus de la Universidad Francisco de Vitoria, entre el Edificio H y el CRAI.",
       order: "Pedir en la app",
       menu: "Ver la carta",
       picker: "¿No sabes qué tomar? Te ayudamos a elegir",
@@ -163,7 +163,7 @@ const COPY: Copy<HomeCopy> = {
     hero: {
       eyebrow: "Specialty coffee · UFV campus",
       title: "Specialty coffee, between classes",
-      lead: "We’re on the Universidad Francisco de Vitoria campus, between Building H and the CRAI library. Order in the app, skip the queue and pick it up at the bar.",
+      lead: "Order your takeaway coffee in the app and pick it up at the food truck counter. You’ll find us in the car park on the Universidad Francisco de Vitoria campus, between Building H and the CRAI library.",
       order: "Order in the app",
       menu: "See the menu",
       picker: "Not sure what to get? We’ll help you choose",
@@ -263,7 +263,7 @@ const COPY: Copy<HomeCopy> = {
     hero: {
       eyebrow: "Café de spécialité · Campus UFV",
       title: "Du café de spécialité, entre deux cours",
-      lead: "Nous sommes sur le campus de l’Universidad Francisco de Vitoria, entre le bâtiment H et le CRAI. Commandez sur l’app, évitez la file et récupérez votre boisson au comptoir.",
+      lead: "Commandez votre café à emporter sur l’app et récupérez-le au comptoir du food truck. Nous sommes sur le parking du campus de l’Universidad Francisco de Vitoria, entre le bâtiment H et le CRAI.",
       order: "Commander sur l’app",
       menu: "Voir la carte",
       picker: "Vous hésitez ? On vous aide à choisir",
