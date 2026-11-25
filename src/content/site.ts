@@ -32,6 +32,7 @@ export const SITE = {
   email: "info@raizygrano.com",
   phone: "696 766 943",
   mapsPlace: "https://www.google.com/maps/search/?api=1&query=Ra%C3%ADz+y+grano&query_place_id=ChIJg6eqvxSFQQ0RLA55NMswVh0",
+  googleReview: "https://search.google.com/local/writereview?placeid=ChIJg6eqvxSFQQ0RLA55NMswVh0",
   mapsDirections: "https://www.google.com/maps/dir/?api=1&destination=Ra%C3%ADz+y+grano&destination_place_id=ChIJg6eqvxSFQQ0RLA55NMswVh0",
   campusMap: "https://www.google.com/maps/dir/?api=1&destination=40.43879,-3.83662",
 
