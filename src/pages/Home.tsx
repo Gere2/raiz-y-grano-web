@@ -147,7 +147,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Dónde",
       whereText: "Entre el Edificio H y el CRAI",
       campusTravel: "Desde Pozuelo o Majadahonda, los autobuses 650A y 650B pasan por la UFV. Si vienes desde Aravaca, consulta tu itinerario al campus.",
-      directions: "Cómo llegar",
+      directions: "Cómo llegar al campus",
       when: "Cuándo",
       weekdays: "Lunes a viernes",
       morning: "Mañana",
@@ -246,7 +246,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Where",
       whereText: "Between Building H and the CRAI",
       campusTravel: "The 650A and 650B buses serve the campus from Pozuelo and Majadahonda. From Aravaca, check your route to the campus.",
-      directions: "Get directions",
+      directions: "Directions to campus",
       when: "When",
       weekdays: "Monday to Friday",
       morning: "Morning",
@@ -345,7 +345,7 @@ const COPY: Copy<HomeCopy> = {
       where: "Où",
       whereText: "Entre le bâtiment H et le CRAI",
       campusTravel: "Les bus 650A et 650B desservent le campus depuis Pozuelo et Majadahonda. Depuis Aravaca, consultez votre itinéraire vers le campus.",
-      directions: "Itinéraire",
+      directions: "Itinéraire vers le campus",
       when: "Quand",
       weekdays: "Du lundi au vendredi",
       morning: "Matin",
@@ -695,7 +695,7 @@ export default function Home() {
                     <a href="https://www.ufv.es/como-llegar/" className="underline"> {c.visit.directions} · UFV</a>
                   </p>
                 </div>
-                <ButtonLink to={SITE.maps} size="sm" variant="glass" className="self-start sm:self-auto">
+                <ButtonLink to={SITE.campusMap} size="sm" variant="glass" className="self-start sm:self-auto">
                   {c.visit.directions}
                 </ButtonLink>
               </div>
