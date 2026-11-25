@@ -34,6 +34,7 @@ export function localBusiness() {
     priceRange: "€",
     currenciesAccepted: "EUR",
     acceptsReservations: false,
+    hasMap: SITE.maps,
     hasMenu: `${SITE.url}/carta`,
     email: SITE.email,
     address: {

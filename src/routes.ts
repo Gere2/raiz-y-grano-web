@@ -26,7 +26,7 @@ export const PAGES: PageMeta[] = [
   {
     path: "/",
     title: {
-      es: `${BRAND} · Café de especialidad en el campus de la UFV`,
+      es: `${BRAND} · Café de especialidad en la UFV, Pozuelo de Alarcón`,
       en: `${BRAND} · Specialty coffee on the UFV campus`,
       fr: `${BRAND} · Café de spécialité sur le campus de l’UFV`,
     },
@@ -39,7 +39,7 @@ export const PAGES: PageMeta[] = [
   {
     path: "/carta",
     title: {
-      es: `La carta 2026/27 · ${BRAND}`,
+      es: `Carta y precios de la cafetería UFV 2026/27 · ${BRAND}`,
       en: `Menu 2026/27 · ${BRAND}`,
       fr: `La carte 2026/27 · ${BRAND}`,
     },
