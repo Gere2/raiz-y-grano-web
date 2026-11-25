@@ -6,9 +6,7 @@
  * app, datos legales) vive aquí y solo aquí.
  *
  * De dónde sale cada dato (verificado el 30-09-2026):
- * - Horario: cartel de horarios del curso 2026/27 y `DEFAULT_DAY` de
- *   `apps/app/lib/app-ordering-schedule.ts` (lunes a viernes, 8:00 – 13:30 y
- *   14:00 – 19:00; sábado y domingo, cerrado).
+ * - Horario del local confirmado por Geremi el 25-11-2026.
  * - Datos legales: `apps/app/lib/legal/company.ts` (aviso legal de la app).
  * - Enlaces: rutas vivas de app.raizygrano.com.
  */
@@ -50,7 +48,7 @@ export const SITE = {
   hours: {
     days: [1, 2, 3, 4, 5],
     shifts: [
-      { opens: "08:00", closes: "13:30" },
+      { opens: "08:00", closes: "13:00" },
       { opens: "14:00", closes: "19:00" },
     ],
   },
@@ -85,7 +83,7 @@ export function formatTime(hhmm: string): string {
   return `${Number(h)}:${m}`;
 }
 
-/** «8:00 – 13:30», con semirraya entre espacios (la de los rangos). */
+/** «8:00 – 13:00», con semirraya entre espacios (la de los rangos). */
 export function formatShift(shift: Shift): string {
   return `${formatTime(shift.opens)} – ${formatTime(shift.closes)}`;
 }
